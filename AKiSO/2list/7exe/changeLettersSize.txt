@@ -1,0 +1,6 @@
+IFS=`echo -en "\n\b"` ;{ for f in `ls`; do test -f "$f" && mv -t "$f" `echo "$f" | tr '[ĄĆĘŁŃÓŚŻŹA-Z]' '[ąćęłńóśżźa-z]'`; done }
+
+#zmiana duzych liter w nazwach plików na małe z pomoca pętli(w momencie powtórzenia nazwy pliku, nie zostaną zamienione litery)
+
+
+
