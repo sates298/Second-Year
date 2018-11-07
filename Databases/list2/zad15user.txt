@@ -1,0 +1,8 @@
+>mysql -u root -p
+enter password:
+>CREATE USER 'tutajnazwa'@'localhost';
+>GRANT SELECT ON `laboratory-cinematheque`.(tutajnazwawidoku) TO 'tutajnazwa'@'localhost';
+>	-  ||  -
+>	-  ||  -
+>FLUSH PRIVILEGES;
+>quit;

@@ -1,0 +1,7 @@
+>mysql -u root -p
+enter password:
+>CREATE DATABASE `laboratory-cinematheque`;
+>CREATE USER 'tutajindex'@'localhost' IDENTIFIED BY 'tutajhaslo';
+>GRANT SELECT, INSERT, UPDATE ON `laboratory-cinematheque`.* TO 'tutajindex'@'localhost';
+>FLUSH PRIVILEGES;
+>quit;
