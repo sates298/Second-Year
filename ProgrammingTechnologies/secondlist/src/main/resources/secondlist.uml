@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="129.0" y="222.0">pl.swozniak.article.Article</node>
+    <node x="0.0" y="74.0">pl.swozniak.article.ArticleService</node>
+    <node x="0.0" y="222.0">pl.swozniak.invoice.Invoice</node>
+    <node x="162.0" y="74.0">pl.swozniak.client.ClientService</node>
+    <node x="0.0" y="148.0">pl.swozniak.Application</node>
+    <node x="151.0" y="148.0">pl.swozniak.Controller</node>
+    <node x="0.0" y="0.0">pl.swozniak.TempDatabase</node>
+    <node x="0.0" y="296.0">pl.swozniak.client.Client</node>
+    <node x="172.0" y="0.0">pl.swozniak.invoice.InvoiceService</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="359.5" y="230.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
