@@ -46,10 +46,10 @@ do
 
   echo "actual network speed = $speed $unit"
   echo "average network speed = $temp_speed $average_unit"
-  echo
-###########################################################################33333
+  #############################################################################
 
   seconds=`echo $(cat /proc/uptime) |  awk '{print $1}'`
+  seconds=$(bc<<<$seconds/1)
 
   d=$(($seconds/86400))
   seconds=$(($seconds - ($d*86400)))
@@ -58,7 +58,17 @@ do
   m=$(($seconds/60))
   seconds=$(($seconds - ($m*60)))
 
-  echo "run for $d days, $h hours, $m minutes, $seconds seconds"
+  echo -e "uptime: $d days, $h hours, $m minutes, $seconds seconds "
+  ###############################################################################
+
+  percent=`grep "POWER_SUPPLY_CAPACITY=" /sys/class/power_supply/BAT0/uevent | cut -c 23- `
+  echo -e "battery: "$percent"%"
+
+  ###############################################################################
+
+  loadavg=`echo $(cat /proc/loadavg) | awk '{print $1}'`
+  loadavg=$(bc<<<$loadavg*100)
+  echo -e "loadavg: "$loadavg "%\n"
 
 
 
