@@ -7,6 +7,6 @@ From v1
 	Inner Join actor As a On a.actor_id = v1.first_actor 
 	Inner Join actor As b On b.actor_id = v1.second_actor
 Group By first_actor, second_actor
-Having Count(*) > 1;   
+Having Count(*) > 1;  
 
 Drop View v1;
