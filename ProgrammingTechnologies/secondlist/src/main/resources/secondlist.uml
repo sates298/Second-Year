@@ -3,19 +3,89 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="129.0" y="222.0">pl.swozniak.article.Article</node>
-    <node x="0.0" y="74.0">pl.swozniak.article.ArticleService</node>
-    <node x="0.0" y="222.0">pl.swozniak.invoice.Invoice</node>
-    <node x="162.0" y="74.0">pl.swozniak.client.ClientService</node>
-    <node x="0.0" y="148.0">pl.swozniak.Application</node>
-    <node x="151.0" y="148.0">pl.swozniak.Controller</node>
-    <node x="0.0" y="0.0">pl.swozniak.TempDatabase</node>
-    <node x="0.0" y="296.0">pl.swozniak.client.Client</node>
-    <node x="172.0" y="0.0">pl.swozniak.invoice.InvoiceService</node>
+    <node x="224.8333333333333" y="0.0">pl.swozniak.article.Article</node>
+    <node x="254.16666666666663" y="89.0">pl.swozniak.article.ArticleService</node>
+    <node x="149.16666666666663" y="89.0">pl.swozniak.invoice.Invoice</node>
+    <node x="0.0" y="89.0">pl.swozniak.client.ClientService</node>
+    <node x="0.0" y="360.5">pl.swozniak.Application</node>
+    <node x="3.0" y="281.5">pl.swozniak.Controller</node>
+    <node x="77.62962962962959" y="168.0">pl.swozniak.TempDatabase</node>
+    <node x="224.6296296296296" y="168.0">pl.swozniak.invoice.InvoiceService</node>
+    <node x="74.49999999999997" y="0.0">pl.swozniak.client.Client</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="359.5" y="230.0" />
+  <edges>
+    <edge source="pl.swozniak.invoice.Invoice" target="pl.swozniak.article.Article">
+      <point x="28.0" y="-14.5" />
+      <point x="219.16666666666663" y="69.0" />
+      <point x="238.16666666666663" y="69.0" />
+      <point x="-26.666666666666668" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.invoice.InvoiceService" target="pl.swozniak.invoice.Invoice">
+      <point x="0.0" y="-14.5" />
+      <point x="285.12962962962956" y="138.0" />
+      <point x="212.16666666666663" y="138.0" />
+      <point x="21.0" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.invoice.Invoice">
+      <point x="2.8421709430404007E-14" y="-14.5" />
+      <point x="141.12962962962962" y="148.0" />
+      <point x="170.16666666666663" y="148.0" />
+      <point x="-21.0" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.client.Client" target="pl.swozniak.invoice.Invoice">
+      <point x="28.5" y="14.5" />
+      <point x="140.99999999999997" y="49.0" />
+      <point x="191.16666666666663" y="49.0" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="pl.swozniak.invoice.Invoice" target="pl.swozniak.client.Client">
+      <point x="-28.0" y="-14.5" />
+      <point x="163.16666666666663" y="59.0" />
+      <point x="121.99999999999997" y="59.0" />
+      <point x="9.5" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.client.Client">
+      <point x="-42.333333333333314" y="-14.5" />
+      <point x="98.79629629629628" y="148.0" />
+      <point x="124.49999999999997" y="148.0" />
+      <point x="124.49999999999997" y="69.0" />
+      <point x="102.99999999999997" y="69.0" />
+      <point x="-9.5" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.Application" target="pl.swozniak.Controller">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.article.Article">
+      <point x="42.33333333333334" y="-14.5" />
+      <point x="183.46296296296293" y="148.0" />
+      <point x="243.66666666666663" y="148.0" />
+      <point x="243.66666666666663" y="69.0" />
+      <point x="264.83333333333326" y="69.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.TempDatabase">
+      <point x="-31.75" y="14.5" />
+      <point x="109.37962962962959" y="217.0" />
+      <point x="57.62962962962959" y="217.0" />
+      <point x="57.62962962962959" y="189.75" />
+      <point x="-63.5" y="7.25" />
+    </edge>
+    <edge source="pl.swozniak.article.ArticleService" target="pl.swozniak.article.Article">
+      <point x="0.0" y="-14.5" />
+      <point x="312.66666666666663" y="69.0" />
+      <point x="291.49999999999994" y="69.0" />
+      <point x="26.66666666666667" y="14.5" />
+    </edge>
+    <edge source="pl.swozniak.client.ClientService" target="pl.swozniak.client.Client">
+      <point x="0.0" y="-14.5" />
+      <point x="57.0" y="69.0" />
+      <point x="83.99999999999997" y="69.0" />
+      <point x="-28.5" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9289156626506024" x="381.0" y="395.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
