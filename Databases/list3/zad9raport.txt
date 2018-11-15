@@ -1,0 +1,27 @@
+﻿Raport do zadania 9 z 3 listy zadań
+
+1. Pierwsze próby zrobienia backup'u polegały na wywoływołaniu komendy: mysqldump -u root -p list3people > backup.sql
+lecz na konsoli wyświetlił się błąd: Access is denied. Podczas kolejnych prób sprawdzone zostały dodatkowe, inne opcje w komendzie typu --password=[tutajhasło], 
+albo --databases, mimo to za każdym razem wyskakiwał ten sam błąd.
+
+2. Po wielu próbach w konsoli, za pomocą IDE MySQL Workbench został zrobiony backup. (Wejście w Server->Data Export.)
+Nastęnym krokiem było wybranie odpowiedniej bazy danych oraz wpisanie ścieżki w której program miał zapisać stworzoną kopię. Oprócz tego wybrana została opcja zapisania procedury,
+funkcje oraz triggery. Kolejną zmianą było ustawienie aby wszystko zapisało się w jednym pliku SQL. Całość została wywołana poprzez przycisk Start Export.
+
+3. Następnie za pomocą komendy: DROP DATABASE list3people; usunięta została baza danych. W kolejnym kroku stworzona została pusta baza danych o tej samej nazwie.
+Później poprzez wejście w Server->Data Import wybrany został plik, który powstał przy wykonywaniu Data Export. Całość została wywołana przez Start Import.
+
+4. Po udanym imporcie danych za pomocą IDE, odkryłem co mogło być problemem w próbie zrobienia buckupu w konsoli.
+Tym razem zostały użyte komendy: mysqldump -u root -p list3people > "tutaj ścieżka do folderu Documents\plik.sql". Próba zakończyła się sukcesem.
+
+5. Kolejny raz usunięta została baza danych, a na jej miejsce stworzona nowa - pusta, o tej samej nazwie. Dane zostały importowane za pomocą komendy:
+mysql -u root -p list3people < "ścieżka do pliku\plik.sql". Po sprawdzeniu okazało się, że nie zapisały się procedury,
+triggery, funkcje itp.
+
+6. Za pomocą kopii stworzonej przez IDE, została otworzona baza w pierwotnej postaci oraz zrobiony kolejny backup w taki sam sposób
+jak w pkt.4 lecz tym razem z opcją --routine=TRUE. Kolejny raz zrobiony został reimport bazy danych, ale tym razem były wszystkie procedury,
+tiggery itp.
+
+Różnice miedzy buckupem pełnym i różnicowym:
+	Pełna kopia zapasowa posiada informacje o całej bazie danych. Żadne dane nie są tracone, ani nic nie jest pmijane.
+	Różnicowa kopia zapasowa posiada informacje o danych, które zostały zmienione od ostatniej kopii pełnej.
