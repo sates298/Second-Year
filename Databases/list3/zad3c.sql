@@ -10,5 +10,6 @@ WHERE actor_id IN
 			(SELECT cast.film_id 
 			FROM cast 
 				INNER JOIN actors ON actors.id=cast.actor_id
+                INNER JOIN films ON films.id = cast.film_id
 			WHERE actors.last_name = 'Cage' AND actors.first_name = 'Zero'))
 AND (actors.last_name <> 'Cage' OR actors.first_name <> 'Zero');

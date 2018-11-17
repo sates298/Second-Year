@@ -15,14 +15,14 @@ BEGIN
     DECLARE random_to_compare FLOAT;
     DECLARE true_sum FLOAT;
     DECLARE fake_sum FLOAT;
-	DECLARE rand_raw_to_change FLOAT;
+	DECLARE rand_raw_to_change VARCHAR(11);
     DECLARE sensitiveness FLOAT;
     DECLARE added_privacy FLOAT;
     DECLARE parameter FLOAT;
     DECLARE epsilon FLOAT DEFAULT 0.05;
 
 	DROP TABLE IF EXISTS temp_table;
-	SET @set_creation = CONCAT("CREATE TEMPORARY TABLE temp_table AS (SELECT ", col, " AS  wanted_value
+	SET @set_creation = CONCAT("CREATE TEMPORARY TABLE temp_table AS (SELECT ", col, " AS  wanted_value , people.PESEL
 						FROM people INNER JOIN employees ON people.PESEL = employees.PESEL
                         WHERE profession = '", profe,"')");
 	PREPARE create_table FROM @set_creation;
@@ -35,8 +35,8 @@ BEGIN
 
 	SET true_sum = (SELECT SUM(wanted_value) FROM temp_table);
     
-    SET rand_raw_to_change = (SELECT wanted_value FROM temp_table ORDER BY RAND() LIMIT 1);
-    UPDATE temp_table SET wanted_value = random_to_compare WHERE wanted_value = rand_raw_to_change;
+    SET rand_raw_to_change = (SELECT PESEL FROM temp_table ORDER BY RAND() LIMIT 1);
+    UPDATE temp_table SET wanted_value = random_to_compare WHERE PESEL = rand_raw_to_change;
 	
     SET fake_sum = (SELECT SUM(wanted_value) FROM temp_table);
     SET sensitiveness = (SELECT ABS(true_sum - fake_sum));
@@ -49,4 +49,4 @@ END//
 DELIMITER ;
 
 
-CALL privacy('salary', 'reporter');
+CALL privacy('wage', 'actor');
