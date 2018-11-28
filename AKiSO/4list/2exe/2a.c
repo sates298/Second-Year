@@ -2,13 +2,22 @@
 #include <unistd.h>
 #include <signal.h>
 
+void signal_handler(int i){
+
+   printf("Signal %d is catched\n", i);
+}
+
+
 int main(int argc, char **argv){
 
 
-  int pid = 1465;
+  for(int i=1; i<=64; i++){
+    signal(i, signal_handler);
+  }
 
   for(int i=1; i<=64; i++){
-    int response = kill(pid,i);
+   if(i == 0 || i == 9 || i == 19 || i == 32 || i == 33) continue;
+    int response = kill(getpid(),i);
     if(response == 0){
       printf("Signal %d comes\n", i);
     }else{

@@ -13,27 +13,27 @@ int array_len(char **array){
   while(array[size] != NULL){
     size++;
   }
-                                                                                                                 printf("%d : podaj size, %s : podaj drugi element\n",size, array[1]);
+                                                                                                                 
   return size;
 }
 
 //free memory used by current arguments
 void memclear(char **pointers){
 
-  int a_size = array_len(pointers);                                                                         printf("%d : size w free\n", a_size);
-  for(int i=0; i<a_size; i++){
+  int i = 0;
+  while(pointers[i] != NULL){                                            
     free(pointers[i]);
-                                                                                                                          printf("%d : iterator w free\n", i);
+    i++;                                                                                                      
   }
 
   free(pointers);
-                                                                                                      printf("przesżło całe free\n");
+                                                                                                     
 }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 char** split_arguments(char *arguments, char **line){
      
-                                                                                                    printf("wgl tu wchodzi do splita?\n");
+                                                                                                   
    //declare delimiter
   char delimiter = ' ';  
 
@@ -72,39 +72,43 @@ char** split_arguments(char *arguments, char **line){
   max_cell++;
   //increase table_size for NULL value
   //table_size++;
-                                                                                                       printf("%d : table size\n", table_size);
-  //allocate table
-  line = (char **)malloc(sizeof(char*)*table_size);
+                                                                                                    
+  //allocate table   (char **) and (char *)
+  if(table_size == 0 || max_cell == 0)
+    return NULL;
+  line = malloc(sizeof(char*)*(table_size+1));
 
   for(int j=0; j<table_size; j++){
-    line[j] = (char *)malloc(sizeof(char)*max_cell);
+    line[j] = malloc(sizeof(char)*max_cell);
   }
-
+  
+  
   //split char* to char** using delimiter 
   int cell_iterator = 0;
   int line_iterator = 0;
 
   for(int k=0; arguments[k] != '\0'; k++){
-    
-    if(arguments[k] != delimiter || arguments[k] != '\n'){
+
+    if(arguments[k] != delimiter){
+      if(arguments[k] == '\n'){
+        continue;
+      }
       line[line_iterator][cell_iterator] = arguments[k];
       cell_iterator++;
+      if(arguments[k+1] == '\n' || arguments[k+1] == delimiter || arguments[k+1] == '\0'){         
+        line[line_iterator][cell_iterator] = '\0';                                                               
+        line_iterator++;
+        cell_iterator = 0;
+      }
     } else {
-      line[line_iterator][cell_iterator] = '\0';
-
-      while(arguments[k] == delimiter && arguments[k] != '\0'){
-        k++;
-      }
-      k--;
-      if(arguments[k+1] != '\0'){
-        line_iterator++;                                                                                  rypie sie iterator
-      }
-      cell_iterator = 0;
+      continue;                                                                               
     }
   } 
-
-  line[line_iterator + 1] = NULL;
-                                                                 printf("%s : ostatnie w returnie; %d : iterator\n", line[line_iterator + 1], line_iterator);
+  //set NULL on the end of table
+  line[table_size] = NULL;
+                                                                 
+  //free buffer
+  free(arguments);
   //return table of char*
   return line;
 }
@@ -113,45 +117,53 @@ char** read_line(char **args){
 
   //declare buffer
   char *buffer = NULL;
-  ssize_t buf_size = 0;
+  size_t buf_size = 0;
 
   //get commands
   getline(&buffer, &buf_size, stdin);
-                                                                                                      printf("tutaj przeszło to:%s\n", buffer);
+                                                                                                    
   //return splited commands
   return split_arguments(buffer, args);
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //function to exit 
 void my_exit(){
   printf("Bye Bye!\n");
   exit(0);
 }
 
+void my_cd(char **command){
+
+  
+  printf("change directory\n");
+}
+
 //execute commands
 void execute(char **arguments){
-  char ex[4] = {'e', 'x', 'i', 't'};
-                                                                                                  printf("może tutuaj?\n");
-  int isExit = strcmp(arguments[0], ex);
-  if(isExit == 0){ 
+                                                                                           
+  if(strcmp( arguments[0] , "exit") == 0){ 
     my_exit();
-  }else if(0){
-    //here cd implementation
+  }else if( strcmp(arguments[0], "cd") == 0){
+    my_cd(arguments);
   }else{
 
-    //printf("%s", arguments[0]);
+     printf("something else\n");
   }
 }
 
 int main(int argc, char **argv){
 
-  char **arguments;
+  char **arguments = NULL;
   while(true){
-
+    printf(">");
     arguments = read_line(arguments);
-    execute(arguments);
-    memclear(arguments);
-    printf("\n");
+    if(arguments != NULL){
+
+      execute(arguments);
+      memclear(arguments);
+      //printf("\n");
+    }
+
   }
 
 }
