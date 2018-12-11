@@ -17,6 +17,6 @@ do
     else
       There are differences
       echo $differences
-      $differences > changes.txt
+      $differences >> changes.txt
   fi
 done
