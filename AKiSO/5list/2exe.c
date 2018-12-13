@@ -4,12 +4,16 @@
 #include <pthread.h>
 #include <stdbool.h>
 
-typedef struct {
-  int* row;
-  int** matrix;
-} argument;
+int a=0;
+pthread_mutex_t lock;
 
-int matrix_size(int** matrix){
+struct argument {
+  bool** first_matrix;
+  bool** second_matrix;
+  bool** result_matrix;
+};
+
+int matrix_size(bool** matrix){
 
   int size = 0;
 
@@ -19,7 +23,7 @@ int matrix_size(int** matrix){
   return size;
 }
 
-void fill_matrix(int** matrix){
+void fill_matrix(bool** matrix){
   
   int random_number, size = matrix_size(matrix);
   for(int i=0; i<size; i++){
@@ -31,7 +35,7 @@ void fill_matrix(int** matrix){
   matrix[size]=NULL;
 }
 
-void free_matrix(int** pointer){
+void free_matrix(bool** pointer){
 
   int size = matrix_size(pointer);
   for(int i=0; i<size; i++){
@@ -42,17 +46,17 @@ void free_matrix(int** pointer){
 
 }
 
-int** declare_matrix(int size){
+bool** declare_matrix(int size){
 
-  int** matrix = malloc(sizeof(int*)*(size+1));
+  bool** matrix = malloc(sizeof(bool *)*(size+1));
   for(int i=0; i<size; i++){
-    matrix[i]=malloc(sizeof(int)*(size + 1));
+    matrix[i]=malloc(sizeof(bool)*(size + 1));
   }
    
   return matrix;
 }
 
-void draw(int** matrix, char* name){
+void draw(bool** matrix, char* name){
 
   printf("%s :\n", name);
   int size = matrix_size(matrix);
@@ -81,29 +85,39 @@ void draw(int** matrix, char* name){
 void *count_one_row(void *arg){
 
   if(arg != NULL){
-    argument *parameters = (argument *) arg;
-    int **matrix, *one_row,  size , *result;
+    struct argument *parameters = arg;
+		//printf("%p : wskaźnik parameters\n", parameters);
+    int size, temp_a;
+    bool **matrix, **one_row, **result;
     bool val = false;
-    matrix = parameters->matrix;   
+		one_row = parameters->first_matrix;
+    matrix = parameters->second_matrix;
+		//printf("%p : wskaźnik na second w watku\n", matrix);
+    result = parameters->result_matrix; 
+		//printf("%p : wskaxnik na result w wątku\n", result);  
     size = matrix_size(matrix) ; 
-    draw(matrix, "w wątku");
-    one_row = parameters->row;
-    result = malloc(sizeof(int)*(size+1));
-    for(int i=0; i<size; i++){
-      printf("%d\n",i);
-      for(int j=0; j<size; j++){
-        val = (one_row[j] && matrix[i][j]);
-        if(val) break;
-      }      
-      result[i] = (int)val;
-      printf("%d : result\n", result[i]);
-      val = false;
+    //printf("%d : size\n" , size);
+    //draw( matrix, "w wątku");
+    while(a < size){
+			pthread_mutex_lock(&lock);
+      a++;
+      temp_a = a;
+			pthread_mutex_unlock(&lock);
+			if(temp_a > size) break;
+      for(int i=0; i<size; i++){
+
+        for(int j=0; j<size; j++){
+          val = (one_row[temp_a-1][j] && matrix[j][i]);		
+					if(val) break;
+        }      
+        result[temp_a-1][i] = val;
+
+        val = false;
+      }
+			//pthread_mutex_unlock(&lock);
     }
-    
-    
-    return (void *)result;
   }
-  //return NULL;
+  return NULL;
   pthread_exit(NULL);
 }
 
@@ -112,60 +126,59 @@ void *count_one_row(void *arg){
 int main(int argc, char **argv){
 
   srand(time(NULL));
-  int **first, **second, size, thread_no;
-  void *result;
+  bool **first, **second;
+  int size, thread_no;
+  bool **result;
 
   size = atoi(argv[1]);
   thread_no = atoi(argv[2]);
 
   pthread_t tids[thread_no];
-  argument **rows = malloc(sizeof(argument *)*(size + 1));
-  result = (void *)malloc(sizeof(int *)*(size+1));  
+  struct argument **rows = malloc(sizeof(struct argument *)*(thread_no));
+  result = declare_matrix(size);
 
   first = declare_matrix(size);
   second = declare_matrix(size);
+
   fill_matrix(first);
   fill_matrix(second);
   if(size < 50){
     draw(first, "matrix 1");
     draw(second, "matrix 2");
   }
-
-  for(int i=0; i<size; i++){
-    argument* arg = malloc(sizeof(argument));
-    arg->row = first[i];
-    arg->matrix = second;
+  for(int i=0; i< thread_no; i++){
+    struct argument* arg = malloc(sizeof(struct argument));
+    arg->first_matrix = first;
+    arg->second_matrix = second;
+    arg->result_matrix = result;
     rows[i] = arg;
   }
-  rows[size] = NULL;
+  //rows[thread_no] = NULL;
+
+	pthread_mutex_init(&lock, NULL);
 
   int i=0;
-  while(i < size || i < thread_no){
-    if(i < size && i < thread_no){
-      pthread_create(tids+i, NULL, count_one_row, (void *)(rows+i)); 
-    } else if (i < thread_no) {
-      pthread_create(tids+i, NULL, count_one_row, NULL);
-    }
+  while(i < thread_no){
+    pthread_create(&tids[i], NULL, count_one_row, rows[i]); 
     i++;
   }
 
-
-  for(int i=0; i<thread_no; i++){
-    pthread_join(tids[i], result+i);
-    printf("udalo sie watek %d\n", i);
-  }
-
-  draw(result, "result");
+  
  
-  for(int i=0; i<size; i++){
+	
+  for(int i=0; i<thread_no; i++){
+		pthread_join(tids[i], NULL);
+	}
+	pthread_mutex_destroy(&lock);
+	draw(result, "result");
+
+	for(int i=0; i < thread_no; i++){
     free(rows[i]);
   }
   free(rows);
   free_matrix(first);
   free_matrix(second);
-  free_matrix((int **)result);
-
-  pthread_exit(NULL);
+  free_matrix(result);
   return 0;
 }
 
