@@ -7,7 +7,7 @@ section .data
         db      "%lf %d", 0
   msg_result:
         db      "%lf", 10, 0
-  msg_sin:
+  msg_log:
         db      "sinh^-1(%lf) = ", 0
   msg_e:
         db      "sinh^1(%lf) = ", 0
@@ -53,15 +53,15 @@ section .text
         push    dword [x]
         push    msg_e
         call    printf
-        jmp    print_result
+        jmp     print_result
         
 
   print_two:
         push    dword [temp+4]
         push    dword [temp]
-        push    msg_sin
+        push    msg_log
         call    printf
-        jmp    print_result
+        jmp     print_result
 
   print_result:
         push    dword [res+4]
@@ -86,7 +86,7 @@ section .text
         fld     qword [temp]
         fdiv
         fstp    qword [res]
-        jmp    print_one
+        jmp     print_one
         
   log_chosen:
         finit
@@ -102,17 +102,17 @@ section .text
         fadd                    ;x + sqrt( x**2 + 1) 
         fstp    qword [x]
         call    log_e_x           
-        jmp    print_two
+        jmp     print_two
 
   pow_e_x:                      ; use e^x as 2^(x * log_2(e))
         fldl2e                  ;load log_2(e)
         fld     qword [x]
         fmul                    ;x * log_2(e)
         fld1
-        fld     st1           ;duplicate x * log_2(e)
+        fld     st1             ;duplicate x * log_2(e)
         fprem                   ;st(0) mod st(1) = (x * log_2(e)) mod 1 [later as "reminder"]
         f2xm1                   ;2^(reminder) - 1
-        faddp   st1, st0    ;previous line + 1 = 2^(reminder)
+        faddp   st1, st0        ;previous line + 1 = 2^(reminder)
         fscale                  ;st(0) * 2^(st(1)) = 2^(reminder) * 2^(floor(x * log_2(e))
         fstp    qword [temp]    ;result from st(0) store in temp variable
         ret
@@ -123,19 +123,19 @@ section .text
         fmul                    ;x * log_2(e)
         fchs                    ;st(0) = -(x * log_2(e)) 
         fld1
-        fld     st1           ;duplicate -(x * log_2(e))
+        fld     st1             ;duplicate -(x * log_2(e))
         fprem                   ;st(0) mod st(1) = -(x * log_2(e)) mod 1 [later as "-reminder"]
         f2xm1                   ;2^(-reminder) - 1
-        faddp   st1, st0    ;previous line + 1 = 2^(-reminder)
+        faddp   st1, st0        ;previous line + 1 = 2^(-reminder)
         fscale                  ;st(0) * 2^(st(1)) = 2^(-reminder) * 2^(floor(-(x * log_2(e)))
-        fstp    qword [res]  ;result from st(0) store in "result" variable
+        fstp    qword [res]     ;result from st(0) store in "result" variable
         ret
 
   log_e_x:
         fldln2                  ;load log_e(2)
         fld     qword [x]
         fyl2x                   ;compute log_e(2)*log_2(x) = log_e (x)
-        fstp    qword [res]  ;save result
+        fstp    qword [res]     ;save result
         ret
 
 
