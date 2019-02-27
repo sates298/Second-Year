@@ -2,60 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20e0afe2-32e8-4b6e-9981-89b3c8455946" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/Lab1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad1.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad10.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad11.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad12.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad13.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad14.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad15.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad16.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad17.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad18.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad2.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad3.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad4.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad5.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad6.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad7.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad8.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list1/zad9.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/Lab2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad10.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad11.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad12.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad13.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad14.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad15.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad15user.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad2.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad3.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad4.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad5.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad6.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad7.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad8.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Databases/list2/zad9.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Databases/list3/zad7.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Databases/list3/zad7.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/second-list-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/second-list-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.ControllerTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.TempDatabaseTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.TempDatabaseTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.article.ArticleServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.article.ArticleServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.client.ClientServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.client.ClientServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.client.ClientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.client.ClientTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.invoice.InvoiceServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.invoice.InvoiceServiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.invoice.InvoiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.invoice.InvoiceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-pl.swozniak.invoice.TestInvoice.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.ControllerTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.TempDatabaseTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.TempDatabaseTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.article.ArticleServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.article.ArticleServiceTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.article.ArticleTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.article.ArticleTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/pl.swozniak.invoice.TestInvoice.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/secondlist.uml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/secondlist.uml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -124,27 +73,33 @@
     <session id="-1095186733">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
-          <entry key="project.open.time.11" value="4" />
-          <entry key="project.open.time.12" value="2" />
+          <entry key="project.closed" value="23" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.11" value="6" />
+          <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6471" />
+          <entry key="java" value="7568" />
           <entry key="xml" value="100" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6471" />
+          <entry key="JAVA" value="7568" />
           <entry key="XML" value="100" />
         </counts>
       </usages-collector>
@@ -153,20 +108,20 @@
           <entry key="JavaScript-modules-diagram/C:/Users/stani/Documents/GitHub/Second-Year/ProgrammingTechnologies/secondlist/src/main/java/pl/swozniak" value="1" />
           <entry key="class" value="1" />
           <entry key="iml" value="2" />
-          <entry key="java" value="33" />
+          <entry key="java" value="48" />
           <entry key="puml" value="1" />
-          <entry key="uml" value="4" />
-          <entry key="xml" value="2" />
+          <entry key="uml" value="9" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="33" />
+          <entry key="JAVA" value="48" />
           <entry key="PlantUML file" value="1" />
-          <entry key="UML" value="5" />
-          <entry key="XML" value="2" />
+          <entry key="UML" value="10" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -174,30 +129,119 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/Invoice.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#718#719#0" expanded="true" />
-                <element signature="e#745#746#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="480">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/Controller.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/secondlist.uml">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement />
+              <nodes>
+                <node x="0.0" y="553.0">pl.swozniak.article.Article</node>
+                <node x="291.0" y="206.0">pl.swozniak.article.ArticleService</node>
+                <node x="274.0" y="391.0">pl.swozniak.invoice.Invoice</node>
+                <node x="0.0" y="391.0">pl.swozniak.client.ClientService</node>
+                <node x="184.0" y="553.0">pl.swozniak.Application</node>
+                <node x="0.0" y="0.0">pl.swozniak.Controller</node>
+                <node x="0.0" y="206.0">pl.swozniak.TempDatabase</node>
+                <node x="478.0" y="391.0">pl.swozniak.client.Client</node>
+                <node x="313.0" y="0.0">pl.swozniak.invoice.InvoiceService</node>
+              </nodes>
+              <notes />
+              <edges />
+              <settings layout="Hierarchic Group" zoom="0.9300361881785284" x="428.5" y="404.5" />
+              <SelectedNodes>
+                <node>pl.swozniak.article.Article</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Methods</Category>
+                <Category>Properties</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="23" column="72" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
+            <state relative-caret-position="624">
+              <caret line="39" column="21" selection-start-line="34" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/article/ArticleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="496">
+              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/ClientService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/InvoiceService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/Invoice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#885#886#0" expanded="true" />
-                <element signature="e#934#935#0" expanded="true" />
-                <element signature="e#1129#1130#0" expanded="true" />
-                <element signature="e#1191#1192#0" expanded="true" />
+                <element signature="e#718#719#0" expanded="true" />
+                <element signature="e#745#746#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,7 +274,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/article/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/Invoice.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/client/Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/article/ArticleService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/client/ClientService.java" />
         <option value="$PROJECT_DIR$/src/test/java/Test.java" />
@@ -239,7 +282,6 @@
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/article/ArticleTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/TempDatabase.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/TempDatabaseTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/ControllerTest.java" />
@@ -247,6 +289,8 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/InvoiceService.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/swozniak/article/ArticleService.java" />
       </list>
     </option>
   </component>
@@ -278,9 +322,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="53" />
-    <option name="width" value="1325" />
-    <option name="height" value="742" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1054" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -309,6 +354,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,53 +379,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-              <item name="article" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-              <item name="invoice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
@@ -426,33 +425,12 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pl" type="462c0819:PsiDirectoryNode" />
               <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-              <item name="article" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="secondlist" type="b2602c69:ProjectViewProjectNode" />
-              <item name="secondlist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="swozniak" type="462c0819:PsiDirectoryNode" />
               <item name="invoice" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -462,7 +440,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/CardGames" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Chinese-Checkers" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -550,16 +528,31 @@
       <workItem from="1541407974239" duration="7833000" />
       <workItem from="1541419333849" duration="1209000" />
       <workItem from="1541601592160" duration="74000" />
+      <workItem from="1541612906030" duration="304000" />
+      <workItem from="1541672539088" duration="388000" />
+      <workItem from="1541676365583" duration="1607000" />
+      <workItem from="1541679269142" duration="933000" />
+      <workItem from="1541722546105" duration="641000" />
+      <workItem from="1541759560636" duration="613000" />
+      <workItem from="1542315770520" duration="384000" />
+      <workItem from="1542363702699" duration="449000" />
+      <workItem from="1542882514143" duration="1359000" />
+      <workItem from="1542993165942" duration="340000" />
+      <workItem from="1543090202865" duration="10000" />
+      <workItem from="1543820881879" duration="816000" />
+      <workItem from="1545484290287" duration="749000" />
+      <workItem from="1547122032584" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79506000" />
+    <option name="totallyTimeSpent" value="88113000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1753" height="954" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1740413" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14749263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -568,7 +561,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.88199514" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.09610706" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -584,7 +577,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.13687316" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.13687316" />
       <window_info anchor="right" id="Database" order="6" weight="0.3297935" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -710,27 +703,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/target/test-classes/pl/swozniak/invoice/InvoiceServiceTest.class" />
     <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/TestInvoice.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -738,10 +710,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/ControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/article/Article.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="112">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="23" column="72" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/TempDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -752,17 +746,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/TempDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/article/ArticleServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="480">
+          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/TempDatabaseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="336">
           <caret line="30" column="61" selection-start-line="30" selection-start-column="61" selection-end-line="30" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="39" column="21" selection-start-line="34" selection-start-column="8" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/article/ArticleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/InvoiceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/Invoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#745#746#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -772,165 +834,28 @@
           <ID>JAVA</ID>
           <OriginalElement />
           <nodes>
-            <node x="317.16666666666663" y="0.0">pl.swozniak.article.Article</node>
-            <node x="367.66666666666663" y="79.0">pl.swozniak.article.ArticleService</node>
-            <node x="136.99999999999997" y="79.0">pl.swozniak.invoice.Invoice</node>
-            <node x="102.99999999999997" y="237.0">pl.swozniak.client.ClientService</node>
-            <node x="0.0" y="420.0">pl.swozniak.Application</node>
-            <node x="3.0" y="341.0">pl.swozniak.Controller</node>
-            <node x="267.0" y="237.0">pl.swozniak.TempDatabase</node>
-            <node x="140.99999999999997" y="158.0">pl.swozniak.client.Client</node>
-            <node x="0.0" y="158.0">pl.swozniak.invoice.InvoiceService</node>
+            <node x="0.0" y="553.0">pl.swozniak.article.Article</node>
+            <node x="291.0" y="206.0">pl.swozniak.article.ArticleService</node>
+            <node x="274.0" y="391.0">pl.swozniak.invoice.Invoice</node>
+            <node x="0.0" y="391.0">pl.swozniak.client.ClientService</node>
+            <node x="184.0" y="553.0">pl.swozniak.Application</node>
+            <node x="0.0" y="0.0">pl.swozniak.Controller</node>
+            <node x="0.0" y="206.0">pl.swozniak.TempDatabase</node>
+            <node x="478.0" y="391.0">pl.swozniak.client.Client</node>
+            <node x="313.0" y="0.0">pl.swozniak.invoice.InvoiceService</node>
           </nodes>
           <notes />
-          <edges>
-            <edge source="pl.swozniak.invoice.Invoice" target="pl.swozniak.article.Article">
-              <point x="0.0" y="-14.5" />
-              <point x="178.99999999999997" y="54.0" />
-              <point x="330.49999999999994" y="54.0" />
-              <point x="-26.666666666666668" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.invoice.Invoice">
-              <point x="0.0" y="-14.5" />
-              <point x="330.5" y="212.0" />
-              <point x="346.16666666666663" y="212.0" />
-              <point x="346.16666666666663" y="133.0" />
-              <point x="210.49999999999997" y="133.0" />
-              <point x="31.5" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.invoice.InvoiceService" target="pl.swozniak.invoice.Invoice">
-              <point x="0.0" y="-14.5" />
-              <point x="60.5" y="133.0" />
-              <point x="147.49999999999997" y="133.0" />
-              <point x="-31.5" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.client.Client" target="pl.swozniak.invoice.Invoice">
-              <point x="-19.0" y="-14.5" />
-              <point x="159.99999999999997" y="133.0" />
-              <point x="168.49999999999997" y="133.0" />
-              <point x="-10.5" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.client.Client">
-              <point x="-42.33333333333334" y="-14.5" />
-              <point x="288.16666666666663" y="212.0" />
-              <point x="197.99999999999997" y="212.0" />
-              <point x="19.0" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.invoice.Invoice" target="pl.swozniak.client.Client">
-              <point x="10.5" y="14.5" />
-              <point x="189.49999999999997" y="133.0" />
-              <point x="197.99999999999997" y="133.0" />
-              <point x="19.0" y="-14.5" />
-            </edge>
-            <edge source="pl.swozniak.Application" target="pl.swozniak.Controller">
-              <point x="0.0" y="-14.5" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.article.Article">
-              <point x="42.333333333333314" y="-14.5" />
-              <point x="372.83333333333326" y="212.0" />
-              <point x="357.16666666666663" y="212.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.TempDatabase" target="pl.swozniak.TempDatabase">
-              <point x="31.75" y="14.5" />
-              <point x="362.25" y="296.0" />
-              <point x="236.99999999999997" y="296.0" />
-              <point x="236.99999999999997" y="244.25" />
-              <point x="-63.5" y="-7.25" />
-            </edge>
-            <edge source="pl.swozniak.article.ArticleService" target="pl.swozniak.article.Article">
-              <point x="0.0" y="-14.5" />
-              <point x="426.16666666666663" y="54.0" />
-              <point x="383.8333333333333" y="54.0" />
-              <point x="26.66666666666667" y="14.5" />
-            </edge>
-            <edge source="pl.swozniak.client.ClientService" target="pl.swozniak.client.Client">
-              <point x="0.0" y="-14.5" />
-              <point x="-19.0" y="14.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-21.0" y="220.0" />
-          <SelectedNodes />
-          <Categories />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.9300361881785284" x="428.5" y="404.5" />
+          <SelectedNodes>
+            <node>pl.swozniak.article.Article</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+          </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/client/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/article/ArticleServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="45" column="75" selection-start-line="45" selection-start-column="75" selection-end-line="45" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/article/ArticleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/InvoiceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/invoice/InvoiceServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/ControllerTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/pl/swozniak/client/ClientServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/invoice/Invoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/swozniak/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="23" column="72" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#1129#1130#0" expanded="true" />
-            <element signature="e#1191#1192#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
