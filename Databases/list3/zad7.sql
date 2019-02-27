@@ -43,7 +43,7 @@ BEGIN
     SET parameter = (SELECT sensitiveness/epsilon);
     SET added_privacy = laplace(parameter,true_sum);
     
-    SELECT true_sum+added_privacy AS total;
+    SELECT true_sum+added_privacy AS total;#, true_sum, added_privacy;
     
 END//
 DELIMITER ;

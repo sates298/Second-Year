@@ -1,0 +1,47 @@
+bitowa suma logiczna(ora src):
+	nand	R0
+	sta	R1	;R1 = not(A)
+	lda	src
+	nand	src	
+	sta	src	;src = not(src)
+	lda	R1
+	nand	src	;A = not(not(src) & not(A)) == A | src
+
+	
+bitowa suma logiczna modulo 2(xor src):
+	sta	R3
+	nand	R0	;A = not(A)
+	nand	src
+	sta	R1	;R1 = not(not(A) & src)
+	;lda	R1
+	nand	R1	
+	sta	R1	;R1 = not(A) | src
+	lda	src
+	nand	src
+	nand	R3	;A = not(not(src) & A)
+	sta 	R2	;R2 = A
+	;lda 	R2
+	nand	R2
+	sta	R2	;R2 = not(src) | dst ; A == R2
+	;lda	R2
+	nand	R1	;A = not(R2 & R1)
+	sta	R3	;R3 = A
+	nand	R3	;A = A^src
+		
+lda src:
+	nand	#0
+	nand	src
+	nand	A
+
+wyzerowanie rejestru R1:
+	nand	#0
+	nand	A
+	sta	R1
+
+wpisywanie wartosci value do rejestru R2(mov R2, value):
+	lda 	value
+	sta	R2
+
+wykonanie bezwarunkowego skoku pod podany adres(jmp addr):
+	lda	addr
+	sta	R31
