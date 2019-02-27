@@ -1,21 +1,24 @@
 package main
 
+import (
+	"math/rand"
+)
+
 type task struct {
 	first, second int
 	op            string
 }
 
-type prezes struct {
-
-}
+type boss struct {}
 
 type worker struct {
-	id int
+	id       int
 	executed task
 }
 
-func (w worker) getAndExecute(tasks []task) int{
-	w.executed = tasks[0]
+func (w worker) getAndExecute(tasks chan task, results chan int) {
+	w.executed  = <- tasks
+
 	result := 0
 	switch w.executed.op {
 	case "+":
@@ -27,5 +30,21 @@ func (w worker) getAndExecute(tasks []task) int{
 	default:
 		result = -1
 	}
-	return result
+	results <- result
 }
+
+func (b boss) createTask(tasks chan task) {
+	var operator string
+	number := rand.Int()%3
+	switch number{
+	case 0 :
+		operator = "+"
+	case 1:
+		operator = "-"
+	default:
+		operator = "*"
+	}
+
+	tasks <- task{op:operator, first: rand.Int(), second:rand.Int()}
+}
+
