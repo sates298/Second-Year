@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
+	"time"
 )
 
 type task struct {
@@ -16,7 +18,7 @@ type worker struct {
 	executed task
 }
 
-func (w worker) getAndExecute(tasks chan task, results chan int) {
+func (w worker) getAndExecute(tasks chan task, store chan int) {
 	w.executed  = <- tasks
 
 	result := 0
@@ -30,7 +32,19 @@ func (w worker) getAndExecute(tasks chan task, results chan int) {
 	default:
 		result = -1
 	}
-	results <- result
+	fmt.Println("Worker: ", w,", Result: " , result)
+	store <- result
+
+}
+
+func (w worker) run(tasks chan task, store chan int){
+	for ;; {
+		time.Sleep(workerSpeed)
+		number := rand.Int()%100
+		if number < workerSensitive {
+			w.getAndExecute(tasks, store)
+		}
+	}
 }
 
 func (b boss) createTask(tasks chan task) {
@@ -44,7 +58,18 @@ func (b boss) createTask(tasks chan task) {
 	default:
 		operator = "*"
 	}
+	newTask := task{op:operator, first: rand.Int()%100, second:rand.Int()%100}
+	fmt.Println("Task: ", newTask)
+	tasks <- newTask
 
-	tasks <- task{op:operator, first: rand.Int(), second:rand.Int()}
 }
 
+func (b boss) run(tasks chan task){
+	for ;;{
+		time.Sleep(bossSpeed)
+		number := rand.Int()%100
+		if number < bossSensitive {
+			b.createTask(tasks)
+		}
+	}
+}
