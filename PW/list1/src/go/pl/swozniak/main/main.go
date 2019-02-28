@@ -1,25 +1,39 @@
 package main
 
 import (
+	"../config"
 	"fmt"
+	"sync"
 )
 
 func main() {
-	var workers [workersNo]worker
+
+	var workers [config.WorkersNo]worker
+	var clients [config.ClientsNo]client
 	var taskCreator boss
-	for i:=0; i< workersNo; i++ {
+
+	done := make(chan bool)
+	var tasks = tasksList{make(chan task, config.TasksMaxNo), &sync.Mutex{}}
+	var store = store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
+
+	for i:=0; i< config.WorkersNo; i++ {
 		workers[i] = worker{id: i}
 	}
-	done := make(chan bool, 1)
-	tasks := make(chan task, tasksMaxNo)
-	store := make(chan int, productsMaxNo)
+
+	for i:=0; i<config.ClientsNo; i++{
+		clients[i] = client{id: i, store: &store}
+	}
 
 	go taskCreator.run(tasks)
-	for i:=0; i<workersNo; i++ {
-		go workers[i].run(tasks, store)
+	for _, w := range workers {
+		go w.run(tasks, store)
+	}
+	for _, c := range clients{
+		go c.run()
 	}
 
 	<-done
+
 
 	fmt.Println("something")
 }
