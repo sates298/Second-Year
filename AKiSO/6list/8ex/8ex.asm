@@ -32,7 +32,7 @@ section .text
         je      e_chosen
         cmp     dword [op], 2
         je      log_chosen
-        jmp     exit_fun
+        ;jmp     exit_fun
         
         
   exit_fun:
