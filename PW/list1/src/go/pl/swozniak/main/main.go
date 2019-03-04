@@ -13,8 +13,8 @@ func main() {
 	var taskCreator boss
 
 	done := make(chan bool)
-	var tasks = tasksList{make(chan task, config.TasksMaxNo), &sync.Mutex{}}
-	var store = store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
+	tasks := tasksList{make(chan task, config.TasksMaxNo), &sync.Mutex{}}
+	store := store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
 
 	for i:=0; i< config.WorkersNo; i++ {
 		workers[i] = worker{id: i}

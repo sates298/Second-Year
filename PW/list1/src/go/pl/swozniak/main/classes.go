@@ -50,9 +50,18 @@ func (w worker) getAndExecute(tasks tasksList, store store) {
 	default:
 		result = -1
 	}
-	fmt.Println("Worker: ", w, ", Result: ", result)
-	store.results <- result
 
+	done := false
+
+	for !done {
+		store.mutex.Lock()
+		if len(store.results) != config.ProductsMaxNo {
+			fmt.Println("Worker: ", w, ", Result: ", result)
+			store.results <- result
+			done = true
+		}
+		store.mutex.Unlock()
+	}
 
 }
 
@@ -98,7 +107,14 @@ func (c client) getProduct() {
 	numberOfProducts := 1 + rand.Int()%config.ClientsProductsMaxNo
 	var temp [config.ClientsProductsMaxNo]int
 	iterator := 0
+	c.store.mutex.Lock()
+	if len(c.store.results) < numberOfProducts {
+		numberOfProducts = len(c.store.results)
+	}
 	for {
+		if iterator == numberOfProducts {
+			break
+		}
 		if rand.Int()%2 == 1 {
 			c.product = <-c.store.results
 			temp[iterator] = c.product
@@ -107,11 +123,13 @@ func (c client) getProduct() {
 			temporary := <-c.store.results
 			c.store.results <- temporary
 		}
-		if iterator == numberOfProducts {
-			break
-		}
+
 	}
-	fmt.Println("Client: {", c.id, ", ", temp[:numberOfProducts], "}")
+	c.store.mutex.Unlock()
+	if iterator > 0 {
+		fmt.Println("Client: {", c.id, ", ", temp[:iterator], "}")
+	}
+
 }
 
 func (c client) run() {
@@ -123,5 +141,3 @@ func (c client) run() {
 		}
 	}
 }
-
-
