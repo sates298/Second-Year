@@ -4,8 +4,43 @@ import (
 	"../config"
 	"fmt"
 	"math/rand"
+	"sync"
 	"time"
 )
+
+//struct representing the one task
+type task struct {
+	first, second int
+	op            string
+}
+
+//struct representing the boss of the company
+type boss struct{}
+
+//struct representing the worker of the company
+type worker struct {
+	id       int
+	executed task
+}
+
+//struct representing the client of the company
+type client struct {
+	id, product int
+	store       *store
+}
+
+//structure containing all tasks as channel and mutex using to lock access to this channel
+type tasksList struct {
+	tasksChan chan task
+	mutex     *sync.Mutex
+}
+
+//structure containing all products in store as channel and mutex using to lock access to this channel
+type store struct {
+	results chan int
+	mutex   *sync.Mutex
+}
+
 /*
 	method containing two loops and switch to execute task
 	first loop is responsible for getting task from list of tasks without deadlock
@@ -17,10 +52,16 @@ func (w worker) getAndExecute(tasks tasksList, store store) {
 	wait := true
 	for wait {
 		tasks.mutex.Lock()
+		select {
+		case w.executed = <-tasks.tasksChan:
+			wait = false
+		default:
+		}
+		/*
 		if len(tasks.tasksChan) > 0 {
 			w.executed = <-tasks.tasksChan
 			wait = false
-		}
+		}*/
 		tasks.mutex.Unlock()
 	}
 
@@ -40,13 +81,21 @@ func (w worker) getAndExecute(tasks tasksList, store store) {
 
 	for !done {
 		store.mutex.Lock()
-		if len(store.results) != config.ProductsMaxNo {
+		select {
+		case store.results <- result:
+			if !PeacefulMode {
+				fmt.Println("Worker: ", w, ", Result: ", result)
+			}
+			done = true
+		default:
+		}
+		/*if len(store.results) != config.ProductsMaxNo {
 			if !PeacefulMode {
 				fmt.Println("Worker: ", w, ", Result: ", result)
 			}
 			store.results <- result
 			done = true
-		}
+		}*/
 		store.mutex.Unlock()
 	}
 }
@@ -89,13 +138,21 @@ func (b boss) createTask(tasks tasksList) {
 	isntDone := true
 	for isntDone {
 		tasks.mutex.Lock()
-		if len(tasks.tasksChan) != config.ProductsMaxNo {
+		select{
+		case tasks.tasksChan <- newTask:
+			if !PeacefulMode {
+				fmt.Println("Task: ", newTask)
+			}
+			isntDone = false
+		default:
+		}
+		/*if len(tasks.tasksChan) != config.TasksMaxNo {
 			if !PeacefulMode {
 				fmt.Println("Task: ", newTask)
 			}
 			tasks.tasksChan <- newTask
 			isntDone = false
-		}
+		}*/
 		tasks.mutex.Unlock()
 	}
 }
@@ -113,6 +170,7 @@ func (b boss) run(tasks tasksList) {
 		}
 	}
 }
+
 /*
 	method setting quantity of products which will be taken from store by client
 	infinite loop is responsible by choosing randomly which products that client will take
@@ -140,7 +198,7 @@ func (c client) getProduct() {
 
 	}
 	c.store.mutex.Unlock()
-	if iterator > 0 && !PeacefulMode  {
+	if iterator > 0 && !PeacefulMode {
 		fmt.Println("Client: {", c.id, ", ", temp[:iterator], "}")
 	}
 }

@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+var PeacefulMode = true
+
 /*
 	function to communicate with user and to change modes of program
 	infinite loop is used to choose in which mode is program
@@ -20,7 +22,7 @@ func guiRun(tasks tasksList, store store) {
 			fmt.Println("Choose number which you want to see: ")
 			fmt.Println("1. See list of tasks")
 			fmt.Println("2. see store status")
-			fmt.Println("others: change mode to loud mode")
+			fmt.Println("others + 2*Enter: change mode to loud mode")
 			fmt.Scanf("%d", &choose)
 			switch choose {
 			case 1:

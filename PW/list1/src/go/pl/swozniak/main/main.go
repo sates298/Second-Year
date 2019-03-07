@@ -7,7 +7,6 @@ import (
 	"../config"
 	"sync"
 )
-var PeacefulMode = true
 
 /*
 	main function with program's bases and run right methods and function in different goroutines
@@ -42,3 +41,5 @@ func main() {
 
 	<-done
 }
+
+
