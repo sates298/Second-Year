@@ -19,7 +19,14 @@ public class InsertionSort implements Sort {
                 sorted.add(finalIndex, curr);
             }
         }else {
-
+            for (Integer i : toSort) {
+                curr = i;
+                finalIndex = 0;
+                while (finalIndex < sorted.size() && curr <= sorted.get(finalIndex)) {
+                    finalIndex++;
+                }
+                sorted.add(finalIndex, curr);
+            }
         }
 
         return sorted;
