@@ -1,11 +1,16 @@
+/*	@Author:
+ *	@Index:
+ */
 package main
 
 import (
 	"../config"
-	"fmt"
 	"sync"
 )
 
+/*
+	main function with program's bases and run right methods and function in different goroutines
+ */
 func main() {
 
 	var workers [config.WorkersNo]worker
@@ -32,8 +37,9 @@ func main() {
 		go c.run()
 	}
 
+	go guiRun(tasks, store)
+
 	<-done
-
-
-	fmt.Println("something")
 }
+
+
