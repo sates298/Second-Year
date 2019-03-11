@@ -13,31 +13,38 @@ import (
  */
 func main() {
 
-	var workers [config.WorkersNo]worker
-	var clients [config.ClientsNo]client
-	var taskCreator boss
+	var workers [config.WorkersNo]Worker
+	var clients [config.ClientsNo]Client
+	var taskCreator Boss
 
 	done := make(chan bool)
-	tasks := tasksList{make(chan task, config.TasksMaxNo), &sync.Mutex{}}
-	store := store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
+	//tasks := TasksList{make(chan Task, config.TasksMaxNo), &sync.Mutex{}}
+	store := Store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
+
+	readTasks := make(chan *ReadTaskOp)
+	writeTasks := make(chan *WriteTaskOp)
+	getAllTasks := make(chan *GetAllTasksOp)
+	taskServer := &TasksServer{reads: readTasks, writes:writeTasks ,getAll: getAllTasks}
+
+	go taskServer.run()
 
 	for i:=0; i< config.WorkersNo; i++ {
-		workers[i] = worker{id: i}
+		workers[i] = Worker{id: i}
 	}
 
 	for i:=0; i<config.ClientsNo; i++{
-		clients[i] = client{id: i, store: &store}
+		clients[i] = Client{id: i, store: &store}
 	}
 
-	go taskCreator.run(tasks)
+	go taskCreator.run(writeTasks)
 	for _, w := range workers {
-		go w.run(tasks, store)
+		go w.run(readTasks, store)
 	}
 	for _, c := range clients{
 		go c.run()
 	}
 
-	go guiRun(tasks, store)
+	go guiRun(getAllTasks, store)
 
 	<-done
 }

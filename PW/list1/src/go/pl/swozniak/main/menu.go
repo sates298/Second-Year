@@ -14,8 +14,12 @@ var PeacefulMode = true
 	loud mode is implemented in another goroutines(getAndExecute(), getProduct(), createTask())
 	parameters are structures of taskList and store using to show actual store or list of tasks
  */
-func guiRun(tasks tasksList, store store) {
+func guiRun(tasks chan *GetAllTasksOp, store Store) {
 	var choose int
+	var showingTasks [config.TasksMaxNo]Task
+	getAllTasks := &GetAllTasksOp{
+		respTask: make(chan [config.TasksMaxNo]Task),
+		respCheck: make(chan [config.TasksMaxNo]bool)}
 	for {
 		if PeacefulMode {
 			fmt.Println("Hello in our company!")
@@ -26,15 +30,28 @@ func guiRun(tasks tasksList, store store) {
 			fmt.Scanf("%d", &choose)
 			switch choose {
 			case 1:
-				tasks.mutex.Lock()
+				/*tasks.mutex.Lock()
 				size := len(tasks.tasksChan)
-				var table [config.TasksMaxNo]task
+				var table [config.TasksMaxNo]Task
 				for i := 0; i < size; i++ {
 					table[i] = <-tasks.tasksChan
 					tasks.tasksChan <- table[i]
 				}
 				fmt.Println("All Tasks: ", table[:size])
-				tasks.mutex.Unlock()
+				tasks.mutex.Unlock()*/
+
+				tasks <- getAllTasks
+				tasks := <- getAllTasks.respTask
+				checks := <- getAllTasks.respCheck
+				iterator := 0
+				for i:=0; i<config.TasksMaxNo; i++{
+					if checks[i] {
+						showingTasks[iterator] = tasks[i]
+						iterator++
+					}
+				}
+				fmt.Println("All Tasks: ", showingTasks[:iterator])
+
 			case 2:
 				store.mutex.Lock()
 				size := len(store.results)

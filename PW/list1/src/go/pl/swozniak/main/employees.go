@@ -4,41 +4,22 @@ import (
 	"../config"
 	"fmt"
 	"math/rand"
-	"sync"
 	"time"
 )
 
-//struct representing the one task
-type task struct {
-	first, second int
-	op            string
-}
-
 //struct representing the boss of the company
-type boss struct{}
+type Boss struct{}
 
 //struct representing the worker of the company
-type worker struct {
+type Worker struct {
 	id       int
-	executed task
+	executed Task
 }
 
 //struct representing the client of the company
-type client struct {
+type Client struct {
 	id, product int
-	store       *store
-}
-
-//structure containing all tasks as channel and mutex using to lock access to this channel
-type tasksList struct {
-	tasksChan chan task
-	mutex     *sync.Mutex
-}
-
-//structure containing all products in store as channel and mutex using to lock access to this channel
-type store struct {
-	results chan int
-	mutex   *sync.Mutex
+	store       *Store
 }
 
 /*
@@ -47,9 +28,9 @@ type store struct {
 	second loop is responsible for setting result - product to store
 	parameters are structures of taskList to get next task from list, and store to set new product in there
  */
-func (w worker) getAndExecute(tasks tasksList, store store) {
+func (w Worker) getAndExecute(tasks chan *ReadTaskOp, store Store) {
 
-	wait := true
+	/*wait := true
 	for wait {
 		tasks.mutex.Lock()
 		select {
@@ -61,9 +42,14 @@ func (w worker) getAndExecute(tasks tasksList, store store) {
 		if len(tasks.tasksChan) > 0 {
 			w.executed = <-tasks.tasksChan
 			wait = false
-		}*/
+		}
 		tasks.mutex.Unlock()
-	}
+	}*/
+
+	read := &ReadTaskOp{resp: make(chan Task)}
+	tasks <- read
+
+	w.executed = <- read.resp
 
 	result := 0
 	switch w.executed.op {
@@ -104,7 +90,7 @@ func (w worker) getAndExecute(tasks tasksList, store store) {
 	method having infinite loop with sleep and randomly activator of getAndExecute() method
 	parameters are struct of tasksList and store which are used with getAndExecute() method
  */
-func (w worker) run(tasks tasksList, store store) {
+func (w Worker) run(tasks chan *ReadTaskOp, store Store) {
 	for {
 		time.Sleep(config.WorkerSpeed)
 		number := rand.Int() % 100
@@ -122,7 +108,7 @@ func (w worker) run(tasks tasksList, store store) {
 	to avoid deadlock caused locked mutex
 	parameter is taskList to which we adding new tasks
 */
-func (b boss) createTask(tasks tasksList) {
+func (b Boss) createTask(tasks chan *WriteTaskOp) {
 	var operator string
 	number := rand.Int() % 3
 	switch number {
@@ -134,11 +120,20 @@ func (b boss) createTask(tasks tasksList) {
 		operator = "*"
 	}
 
-	newTask := task{op: operator, first: rand.Int() % 100, second: rand.Int() % 100}
-	isntDone := true
+	write := &WriteTaskOp{
+		newTask: Task{op: operator, first: rand.Int() % 100, second: rand.Int() % 100},
+		resp: make(chan bool)}
+
+	tasks <- write
+
+	<- write.resp
+	if !PeacefulMode {
+		fmt.Println("Task: ", write.newTask)
+	}
+	/*isntDone := true
 	for isntDone {
 		tasks.mutex.Lock()
-		select{
+		select {
 		case tasks.tasksChan <- newTask:
 			if !PeacefulMode {
 				fmt.Println("Task: ", newTask)
@@ -152,16 +147,16 @@ func (b boss) createTask(tasks tasksList) {
 			}
 			tasks.tasksChan <- newTask
 			isntDone = false
-		}*/
-		tasks.mutex.Unlock()
-	}
+		}
+	tasks.mutex.Unlock()
+}*/
 }
 
 /*
 	method having infinite loop with sleep and randomly activator of createTask() method
 	parameter is a struct of tasksList which is used with createTask() method
  */
-func (b boss) run(tasks tasksList) {
+func (b Boss) run(tasks chan *WriteTaskOp) {
 	for {
 		time.Sleep(config.BossSpeed)
 		number := rand.Int() % 100
@@ -175,7 +170,7 @@ func (b boss) run(tasks tasksList) {
 	method setting quantity of products which will be taken from store by client
 	infinite loop is responsible by choosing randomly which products that client will take
  */
-func (c client) getProduct() {
+func (c Client) getProduct() {
 	numberOfProducts := 1 + rand.Int()%config.ClientsProductsMaxNo
 	var temp [config.ClientsProductsMaxNo]int
 	iterator := 0
@@ -206,7 +201,7 @@ func (c client) getProduct() {
 /*
 	method having infinite loop with sleep and randomly activator of getProduct() method
  */
-func (c client) run() {
+func (c Client) run() {
 	for {
 		time.Sleep(config.ClientSpeed)
 		number := rand.Int() % 100
