@@ -17,8 +17,6 @@ func main() {
 	var taskCreator Boss
 
 	done := make(chan bool)
-	//tasks := TasksList{make(chan Task, config.TasksMaxNo), &sync.Mutex{}}
-	//store := Store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
 
 	readTasks := make(chan *ReadTaskOp)
 	writeTasks := make(chan *WriteTaskOp)

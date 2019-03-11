@@ -17,9 +17,13 @@ var PeacefulMode = true
 func guiRun(tasks chan *GetAllTasksOp, store chan *GetAllStoreOp) {
 	var choose int
 	var showingTasks [config.TasksMaxNo]Task
+	var showingStore [config.ProductsMaxNo]int
 	getAllTasks := &GetAllTasksOp{
 		respTask: make(chan [config.TasksMaxNo]Task),
 		respCheck: make(chan [config.TasksMaxNo]bool)}
+	getAllProducts := &GetAllStoreOp{
+		respStore: make(chan [config.ProductsMaxNo]int),
+		respCheck: make(chan [config.ProductsMaxNo]bool)}
 	for {
 		if PeacefulMode {
 			fmt.Println("Hello in our company!")
@@ -30,38 +34,30 @@ func guiRun(tasks chan *GetAllTasksOp, store chan *GetAllStoreOp) {
 			fmt.Scanf("%d", &choose)
 			switch choose {
 			case 1:
-				/*tasks.mutex.Lock()
-				size := len(tasks.tasksChan)
-				var table [config.TasksMaxNo]Task
-				for i := 0; i < size; i++ {
-					table[i] = <-tasks.tasksChan
-					tasks.tasksChan <- table[i]
-				}
-				fmt.Println("All Tasks: ", table[:size])
-				tasks.mutex.Unlock()*/
-
 				tasks <- getAllTasks
-				tasks := <- getAllTasks.respTask
+				tasksArray := <- getAllTasks.respTask
 				checks := <- getAllTasks.respCheck
 				iterator := 0
 				for i:=0; i<config.TasksMaxNo; i++{
 					if checks[i] {
-						showingTasks[iterator] = tasks[i]
+						showingTasks[iterator] = tasksArray[i]
 						iterator++
 					}
 				}
 				fmt.Println("All Tasks: ", showingTasks[:iterator])
 
 			case 2:
-				/*store.mutex.Lock()
-				size := len(store.results)
-				var table [config.ProductsMaxNo]int
-				for i := 0; i < size; i++ {
-					table[i] = <-store.results
-					store.results <- table[i]
+				store <- getAllProducts
+				productsArray := <-getAllProducts.respStore
+				checks := <-getAllProducts.respCheck
+				iterator :=0
+				for i:=0; i<config.ProductsMaxNo; i++{
+					if checks[i] {
+						showingStore[iterator] = productsArray[i]
+						iterator++
+					}
 				}
-				fmt.Println("Store: ", table[:size])
-				store.mutex.Unlock()*/
+				fmt.Println("Store: ", showingStore[:iterator])
 
 			default:
 				PeacefulMode = false
