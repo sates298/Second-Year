@@ -5,7 +5,6 @@ package main
 
 import (
 	"../config"
-	"sync"
 )
 
 /*
@@ -13,33 +12,42 @@ import (
  */
 func main() {
 
-	var workers [config.WorkersNo]worker
-	var clients [config.ClientsNo]client
-	var taskCreator boss
+	var workers [config.WorkersNo]Worker
+	var clients [config.ClientsNo]Client
+	var taskCreator Boss
 
 	done := make(chan bool)
-	tasks := tasksList{make(chan task, config.TasksMaxNo), &sync.Mutex{}}
-	store := store{make(chan int, config.ProductsMaxNo), &sync.Mutex{}}
 
-	for i:=0; i< config.WorkersNo; i++ {
-		workers[i] = worker{id: i}
+	readTasks := make(chan *ReadTaskOp)
+	writeTasks := make(chan *WriteTaskOp)
+	getAllTasks := make(chan *GetAllTasksOp)
+	taskServer := &TasksServer{reads: readTasks, writes: writeTasks, getAll: getAllTasks}
+
+	readStore := make(chan *ReadStoreOp)
+	writeProduct := make(chan *WriteStoreOp)
+	getAllProducts := make(chan *GetAllStoreOp)
+	storeServer := &StoreServer{reads: readStore, writes: writeProduct, getAll: getAllProducts}
+
+	go taskServer.run()
+	go storeServer.run()
+
+	for i := 0; i < config.WorkersNo; i++ {
+		workers[i] = Worker{id: i}
 	}
 
-	for i:=0; i<config.ClientsNo; i++{
-		clients[i] = client{id: i, store: &store}
+	for i := 0; i < config.ClientsNo; i++ {
+		clients[i] = Client{id: i}
 	}
 
-	go taskCreator.run(tasks)
+	go taskCreator.run(writeTasks)
 	for _, w := range workers {
-		go w.run(tasks, store)
+		go w.run(readTasks, writeProduct)
 	}
-	for _, c := range clients{
-		go c.run()
+	for _, c := range clients {
+		go c.run(readStore)
 	}
 
-	go guiRun(tasks, store)
+	go guiRun(getAllTasks, getAllProducts)
 
 	<-done
 }
-
-
