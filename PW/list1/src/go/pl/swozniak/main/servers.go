@@ -2,7 +2,6 @@ package main
 
 import (
 	"../config"
-	"sync"
 )
 
 //struct representing the one task
@@ -11,14 +10,8 @@ type Task struct {
 	op            string
 }
 
-//structure containing all products in store as channel and mutex using to lock access to this channel
-type Store struct {
-	results chan int
-	mutex   *sync.Mutex
-}
 /*
-	structures and methods responsible for store write and read operations
-
+	structures and methods responsible for write and read operations on store
  */
 type ReadStoreOp struct {
 	resp chan int
@@ -38,22 +31,57 @@ type StoreServer struct {
 	reads chan *ReadStoreOp
 	writes chan *WriteStoreOp
 	getAll chan *GetAllStoreOp
+
+	products [config.ProductsMaxNo]int
+	productsCheck [config.ProductsMaxNo]bool
+}
+
+func (ss StoreServer) run() {
+	var readIterator = 0
+	var writeIterator = 0
+	for {
+		select {
+		case read := <- ss.guardReadStore(ss.productsCheck[readIterator]):
+			read.resp <- ss.products[readIterator]
+			ss.productsCheck[readIterator] = false
+			readIterator++
+			if readIterator == config.ProductsMaxNo {
+				readIterator = 0
+			}
+		case write := <- ss.guardWriteStore(!ss.productsCheck[writeIterator]):
+			ss.products[writeIterator] = write.newResult
+			write.resp <- true
+			ss.productsCheck[writeIterator] = true
+			writeIterator++
+			if writeIterator == config.ProductsMaxNo {
+				writeIterator = 0
+			}
+		case get := <-ss.getAll:
+			get.respStore <- ss.products
+			get.respCheck <- ss.productsCheck
+		}
+	}
+}
+
+func (ss StoreServer) guardReadStore(cond bool) chan *ReadStoreOp{
+	if cond {
+		return ss.reads
+	}
+	return nil
+}
+
+func (ss StoreServer) guardWriteStore(cond bool) chan *WriteStoreOp{
+	if cond {
+		return ss.writes
+	}
+	return nil
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+	structures and methods responsible for write and read operations on list of tasks
+ */
 type ReadTaskOp struct {
 	resp chan Task
 }
@@ -72,33 +100,34 @@ type TasksServer struct {
 	reads  chan *ReadTaskOp
 	writes chan *WriteTaskOp
 	getAll chan *GetAllTasksOp
+
+	tasks [config.TasksMaxNo]Task
+	tasksCheck [config.TasksMaxNo]bool
 }
 
 func (ts TasksServer) run() {
-	var tasks [config.TasksMaxNo]Task
-	var tasksCheck [config.TasksMaxNo]bool
 	var readIterator = 0
 	var writeIterator = 0
 	for {
 		select {
-		case read := <- ts.guardReadTasks(tasksCheck[readIterator]):
-			read.resp <- tasks[readIterator]
-			tasksCheck[readIterator] = false
+		case read := <- ts.guardReadTasks(ts.tasksCheck[readIterator]):
+			read.resp <- ts.tasks[readIterator]
+			ts.tasksCheck[readIterator] = false
 			readIterator++
 			if readIterator == config.TasksMaxNo {
 				readIterator = 0
 			}
-		case write := <- ts.guardWriteTasks(!tasksCheck[writeIterator]):
-			tasks[writeIterator] = write.newTask
+		case write := <- ts.guardWriteTasks(!ts.tasksCheck[writeIterator]):
+			ts.tasks[writeIterator] = write.newTask
 			write.resp <- true
-			tasksCheck[writeIterator] = true
+			ts.tasksCheck[writeIterator] = true
 			writeIterator++
 			if writeIterator == config.TasksMaxNo {
 				writeIterator = 0
 			}
 		case get := <-ts.getAll:
-			get.respTask <- tasks
-			get.respCheck <- tasksCheck
+			get.respTask <- ts.tasks
+			get.respCheck <- ts.tasksCheck
 		}
 	}
 }

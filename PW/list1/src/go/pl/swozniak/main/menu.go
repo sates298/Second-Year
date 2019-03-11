@@ -14,7 +14,7 @@ var PeacefulMode = true
 	loud mode is implemented in another goroutines(getAndExecute(), getProduct(), createTask())
 	parameters are structures of taskList and store using to show actual store or list of tasks
  */
-func guiRun(tasks chan *GetAllTasksOp, store Store) {
+func guiRun(tasks chan *GetAllTasksOp, store chan *GetAllStoreOp) {
 	var choose int
 	var showingTasks [config.TasksMaxNo]Task
 	getAllTasks := &GetAllTasksOp{
@@ -53,7 +53,7 @@ func guiRun(tasks chan *GetAllTasksOp, store Store) {
 				fmt.Println("All Tasks: ", showingTasks[:iterator])
 
 			case 2:
-				store.mutex.Lock()
+				/*store.mutex.Lock()
 				size := len(store.results)
 				var table [config.ProductsMaxNo]int
 				for i := 0; i < size; i++ {
@@ -61,7 +61,7 @@ func guiRun(tasks chan *GetAllTasksOp, store Store) {
 					store.results <- table[i]
 				}
 				fmt.Println("Store: ", table[:size])
-				store.mutex.Unlock()
+				store.mutex.Unlock()*/
 
 			default:
 				PeacefulMode = false
