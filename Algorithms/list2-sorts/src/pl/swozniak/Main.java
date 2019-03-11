@@ -17,7 +17,7 @@ public class Main {
         int n = 0, k = 0;
         String sortType = "", fileName = "";
         String[] parameters;
-        boolean isAsc = true;
+        boolean isAsc = true, stat = false;
 
         try {
             for (int i = 0; i < args.length; i++) {
@@ -29,10 +29,11 @@ public class Main {
                 } else if ("--stat".equals(args[i])) {
                     fileName = args[i + 1];
                     k = Integer.parseInt(args[i + 2]);
+                    stat = true;
                     i += 2;
                 }
             }
-        }catch(ArrayIndexOutOfBoundsException e){
+        }catch(ArrayIndexOutOfBoundsException | NumberFormatException e){
             e.printStackTrace();
             return;
         }
@@ -61,6 +62,10 @@ public class Main {
             default:
                 System.out.println("Wrong type of sort!");
                 return;
+        }
+
+        if(stat){
+            //opening file and prepare to write
         }
 
 
