@@ -1,31 +1,39 @@
 package pl.swozniak;
 
+import pl.swozniak.sorts.*;
+
 import java.util.*;
+import java.util.function.BiFunction;
+
 
 public class Main {
 
     private static Sort sortAlgorithm;
-    private static List<Integer> list = new ArrayList<>();
+    private static BiFunction<Comparable, Comparable, Integer> comparator = Comparators::descending;
+    private static List<Comparable> list = new ArrayList<>();
+    private static Comparable[] array;
 
-    private static void sort(boolean isAsc) {
-        list = sortAlgorithm.sort(list, isAsc);
+    private static void sortList() {
+        sortAlgorithm.sortList(list, comparator);
+    }
+    private static void sortArray(){
+        sortAlgorithm.sortArray(array, comparator);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         int n = 0, k = 0;
         String sortType = "", fileName = "";
         String[] parameters;
-        boolean isAsc = true, stat = false;
+        boolean stat = false;
 
         try {
             for (int i = 0; i < args.length; i++) {
                 if ("--type".equals(args[i])) {
                     sortType = args[i + 1];
                     i++;
-                } else if ("--desc".equals(args[i])) {
-                    isAsc = false;
+                } else if ("--asc".equals(args[i])) {
+                    comparator = Comparators::ascending;
                 } else if ("--stat".equals(args[i])) {
                     fileName = args[i + 1];
                     k = Integer.parseInt(args[i + 2]);
@@ -82,9 +90,17 @@ public class Main {
             e.printStackTrace();
             return;
         }
+
+        array = new Integer[list.size()];
+        for (int i=0; i<list.size(); i++) {
+            array[i] = list.get(i);
+        }
+
         System.out.println("Before sort: \n" + list);
-        sort(isAsc);
-        System.out.println("After sort: \n" + list);
+        sortList();
+        sortArray();
+        System.out.println("After list sort: \n" + list);
+        System.out.println("After array sort: \n" + Arrays.toString(array));
 
     }
 }
