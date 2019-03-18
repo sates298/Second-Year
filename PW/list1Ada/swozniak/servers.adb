@@ -3,13 +3,13 @@ with Constants;
 package body Servers is
    use Constants;
    
-   ---------------
-   --StoreServer--
-   ---------------
+   -----------------
+   -- StoreServer --
+   -----------------
    
    task body StoreServer is
-      products : StoreArray := (1..ProductsMaxNo => 0);
-      checkProducts: StoreChecksArray := (1..ProductsMaxNo => False);
+      products : StoreArray := (others => 0);
+      checkProducts: StoreChecksArray := (others => False);
       writeIterator : Integer := 1;
       readIterator: Integer := 1;
    begin
@@ -45,13 +45,13 @@ package body Servers is
       end loop;
    end StoreServer;  
 
-   --------------
-   --JobsServer--
-   --------------  
+   ----------------
+   -- JobsServer --
+   ----------------  
    
    task body JobsServer is
-      jobs : JobsArray := (1..JobsMaxNo => (first => 0, second => 0, operation => '0'));
-      checkJobs: JobsChecksArray := (1..JobsMaxNo => False);
+      jobs : JobsArray := (others => (first => 0, second => 0, operation => '0'));
+      checkJobs: JobsChecksArray := (others => False);
       writeIterator : Integer := 1;
       readIterator: Integer := 1;
    begin

@@ -1,5 +1,5 @@
 with Ada.Text_IO; use Ada.Text_IO;
-with Constants; use Constants;
+with Constants;
 with Servers;
 with Employees;
 
