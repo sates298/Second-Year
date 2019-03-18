@@ -7,13 +7,21 @@ public class InsertionSort implements Sort {
 
     private int swapCounter = 0;
     private int compareCounter = 0;
+    private long time;
 
     @Override
     public void sortList(List<Comparable> toSort, BiFunction<Comparable, Comparable, Integer> func) {
-       sortPartOfList(toSort, 0, toSort.size() - 1, func);
+        time = System.currentTimeMillis();
+
+        sortPartOfListInsert(toSort, 0, toSort.size() - 1, func);
+
+        time = System.currentTimeMillis() - time;
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
-    public void sortPartOfList(List<Comparable> part,int start, int end, BiFunction<Comparable, Comparable, Integer> func){
+    public void sortPartOfListInsert(List<Comparable> part,int start, int end, BiFunction<Comparable, Comparable, Integer> func){
         int finalIndex;
         Comparable curr;
         for(int i=start + 1 ; i<=end; i++){
@@ -24,8 +32,8 @@ public class InsertionSort implements Sort {
             System.err.println("compare in sortPart " + curr + " and " + part.get(finalIndex - 1));
             while(finalIndex > start && func.apply(curr, part.get(finalIndex-1)) > 0){
                 this.compareCounter++;
-                finalIndex--;
                 System.err.println("compare in sortPart " + curr + " and " + part.get(finalIndex - 1));
+                finalIndex--;
             }
             this.swapCounter++;
             System.err.println("set current element in index " + finalIndex);
@@ -36,10 +44,17 @@ public class InsertionSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
-        sortPartOfArray(toSort, 0, toSort.length - 1, func);
+        time = System.currentTimeMillis();
+
+        sortPartOfArrayInsert(toSort, 0, toSort.length - 1, func);
+
+        time = System.currentTimeMillis() - time;
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
-    public void sortPartOfArray(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func){
+    public void sortPartOfArrayInsert(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func){
         int finalIndex;
         Comparable curr;
         for(int i=start + 1; i<=end; i++){
@@ -52,14 +67,15 @@ public class InsertionSort implements Sort {
                 this.swapCounter++;
                 System.err.println("shift elements in sortPartOfArray");
                 part[finalIndex] = part[finalIndex - 1];
-                finalIndex--;
                 System.err.println("compare in sortPart " + curr + " and " + part[finalIndex - 1]);
+                finalIndex--;
             }
             this.swapCounter++;
             System.err.println("set current element in index " + finalIndex);
             part[finalIndex] = curr;
         }
     }
+
     @Override
     public int getSwapCounter() {
         return swapCounter;
@@ -76,4 +92,8 @@ public class InsertionSort implements Sort {
         return compareCounter;
     }
 
+    @Override
+    public long getTime() {
+        return time;
+    }
 }

@@ -9,9 +9,12 @@ public class SelectSort implements Sort {
 
     private int swapCounter = 0;
     private int compareCounter = 0;
+    private long time;
 
     @Override
     public void sortList(List<Comparable> toSort, BiFunction<Comparable, Comparable, Integer> func) {
+        time = System.currentTimeMillis();
+
         int index;
         for(int i=0; i < toSort.size(); i++){
             index = i;
@@ -23,14 +26,22 @@ public class SelectSort implements Sort {
                 }
             }
 
-            this.swapCounter++;
+            this.swapCounter+=2;
             System.err.println("swap indexes in sort " + index + " and " + i);
             Collections.swap(toSort, index, i);
         }
+
+        time = System.currentTimeMillis() - time;
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
+
     }
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
+        time = System.currentTimeMillis();
+
         int index;
         Comparable tmp;
         for(int i=0; i < toSort.length; i++){
@@ -42,12 +53,17 @@ public class SelectSort implements Sort {
                     index = j;
                 }
             }
-            this.swapCounter++;
+            this.swapCounter+=2;
             System.err.println("swap indexes in sort " + index + " and " + i);
             tmp = toSort[index];
             toSort[index] = toSort[i];
             toSort[i] = tmp;
         }
+
+        time = System.currentTimeMillis() - time;
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     @Override
@@ -63,5 +79,10 @@ public class SelectSort implements Sort {
     @Override
     public int getCompareCounter() {
         return compareCounter;
+    }
+
+    @Override
+    public long getTime() {
+        return time;
     }
 }

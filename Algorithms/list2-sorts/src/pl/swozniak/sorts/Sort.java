@@ -10,4 +10,5 @@ public interface Sort {
     int getSwapCounter();
     void resetCounters();
     int getCompareCounter();
+    long getTime();
 }

@@ -20,9 +20,27 @@ public class Main {
         sortAlgorithm.sortArray(array, comparator);
     }
 
+    private static boolean checkSortedList(){
+        for(int i=0; i<list.size()-1; i++){
+            if(comparator.apply(list.get(i), list.get(i+1)) < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean checkSortedArray(){
+        for(int i=0; i<array.length-1; i++){
+            if(comparator.apply(array[i], array[i+1]) < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
-        int n = 0, k = 0;
+        int n, k = 0;
         String sortType = "", fileName = "";
         String[] parameters;
         boolean stat = false;
@@ -73,49 +91,58 @@ public class Main {
         }
 
         if(stat){
-            //opening file and prepare to write
-        }
-
-        try {
-            System.out.println("Enter amount of elements to sort: ");
-            n = Integer.parseInt(sc.nextLine());
-            System.out.println("Enter elements to sort: ");
-            String temp = sc.nextLine();
-            parameters = temp.split(" ");
-            for (int i = 0; i < n && i < parameters.length; i++) {
-                list.add(Integer.parseInt(parameters[i]));
+            Statistics stats = new Statistics();
+            stats.run(k, fileName, comparator);
+        }else {
+            try {
+                System.out.println("Enter amount of elements to sort: ");
+                n = Integer.parseInt(sc.nextLine());
+                System.out.println("Enter elements to sort: ");
+                String temp = sc.nextLine();
+                parameters = temp.split(" ");
+                for (int i = 0; i < n && i < parameters.length; i++) {
+                    list.add(Integer.parseInt(parameters[i]));
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return;
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return;
-        }
 
-        array = new Integer[list.size()];
-        for (int i=0; i<list.size(); i++) {
-            array[i] = list.get(i);
-        }
 
-        long time;
-        System.out.println("Before sort: \n" + list);
-        Thread.sleep(1000);
-        time = System.currentTimeMillis();
-        sortList();
-        time = System.currentTimeMillis() - time;
-        Thread.sleep(1000);
-        System.out.println("After list sort: \n" + list);
-        System.out.println("Algorithm time: " + time  + " ms");
-        System.out.println("CompareCounter = " + sortAlgorithm.getCompareCounter());
-        System.out.println("SwapCounter = " + sortAlgorithm.getSwapCounter());
-        Thread.sleep(1000);
-        sortAlgorithm.resetCounters();
-        time = System.currentTimeMillis();
-        sortArray();
-        time = System.currentTimeMillis() - time;
-        Thread.sleep(1000);
-        System.out.println("After array sort: \n" + Arrays.toString(array));
-        System.out.println("Algorithm time: " + time  + " ms");
-        System.out.println("CompareCounter = " + sortAlgorithm.getCompareCounter());
-        System.out.println("SwapCounter = " + sortAlgorithm.getSwapCounter());
+            array = new Integer[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                array[i] = list.get(i);
+            }
+
+
+            System.out.println("Before sort: \n" + list);
+
+            Thread.sleep(1000);
+            sortList();
+            Thread.sleep(1000);
+
+            if (checkSortedList()) {
+                System.out.println("SORTED!");
+            } else {
+                System.out.println("NOT SORTED!");
+            }
+            System.out.println("Amount of sorted elements: " + list.size());
+            System.out.println("After list sort: \n" + list);
+
+
+            Thread.sleep(1000);
+            sortAlgorithm.resetCounters();
+            sortArray();
+            Thread.sleep(1000);
+
+            if (checkSortedArray()) {
+                System.out.println("SORTED!");
+            } else {
+                System.out.println("NOT SORTED!");
+            }
+            System.out.println("Amount of sorted elements: " + array.length);
+            System.out.println("After array sort: \n" + Arrays.toString(array));
+        }
 
     }
 }
