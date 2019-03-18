@@ -20,7 +20,7 @@ public class Main {
         sortAlgorithm.sortArray(array, comparator);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         int n = 0, k = 0;
         String sortType = "", fileName = "";
@@ -76,7 +76,6 @@ public class Main {
             //opening file and prepare to write
         }
 
-
         try {
             System.out.println("Enter amount of elements to sort: ");
             n = Integer.parseInt(sc.nextLine());
@@ -96,11 +95,27 @@ public class Main {
             array[i] = list.get(i);
         }
 
+        long time;
         System.out.println("Before sort: \n" + list);
+        Thread.sleep(1000);
+        time = System.currentTimeMillis();
         sortList();
-        sortArray();
+        time = System.currentTimeMillis() - time;
+        Thread.sleep(1000);
         System.out.println("After list sort: \n" + list);
+        System.out.println("Algorithm time: " + time  + " ms");
+        System.out.println("CompareCounter = " + sortAlgorithm.getCompareCounter());
+        System.out.println("SwapCounter = " + sortAlgorithm.getSwapCounter());
+        Thread.sleep(1000);
+        sortAlgorithm.resetCounters();
+        time = System.currentTimeMillis();
+        sortArray();
+        time = System.currentTimeMillis() - time;
+        Thread.sleep(1000);
         System.out.println("After array sort: \n" + Arrays.toString(array));
+        System.out.println("Algorithm time: " + time  + " ms");
+        System.out.println("CompareCounter = " + sortAlgorithm.getCompareCounter());
+        System.out.println("SwapCounter = " + sortAlgorithm.getSwapCounter());
 
     }
 }
