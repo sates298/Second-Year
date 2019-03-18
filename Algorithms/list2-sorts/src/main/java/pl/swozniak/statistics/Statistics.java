@@ -1,6 +1,10 @@
-package pl.swozniak;
+package pl.swozniak.statistics;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.swozniak.sorts.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import java.util.Random;
 import java.util.function.BiFunction;
@@ -13,7 +17,6 @@ public class Statistics {
     private Sort heap;
     private Sort quick;
     private Sort mquick;
-    private String fileName;
 
     public Statistics() {
         rand = new Random();
@@ -24,15 +27,17 @@ public class Statistics {
         mquick = new ModifiedQuickSort();
     }
 
-    public void run(int k, String filename, BiFunction<Comparable, Comparable, Integer> func){
+    public void run(int k, String fileName, BiFunction<Comparable, Comparable, Integer> func) throws FileNotFoundException {
         Comparable[] root;
         int n;
-        this.fileName = filename;
+        File file = new File(fileName);
+        ObjectMapper mapper = new ObjectMapper();
         for(int i=1; i<100; i++){
             for(int j=0; j<k; j++){
                 n = i*100;
                 root = generateArray(n);
                 sortAllTypes(root, func);
+                saveToFile(n, file, mapper);
             }
         }
     }
@@ -58,7 +63,7 @@ public class Statistics {
         mquick.sortArray(toMQuick, func);
     }
 
-    private void saveToFile(int n){
+    private void saveToFile(int n, File file, ObjectMapper mapper){
 
     }
 

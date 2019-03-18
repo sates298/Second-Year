@@ -1,6 +1,7 @@
 package pl.swozniak;
 
 import pl.swozniak.sorts.*;
+import pl.swozniak.statistics.Statistics;
 
 import java.util.*;
 import java.util.function.BiFunction;
