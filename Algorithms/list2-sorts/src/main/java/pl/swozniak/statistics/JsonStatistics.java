@@ -1,9 +1,8 @@
 package pl.swozniak.statistics;
 
+import java.util.List;
+
 public class JsonStatistics {
     public int n;
-    public String sort;
-    public int compares;
-    public int swaps;
-    public long time;
+    public List<JsonSortStatistics> sorts;
 }
