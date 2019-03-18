@@ -3,6 +3,7 @@ package pl.swozniak;
 import pl.swozniak.sorts.*;
 import pl.swozniak.statistics.Statistics;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.function.BiFunction;
 
@@ -39,7 +40,7 @@ public class Main {
         return true;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         Scanner sc = new Scanner(System.in);
         int n, k = 0;
         String sortType = "", fileName = "";

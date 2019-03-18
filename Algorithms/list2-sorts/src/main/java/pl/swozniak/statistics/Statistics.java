@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.swozniak.sorts.*;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.BiFunction;
 
@@ -33,15 +33,18 @@ public class Statistics {
         int n;
         File file = new File(fileName);
         ObjectMapper mapper = new ObjectMapper();
+        JsonAll all = new JsonAll();
+        all.all = new ArrayList<>();
         for(int i=1; i<100; i++){
             for(int j=0; j<k; j++){
                 n = i*100;
                 root = generateArray(n);
                 sortAllTypes(root, func);
-                saveToFile(n, file, mapper);
+                saveToFile(n, file, mapper, all);
                 resetCounters();
             }
         }
+        mapper.writeValue(file, all);
     }
 
     private Comparable[] generateArray(int n){
@@ -65,9 +68,10 @@ public class Statistics {
         mquick.sortArray(toMQuick, func);
     }
 
-    private void saveToFile(int n, File file, ObjectMapper mapper) throws IOException {
+    private void saveToFile(int n,File file, ObjectMapper mapper, JsonAll all) throws IOException {
         JsonStatistics jsonStat = new JsonStatistics();
         jsonStat.n = n;
+        jsonStat.sorts = new ArrayList<>();
         JsonSortStatistics jsonInsert = new JsonSortStatistics();
         jsonInsert.name = "insert";
         jsonInsert.compares = insert.getCompareCounter();
@@ -76,34 +80,35 @@ public class Statistics {
         jsonStat.sorts.add(jsonInsert);
 
         JsonSortStatistics jsonSelect = new JsonSortStatistics();
-        jsonInsert.name = "select";
-        jsonInsert.compares = select.getCompareCounter();
-        jsonInsert.swaps = select.getSwapCounter();
-        jsonInsert.time = select.getTime();
+        jsonSelect.name = "select";
+        jsonSelect.compares = select.getCompareCounter();
+        jsonSelect.swaps = select.getSwapCounter();
+        jsonSelect.time = select.getTime();
         jsonStat.sorts.add(jsonSelect);
 
         JsonSortStatistics jsonHeap = new JsonSortStatistics();
-        jsonInsert.name = "heap";
-        jsonInsert.compares = heap.getCompareCounter();
-        jsonInsert.swaps = heap.getSwapCounter();
-        jsonInsert.time = heap.getTime();
+        jsonHeap.name = "heap";
+        jsonHeap.compares = heap.getCompareCounter();
+        jsonHeap.swaps = heap.getSwapCounter();
+        jsonHeap.time = heap.getTime();
         jsonStat.sorts.add(jsonHeap);
 
         JsonSortStatistics jsonQuick = new JsonSortStatistics();
-        jsonInsert.name = "quick";
-        jsonInsert.compares = quick.getCompareCounter();
-        jsonInsert.swaps = quick.getSwapCounter();
-        jsonInsert.time = quick.getTime();
+        jsonQuick.name = "quick";
+        jsonQuick.compares = quick.getCompareCounter();
+        jsonQuick.swaps = quick.getSwapCounter();
+        jsonQuick.time = quick.getTime();
         jsonStat.sorts.add(jsonQuick);
 
         JsonSortStatistics jsonMquick = new JsonSortStatistics();
-        jsonInsert.name = "maquick";
-        jsonInsert.compares = mquick.getCompareCounter();
-        jsonInsert.swaps = mquick.getSwapCounter();
-        jsonInsert.time = mquick.getTime();
+        jsonMquick.name = "mquick";
+        jsonMquick.compares = mquick.getCompareCounter();
+        jsonMquick.swaps = mquick.getSwapCounter();
+        jsonMquick.time = mquick.getTime();
         jsonStat.sorts.add(jsonMquick);
 
         mapper.writeValue(file, jsonStat);
+        all.all.add(jsonStat);
     }
 
 
