@@ -34,6 +34,7 @@ public class ModifiedQuickSort implements Sort {
             this.insert.sortPartOfListInsert(part,start, end, func);
             this.swapCounter += this.insert.getSwapCounter();
             this.compareCounter += this.insert.getCompareCounter();
+            this.insert.resetCounters();
             return;
         }
         if(start >= end) return;
@@ -43,6 +44,7 @@ public class ModifiedQuickSort implements Sort {
         int point = this.quick.quickLoopList(part, start,end,valueInd,func);
         this.swapCounter += this.quick.getSwapCounter();
         this.compareCounter += this.quick.getCompareCounter();
+        this.quick.resetCounters();
 
         sortPartOfListModified(part, start, point -1, func);
         sortPartOfListModified(part, point + 1, end,func);
@@ -50,14 +52,15 @@ public class ModifiedQuickSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
+        System.err.println("mquick");
         time = System.currentTimeMillis();
 
         sortPartOfArrayModified(toSort,0, toSort.length - 1, func);
 
         time = System.currentTimeMillis() - time;
-        System.err.println("Algorithm time: " + time  + " ms");
-        System.err.println("CompareCounter = " + getCompareCounter());
-        System.err.println("SwapCounter = " + getSwapCounter());
+        //System.err.println("Algorithm time: " + time  + " ms");
+        //System.err.println("CompareCounter = " + getCompareCounter());
+        //System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     private void sortPartOfArrayModified(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func){
@@ -65,6 +68,7 @@ public class ModifiedQuickSort implements Sort {
             this.insert.sortPartOfArrayInsert(part,start,end, func);
             this.swapCounter += this.insert.getSwapCounter();
             this.compareCounter += this.insert.getCompareCounter();
+            this.insert.resetCounters();
             return;
         }
         if(start >= end) return;
@@ -73,19 +77,21 @@ public class ModifiedQuickSort implements Sort {
         int point = this.quick.quickLoopArray(part, start, end, value, func);
         this.swapCounter += this.quick.getSwapCounter();
         this.compareCounter += this.quick.getCompareCounter();
+        this.quick.resetCounters();
 
         sortPartOfArrayModified(part, start, point - 1, func);
         sortPartOfArrayModified(part, point + 1, end, func);
     }
 
     private int findMedian(Comparable a,int indexA, Comparable b,int indexB, Comparable c, int indexC){
-        System.err.println("comparisons to find median from " +a+", " + b + " and " + c);
+        //System.err.println("comparisons to find median from " +a+", " + b + " and " + c);
         this.compareCounter++;
         if(a.compareTo(b) <= 0) {
             this.compareCounter++;
             if (c.compareTo(a) <= 0) return indexA;
             this.compareCounter++;
             if (c.compareTo(b) <= 0) return indexC;
+            return indexB;
         }
         this.compareCounter++;
         if (b.compareTo(c) <= 0) {

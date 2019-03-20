@@ -74,14 +74,15 @@ public class QuickSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
+        System.err.println("quick");
         time = System.currentTimeMillis();
 
         sortPartOfArray(toSort, 0, toSort.length - 1, func);
 
         time = System.currentTimeMillis() - time;
-        System.err.println("Algorithm time: " + time  + " ms");
-        System.err.println("CompareCounter = " + getCompareCounter());
-        System.err.println("SwapCounter = " + getSwapCounter());
+        //System.err.println("Algorithm time: " + time  + " ms");
+        //System.err.println("CompareCounter = " + getCompareCounter());
+        //System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     private void sortPartOfArray(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func) {
@@ -106,24 +107,24 @@ public class QuickSort implements Sort {
 
         while (left <= right) {
             this.compareCounter++;
-            System.err.println("compare in quickLoop " + value + " and " + part[left]);
+            //System.err.println("compare in quickLoop " + value + " and " + part[left]);
             while (left <= end && func.apply(value, part[left]) <= 0) {
                 this.compareCounter++;
-                System.err.println("compare in quickLoop " + value + " and " + part[left]);
+                //System.err.println("compare in quickLoop " + value + " and " + part[left]);
                 left++;
 
             }
             this.compareCounter++;
-            System.err.println("compare in quickLoop " + value + " and " + part[right]);
+            //System.err.println("compare in quickLoop " + value + " and " + part[right]);
             while (right > start && func.apply(value, part[right]) > 0){
                 this.compareCounter++;
-                System.err.println("compare in quickLoop " + value + " and " + part[right]);
+                //System.err.println("compare in quickLoop " + value + " and " + part[right]);
                 right--;
 
             }
             if(left < right){
                 this.swapCounter+=2;
-                System.err.println("swap indexes in quickLoop " + left +" and " + right);
+                //System.err.println("swap indexes in quickLoop " + left +" and " + right);
                 tmp = part[left];
                 part[left] = part[right];
                 part[right] = tmp;
@@ -131,7 +132,7 @@ public class QuickSort implements Sort {
         }
         left--; // --> left == right
         this.swapCounter+=2;
-        System.err.println("swap indexes in quickLoop " + left + " and " + indexValue);
+        //System.err.println("swap indexes in quickLoop " + left + " and " + indexValue);
         tmp = part[start];
         part[start] = part[left];
         part[left] = tmp;

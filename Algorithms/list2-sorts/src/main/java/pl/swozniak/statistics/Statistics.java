@@ -7,13 +7,14 @@ import java.io.File;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.function.BiFunction;
 
 public class Statistics {
 
     private Random rand;
-    private Sort insert;
+    private InsertionSort insert;
     private Sort select;
     private Sort heap;
     private Sort quick;
@@ -28,14 +29,14 @@ public class Statistics {
         mquick = new ModifiedQuickSort();
     }
 
-    public void run(int k, String fileName, BiFunction<Comparable, Comparable, Integer> func) throws IOException {
+    public void run(int k, String fileName, BiFunction<Comparable, Comparable, Integer> func) throws IOException, InterruptedException {
         Comparable[] root;
         int n;
         File file = new File(fileName);
         ObjectMapper mapper = new ObjectMapper();
         JsonAll all = new JsonAll();
         all.all = new ArrayList<>();
-        for(int i=1; i<100; i++){
+        for(int i=1; i<=100; i++){
             for(int j=0; j<k; j++){
                 n = i*100;
                 root = generateArray(n);
@@ -55,17 +56,39 @@ public class Statistics {
         return array;
     }
 
-    private void sortAllTypes(Comparable[] array, BiFunction<Comparable, Comparable, Integer> func){
-        Comparable[] toInsert = array.clone();
-        insert.sortArray(toInsert,func);
-        Comparable[] toSelect = array.clone();
-        select.sortArray(toSelect, func);
-        Comparable[] toHeap = array.clone();
-        heap.sortArray(toHeap, func);
-        Comparable[] toQuick = array.clone();
-        quick.sortArray(toQuick, func);
-        Comparable[] toMQuick = array.clone();
-        mquick.sortArray(toMQuick, func);
+    private void sortAllTypes(Comparable[] array, BiFunction<Comparable, Comparable, Integer> func) throws InterruptedException {
+        //Thread insertionThread = new Thread(() -> {
+            Comparable[] toInsert = Arrays.copyOf(array,array.length);
+            insert.sortArray(toInsert, func);
+        //});
+        //Thread selectThread = new Thread(() -> {
+            Comparable[] toSelect = Arrays.copyOf(array, array.length);
+            select.sortArray(toSelect, func);
+        //});
+        //Thread heapThread = new Thread(() -> {
+            Comparable[] toHeap = Arrays.copyOf(array, array.length);
+            heap.sortArray(toHeap, func);
+        //});
+        //Thread quickThread = new Thread(() -> {
+            Comparable[] toQuick = Arrays.copyOf(array, array.length);
+            quick.sortArray(toQuick, func);
+        //});
+        //Thread mquickThread = new Thread(() -> {
+            Comparable[] toMquick = Arrays.copyOf(array, array.length);
+            mquick.sortArray(toMquick, func);
+        //});
+
+        /*insertionThread.run();
+        selectThread.run();
+        heapThread.run();
+        quickThread.run();
+        mquickThread.run();
+
+       insertionThread.join();
+       selectThread.join();
+       heapThread.join();
+       quickThread.join();
+       mquickThread.join();*/
     }
 
     private void saveToFile(int n,File file, ObjectMapper mapper, JsonAll all) throws IOException {
@@ -107,8 +130,9 @@ public class Statistics {
         jsonMquick.time = mquick.getTime();
         jsonStat.sorts.add(jsonMquick);
 
-        mapper.writeValue(file, jsonStat);
         all.all.add(jsonStat);
+        mapper.writeValue(file, all);
+
     }
 
 
