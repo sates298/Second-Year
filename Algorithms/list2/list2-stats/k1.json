@@ -1,1 +1,3604 @@
-{"all":[{"n":100,"k":1,"sorts":[{"name":"insert","compares":2511,"swaps":2511,"time":1},{"name":"select","compares":4950,"swaps":198,"time":0},{"name":"heap","compares":1268,"swaps":1466,"time":1},{"name":"quick","compares":941,"swaps":440,"time":0},{"name":"mquick","compares":880,"swaps":522,"time":0}]},{"n":200,"k":1,"sorts":[{"name":"insert","compares":10433,"swaps":10433,"time":0},{"name":"select","compares":19900,"swaps":398,"time":1},{"name":"heap","compares":2923,"swaps":3318,"time":0},{"name":"quick","compares":2156,"swaps":1036,"time":0},{"name":"mquick","compares":2121,"swaps":1028,"time":1}]},{"n":300,"k":1,"sorts":[{"name":"insert","compares":22445,"swaps":22445,"time":2},{"name":"select","compares":44850,"swaps":598,"time":2},{"name":"heap","compares":4737,"swaps":5344,"time":0},{"name":"quick","compares":3968,"swaps":1568,"time":0},{"name":"mquick","compares":3277,"swaps":1618,"time":1}]},{"n":400,"k":1,"sorts":[{"name":"insert","compares":38614,"swaps":38614,"time":2},{"name":"select","compares":79800,"swaps":798,"time":1},{"name":"heap","compares":6677,"swaps":7502,"time":0},{"name":"quick","compares":5498,"swaps":2162,"time":0},{"name":"mquick","compares":4901,"swaps":2235,"time":0}]},{"n":500,"k":1,"sorts":[{"name":"insert","compares":62156,"swaps":62156,"time":1},{"name":"select","compares":124750,"swaps":998,"time":1},{"name":"heap","compares":8626,"swaps":9614,"time":0},{"name":"quick","compares":6778,"swaps":2822,"time":0},{"name":"mquick","compares":6386,"swaps":2948,"time":1}]},{"n":600,"k":1,"sorts":[{"name":"insert","compares":93363,"swaps":93363,"time":1},{"name":"select","compares":179700,"swaps":1198,"time":2},{"name":"heap","compares":10591,"swaps":11694,"time":0},{"name":"quick","compares":8395,"swaps":3488,"time":0},{"name":"mquick","compares":7562,"swaps":3521,"time":0}]},{"n":700,"k":1,"sorts":[{"name":"insert","compares":118762,"swaps":118762,"time":2},{"name":"select","compares":244650,"swaps":1398,"time":2},{"name":"heap","compares":12832,"swaps":14246,"time":0},{"name":"quick","compares":10199,"swaps":4120,"time":0},{"name":"mquick","compares":9811,"swaps":4147,"time":1}]},{"n":800,"k":1,"sorts":[{"name":"insert","compares":158114,"swaps":158114,"time":2},{"name":"select","compares":319600,"swaps":1598,"time":1},{"name":"heap","compares":14957,"swaps":16552,"time":0},{"name":"quick","compares":12025,"swaps":4712,"time":0},{"name":"mquick","compares":10915,"swaps":4856,"time":0}]},{"n":900,"k":1,"sorts":[{"name":"insert","compares":205713,"swaps":205713,"time":2},{"name":"select","compares":404550,"swaps":1798,"time":6},{"name":"heap","compares":17059,"swaps":18836,"time":1},{"name":"quick","compares":13410,"swaps":5518,"time":0},{"name":"mquick","compares":13406,"swaps":5461,"time":1}]},{"n":1000,"k":1,"sorts":[{"name":"insert","compares":252700,"swaps":252700,"time":0},{"name":"select","compares":499500,"swaps":1998,"time":2},{"name":"heap","compares":19138,"swaps":21018,"time":0},{"name":"quick","compares":15399,"swaps":6070,"time":0},{"name":"mquick","compares":14127,"swaps":6353,"time":0}]},{"n":1100,"k":1,"sorts":[{"name":"insert","compares":301717,"swaps":301717,"time":0},{"name":"select","compares":604450,"swaps":2198,"time":2},{"name":"heap","compares":21431,"swaps":23582,"time":0},{"name":"quick","compares":18258,"swaps":6758,"time":0},{"name":"mquick","compares":16353,"swaps":6910,"time":0}]},{"n":1200,"k":1,"sorts":[{"name":"insert","compares":364816,"swaps":364816,"time":1},{"name":"select","compares":719400,"swaps":2398,"time":6},{"name":"heap","compares":23793,"swaps":26148,"time":0},{"name":"quick","compares":20309,"swaps":7458,"time":0},{"name":"mquick","compares":17526,"swaps":7396,"time":0}]},{"n":1300,"k":1,"sorts":[{"name":"insert","compares":419596,"swaps":419596,"time":1},{"name":"select","compares":844350,"swaps":2598,"time":2},{"name":"heap","compares":26104,"swaps":28716,"time":1},{"name":"quick","compares":22217,"swaps":8168,"time":0},{"name":"mquick","compares":19608,"swaps":8125,"time":0}]},{"n":1400,"k":1,"sorts":[{"name":"insert","compares":493100,"swaps":493100,"time":2},{"name":"select","compares":979300,"swaps":2798,"time":4},{"name":"heap","compares":28328,"swaps":31028,"time":1},{"name":"quick","compares":23225,"swaps":9052,"time":0},{"name":"mquick","compares":21550,"swaps":9148,"time":0}]},{"n":1500,"k":1,"sorts":[{"name":"insert","compares":560019,"swaps":560019,"time":3},{"name":"select","compares":1124250,"swaps":2998,"time":4},{"name":"heap","compares":30666,"swaps":33594,"time":1},{"name":"quick","compares":24112,"swaps":9684,"time":0},{"name":"mquick","compares":23047,"swaps":9376,"time":0}]},{"n":1600,"k":1,"sorts":[{"name":"insert","compares":648933,"swaps":648933,"time":3},{"name":"select","compares":1279200,"swaps":3198,"time":2},{"name":"heap","compares":32993,"swaps":36092,"time":1},{"name":"quick","compares":26348,"swaps":10414,"time":0},{"name":"mquick","compares":24939,"swaps":10134,"time":0}]},{"n":1700,"k":1,"sorts":[{"name":"insert","compares":731750,"swaps":731750,"time":2},{"name":"select","compares":1444150,"swaps":3398,"time":3},{"name":"heap","compares":35290,"swaps":38608,"time":1},{"name":"quick","compares":29114,"swaps":11172,"time":0},{"name":"mquick","compares":27550,"swaps":10637,"time":2}]},{"n":1800,"k":1,"sorts":[{"name":"insert","compares":812209,"swaps":812209,"time":1},{"name":"select","compares":1619100,"swaps":3598,"time":4},{"name":"heap","compares":37729,"swaps":41282,"time":0},{"name":"quick","compares":33052,"swaps":11646,"time":0},{"name":"mquick","compares":28012,"swaps":11484,"time":0}]},{"n":1900,"k":1,"sorts":[{"name":"insert","compares":925134,"swaps":925134,"time":2},{"name":"select","compares":1804050,"swaps":3798,"time":4},{"name":"heap","compares":40111,"swaps":43780,"time":1},{"name":"quick","compares":34008,"swaps":12514,"time":0},{"name":"mquick","compares":30112,"swaps":12372,"time":0}]},{"n":2000,"k":1,"sorts":[{"name":"insert","compares":989487,"swaps":989487,"time":2},{"name":"select","compares":1999000,"swaps":3998,"time":5},{"name":"heap","compares":42498,"swaps":46388,"time":0},{"name":"quick","compares":35863,"swaps":13372,"time":0},{"name":"mquick","compares":31229,"swaps":13059,"time":0}]},{"n":2100,"k":1,"sorts":[{"name":"insert","compares":1104049,"swaps":1104049,"time":3},{"name":"select","compares":2203950,"swaps":4198,"time":5},{"name":"heap","compares":44903,"swaps":49046,"time":0},{"name":"quick","compares":37712,"swaps":14052,"time":1},{"name":"mquick","compares":34308,"swaps":13532,"time":0}]},{"n":2200,"k":1,"sorts":[{"name":"insert","compares":1177521,"swaps":1177521,"time":2},{"name":"select","compares":2418900,"swaps":4398,"time":6},{"name":"heap","compares":47411,"swaps":51712,"time":1},{"name":"quick","compares":43526,"swaps":14578,"time":0},{"name":"mquick","compares":35777,"swaps":14224,"time":0}]},{"n":2300,"k":1,"sorts":[{"name":"insert","compares":1302838,"swaps":1302838,"time":2},{"name":"select","compares":2643850,"swaps":4598,"time":6},{"name":"heap","compares":49876,"swaps":54470,"time":1},{"name":"quick","compares":42567,"swaps":15694,"time":0},{"name":"mquick","compares":36534,"swaps":14878,"time":0}]},{"n":2400,"k":1,"sorts":[{"name":"insert","compares":1423128,"swaps":1423128,"time":3},{"name":"select","compares":2878800,"swaps":4798,"time":7},{"name":"heap","compares":52378,"swaps":57120,"time":0},{"name":"quick","compares":43787,"swaps":16218,"time":0},{"name":"mquick","compares":39171,"swaps":15528,"time":1}]},{"n":2500,"k":1,"sorts":[{"name":"insert","compares":1594659,"swaps":1594659,"time":3},{"name":"select","compares":3123750,"swaps":4998,"time":7},{"name":"heap","compares":54694,"swaps":59612,"time":1},{"name":"quick","compares":44720,"swaps":17172,"time":0},{"name":"mquick","compares":41048,"swaps":16240,"time":0}]},{"n":2600,"k":1,"sorts":[{"name":"insert","compares":1683731,"swaps":1683731,"time":4},{"name":"select","compares":3378700,"swaps":5198,"time":10},{"name":"heap","compares":57308,"swaps":62446,"time":1},{"name":"quick","compares":49084,"swaps":18158,"time":1},{"name":"mquick","compares":43906,"swaps":16526,"time":0}]},{"n":2700,"k":1,"sorts":[{"name":"insert","compares":1826542,"swaps":1826542,"time":8},{"name":"select","compares":3643650,"swaps":5398,"time":10},{"name":"heap","compares":59898,"swaps":65170,"time":1},{"name":"quick","compares":52938,"swaps":18624,"time":0},{"name":"mquick","compares":45166,"swaps":17480,"time":0}]},{"n":2800,"k":1,"sorts":[{"name":"insert","compares":1939916,"swaps":1939916,"time":5},{"name":"select","compares":3918600,"swaps":5598,"time":10},{"name":"heap","compares":62492,"swaps":68060,"time":0},{"name":"quick","compares":51480,"swaps":19734,"time":1},{"name":"mquick","compares":47494,"swaps":17814,"time":0}]},{"n":2900,"k":1,"sorts":[{"name":"insert","compares":2098059,"swaps":2098059,"time":10},{"name":"select","compares":4203550,"swaps":5798,"time":13},{"name":"heap","compares":64836,"swaps":70530,"time":0},{"name":"quick","compares":56207,"swaps":20376,"time":0},{"name":"mquick","compares":47575,"swaps":19014,"time":1}]},{"n":3000,"k":1,"sorts":[{"name":"insert","compares":2263539,"swaps":2263539,"time":6},{"name":"select","compares":4498500,"swaps":5998,"time":21},{"name":"heap","compares":67459,"swaps":73438,"time":4},{"name":"quick","compares":57582,"swaps":21024,"time":2},{"name":"mquick","compares":51604,"swaps":19337,"time":1}]},{"n":3100,"k":1,"sorts":[{"name":"insert","compares":2390000,"swaps":2390000,"time":5},{"name":"select","compares":4803450,"swaps":6198,"time":12},{"name":"heap","compares":70082,"swaps":76328,"time":1},{"name":"quick","compares":60645,"swaps":21912,"time":0},{"name":"mquick","compares":53989,"swaps":20179,"time":0}]},{"n":3200,"k":1,"sorts":[{"name":"insert","compares":2562852,"swaps":2562852,"time":7},{"name":"select","compares":5118400,"swaps":6398,"time":18},{"name":"heap","compares":72415,"swaps":78692,"time":1},{"name":"quick","compares":61027,"swaps":22626,"time":0},{"name":"mquick","compares":55625,"swaps":20593,"time":1}]},{"n":3300,"k":1,"sorts":[{"name":"insert","compares":2702052,"swaps":2702052,"time":6},{"name":"select","compares":5443350,"swaps":6598,"time":13},{"name":"heap","compares":75030,"swaps":81478,"time":1},{"name":"quick","compares":61502,"swaps":23754,"time":0},{"name":"mquick","compares":58411,"swaps":21065,"time":1}]},{"n":3400,"k":1,"sorts":[{"name":"insert","compares":2844909,"swaps":2844909,"time":6},{"name":"select","compares":5778300,"swaps":6798,"time":15},{"name":"heap","compares":77714,"swaps":84536,"time":1},{"name":"quick","compares":66021,"swaps":24148,"time":0},{"name":"mquick","compares":55782,"swaps":22210,"time":0}]},{"n":3500,"k":1,"sorts":[{"name":"insert","compares":3076478,"swaps":3076478,"time":7},{"name":"select","compares":6123250,"swaps":6998,"time":15},{"name":"heap","compares":80095,"swaps":86884,"time":1},{"name":"quick","compares":66274,"swaps":25074,"time":0},{"name":"mquick","compares":60802,"swaps":22252,"time":0}]},{"n":3600,"k":1,"sorts":[{"name":"insert","compares":3289892,"swaps":3289892,"time":7},{"name":"select","compares":6478200,"swaps":7198,"time":15},{"name":"heap","compares":82734,"swaps":89796,"time":0},{"name":"quick","compares":70997,"swaps":25974,"time":1},{"name":"mquick","compares":61446,"swaps":23474,"time":0}]},{"n":3700,"k":1,"sorts":[{"name":"insert","compares":3351864,"swaps":3351864,"time":7},{"name":"select","compares":6843150,"swaps":7398,"time":16},{"name":"heap","compares":85241,"swaps":92518,"time":0},{"name":"quick","compares":69728,"swaps":26990,"time":1},{"name":"mquick","compares":63983,"swaps":23624,"time":0}]},{"n":3800,"k":1,"sorts":[{"name":"insert","compares":3547776,"swaps":3547776,"time":8},{"name":"select","compares":7218100,"swaps":7598,"time":16},{"name":"heap","compares":87823,"swaps":95320,"time":1},{"name":"quick","compares":78555,"swaps":27242,"time":0},{"name":"mquick","compares":68285,"swaps":24247,"time":0}]},{"n":3900,"k":1,"sorts":[{"name":"insert","compares":3821284,"swaps":3821284,"time":8},{"name":"select","compares":7603050,"swaps":7798,"time":18},{"name":"heap","compares":90333,"swaps":97874,"time":1},{"name":"quick","compares":77338,"swaps":28398,"time":0},{"name":"mquick","compares":67520,"swaps":25334,"time":1}]},{"n":4000,"k":1,"sorts":[{"name":"insert","compares":4000123,"swaps":4000123,"time":8},{"name":"select","compares":7998000,"swaps":7998,"time":18},{"name":"heap","compares":93015,"swaps":100930,"time":1},{"name":"quick","compares":80814,"swaps":29178,"time":0},{"name":"mquick","compares":70168,"swaps":25783,"time":1}]},{"n":4100,"k":1,"sorts":[{"name":"insert","compares":4226846,"swaps":4226846,"time":9},{"name":"select","compares":8402950,"swaps":8198,"time":21},{"name":"heap","compares":95525,"swaps":103550,"time":1},{"name":"quick","compares":87609,"swaps":29744,"time":0},{"name":"mquick","compares":70504,"swaps":26294,"time":0}]},{"n":4200,"k":1,"sorts":[{"name":"insert","compares":4412159,"swaps":4412159,"time":10},{"name":"select","compares":8817900,"swaps":8398,"time":21},{"name":"heap","compares":98431,"swaps":106840,"time":0},{"name":"quick","compares":87003,"swaps":30746,"time":1},{"name":"mquick","compares":74174,"swaps":27248,"time":0}]},{"n":4300,"k":1,"sorts":[{"name":"insert","compares":4482316,"swaps":4482316,"time":12},{"name":"select","compares":9242850,"swaps":8598,"time":25},{"name":"heap","compares":101018,"swaps":109658,"time":1},{"name":"quick","compares":85789,"swaps":31866,"time":0},{"name":"mquick","compares":75532,"swaps":27656,"time":1}]},{"n":4400,"k":1,"sorts":[{"name":"insert","compares":4951282,"swaps":4951282,"time":14},{"name":"select","compares":9677800,"swaps":8798,"time":32},{"name":"heap","compares":103449,"swaps":112058,"time":1},{"name":"quick","compares":92856,"swaps":32410,"time":0},{"name":"mquick","compares":76621,"swaps":28542,"time":0}]},{"n":4500,"k":1,"sorts":[{"name":"insert","compares":5093026,"swaps":5093026,"time":17},{"name":"select","compares":10122750,"swaps":8998,"time":35},{"name":"heap","compares":106198,"swaps":115040,"time":1},{"name":"quick","compares":94387,"swaps":33094,"time":0},{"name":"mquick","compares":76434,"swaps":29169,"time":1}]},{"n":4600,"k":1,"sorts":[{"name":"insert","compares":5349349,"swaps":5349349,"time":12},{"name":"select","compares":10577700,"swaps":9198,"time":33},{"name":"heap","compares":108862,"swaps":117800,"time":1},{"name":"quick","compares":97166,"swaps":34436,"time":1},{"name":"mquick","compares":84175,"swaps":30057,"time":1}]},{"n":4700,"k":1,"sorts":[{"name":"insert","compares":5374868,"swaps":5374868,"time":15},{"name":"select","compares":11042650,"swaps":9398,"time":36},{"name":"heap","compares":111741,"swaps":121120,"time":1},{"name":"quick","compares":93779,"swaps":35066,"time":0},{"name":"mquick","compares":84872,"swaps":29978,"time":1}]},{"n":4800,"k":1,"sorts":[{"name":"insert","compares":5791197,"swaps":5791197,"time":13},{"name":"select","compares":11517600,"swaps":9598,"time":27},{"name":"heap","compares":114204,"swaps":123606,"time":1},{"name":"quick","compares":102180,"swaps":35938,"time":1},{"name":"mquick","compares":87216,"swaps":30534,"time":0}]},{"n":4900,"k":1,"sorts":[{"name":"insert","compares":6047137,"swaps":6047137,"time":14},{"name":"select","compares":12002550,"swaps":9798,"time":31},{"name":"heap","compares":116853,"swaps":126352,"time":1},{"name":"quick","compares":100980,"swaps":36766,"time":1},{"name":"mquick","compares":85506,"swaps":31258,"time":0}]},{"n":5000,"k":1,"sorts":[{"name":"insert","compares":6244164,"swaps":6244164,"time":16},{"name":"select","compares":12497500,"swaps":9998,"time":37},{"name":"heap","compares":119551,"swaps":129310,"time":0},{"name":"quick","compares":104046,"swaps":37588,"time":1},{"name":"mquick","compares":87748,"swaps":31888,"time":0}]},{"n":5100,"k":1,"sorts":[{"name":"insert","compares":6520341,"swaps":6520341,"time":13},{"name":"select","compares":13002450,"swaps":10198,"time":30},{"name":"heap","compares":122246,"swaps":132110,"time":1},{"name":"quick","compares":102831,"swaps":38754,"time":0},{"name":"mquick","compares":93116,"swaps":32391,"time":1}]},{"n":5200,"k":1,"sorts":[{"name":"insert","compares":6807116,"swaps":6807116,"time":16},{"name":"select","compares":13517400,"swaps":10398,"time":37},{"name":"heap","compares":125030,"swaps":135230,"time":1},{"name":"quick","compares":103032,"swaps":39848,"time":0},{"name":"mquick","compares":90158,"swaps":33839,"time":1}]},{"n":5300,"k":1,"sorts":[{"name":"insert","compares":6971896,"swaps":6971896,"time":14},{"name":"select","compares":14042350,"swaps":10598,"time":31},{"name":"heap","compares":127684,"swaps":138128,"time":0},{"name":"quick","compares":109284,"swaps":40334,"time":1},{"name":"mquick","compares":97847,"swaps":33799,"time":1}]},{"n":5400,"k":1,"sorts":[{"name":"insert","compares":7318016,"swaps":7318016,"time":14},{"name":"select","compares":14577300,"swaps":10798,"time":33},{"name":"heap","compares":130450,"swaps":140996,"time":1},{"name":"quick","compares":122100,"swaps":40458,"time":0},{"name":"mquick","compares":97295,"swaps":34317,"time":1}]},{"n":5500,"k":1,"sorts":[{"name":"insert","compares":7441335,"swaps":7441335,"time":16},{"name":"select","compares":15122250,"swaps":10998,"time":33},{"name":"heap","compares":133342,"swaps":144330,"time":2},{"name":"quick","compares":113272,"swaps":42214,"time":0},{"name":"mquick","compares":96729,"swaps":35345,"time":1}]},{"n":5600,"k":1,"sorts":[{"name":"insert","compares":7813825,"swaps":7813825,"time":16},{"name":"select","compares":15677200,"swaps":11198,"time":35},{"name":"heap","compares":135956,"swaps":147076,"time":2},{"name":"quick","compares":118200,"swaps":42900,"time":1},{"name":"mquick","compares":99175,"swaps":35645,"time":0}]},{"n":5700,"k":1,"sorts":[{"name":"insert","compares":8086040,"swaps":8086040,"time":20},{"name":"select","compares":16242150,"swaps":11398,"time":38},{"name":"heap","compares":138723,"swaps":150040,"time":1},{"name":"quick","compares":121225,"swaps":43672,"time":0},{"name":"mquick","compares":101398,"swaps":36517,"time":1}]},{"n":5800,"k":1,"sorts":[{"name":"insert","compares":8378305,"swaps":8378305,"time":18},{"name":"select","compares":16817100,"swaps":11598,"time":38},{"name":"heap","compares":141278,"swaps":152602,"time":1},{"name":"quick","compares":126124,"swaps":43878,"time":1},{"name":"mquick","compares":101792,"swaps":37105,"time":1}]},{"n":5900,"k":1,"sorts":[{"name":"insert","compares":8714149,"swaps":8714149,"time":20},{"name":"select","compares":17402050,"swaps":11798,"time":41},{"name":"heap","compares":143861,"swaps":155236,"time":1},{"name":"quick","compares":130574,"swaps":44830,"time":1},{"name":"mquick","compares":107574,"swaps":37208,"time":0}]},{"n":6000,"k":1,"sorts":[{"name":"insert","compares":8927961,"swaps":8927961,"time":20},{"name":"select","compares":17997000,"swaps":11998,"time":38},{"name":"heap","compares":147076,"swaps":159092,"time":1},{"name":"quick","compares":130638,"swaps":46226,"time":1},{"name":"mquick","compares":108253,"swaps":38344,"time":1}]},{"n":6100,"k":1,"sorts":[{"name":"insert","compares":9475036,"swaps":9475036,"time":19},{"name":"select","compares":18601950,"swaps":12198,"time":41},{"name":"heap","compares":149307,"swaps":161010,"time":1},{"name":"quick","compares":130048,"swaps":47292,"time":1},{"name":"mquick","compares":108558,"swaps":38988,"time":0}]},{"n":6200,"k":1,"sorts":[{"name":"insert","compares":9670514,"swaps":9670514,"time":21},{"name":"select","compares":19216900,"swaps":12398,"time":43},{"name":"heap","compares":152252,"swaps":164430,"time":2},{"name":"quick","compares":131882,"swaps":48146,"time":0},{"name":"mquick","compares":113293,"swaps":39044,"time":1}]},{"n":6300,"k":1,"sorts":[{"name":"insert","compares":9978563,"swaps":9978563,"time":21},{"name":"select","compares":19841850,"swaps":12598,"time":45},{"name":"heap","compares":155100,"swaps":167636,"time":2},{"name":"quick","compares":130198,"swaps":49222,"time":0},{"name":"mquick","compares":111987,"swaps":40280,"time":1}]},{"n":6400,"k":1,"sorts":[{"name":"insert","compares":10173013,"swaps":10173013,"time":22},{"name":"select","compares":20476800,"swaps":12798,"time":48},{"name":"heap","compares":157757,"swaps":170316,"time":1},{"name":"quick","compares":144967,"swaps":48756,"time":1},{"name":"mquick","compares":111577,"swaps":40952,"time":0}]},{"n":6500,"k":1,"sorts":[{"name":"insert","compares":10457220,"swaps":10457220,"time":23},{"name":"select","compares":21121750,"swaps":12998,"time":48},{"name":"heap","compares":160685,"swaps":173458,"time":1},{"name":"quick","compares":142736,"swaps":50286,"time":0},{"name":"mquick","compares":122923,"swaps":39956,"time":1}]},{"n":6600,"k":1,"sorts":[{"name":"insert","compares":10995662,"swaps":10995662,"time":24},{"name":"select","compares":21776700,"swaps":13198,"time":49},{"name":"heap","compares":163169,"swaps":176088,"time":1},{"name":"quick","compares":141893,"swaps":51770,"time":1},{"name":"mquick","compares":125628,"swaps":41202,"time":1}]},{"n":6700,"k":1,"sorts":[{"name":"insert","compares":11318476,"swaps":11318476,"time":24},{"name":"select","compares":22441650,"swaps":13398,"time":50},{"name":"heap","compares":166068,"swaps":179352,"time":1},{"name":"quick","compares":144138,"swaps":52316,"time":1},{"name":"mquick","compares":118386,"swaps":42170,"time":0}]},{"n":6800,"k":1,"sorts":[{"name":"insert","compares":11486704,"swaps":11486704,"time":24},{"name":"select","compares":23116600,"swaps":13598,"time":50},{"name":"heap","compares":168830,"swaps":182350,"time":1},{"name":"quick","compares":152254,"swaps":52756,"time":1},{"name":"mquick","compares":123682,"swaps":41966,"time":0}]},{"n":6900,"k":1,"sorts":[{"name":"insert","compares":11982983,"swaps":11982983,"time":25},{"name":"select","compares":23801550,"swaps":13798,"time":52},{"name":"heap","compares":171575,"swaps":185188,"time":1},{"name":"quick","compares":155217,"swaps":53676,"time":1},{"name":"mquick","compares":122555,"swaps":43514,"time":0}]},{"n":7000,"k":1,"sorts":[{"name":"insert","compares":12240319,"swaps":12240319,"time":26},{"name":"select","compares":24496500,"swaps":13998,"time":53},{"name":"heap","compares":174422,"swaps":188370,"time":1},{"name":"quick","compares":150917,"swaps":55410,"time":1},{"name":"mquick","compares":125583,"swaps":43858,"time":0}]},{"n":7100,"k":1,"sorts":[{"name":"insert","compares":12848160,"swaps":12848160,"time":30},{"name":"select","compares":25201450,"swaps":14198,"time":58},{"name":"heap","compares":176723,"swaps":190294,"time":1},{"name":"quick","compares":160461,"swaps":55662,"time":1},{"name":"mquick","compares":136154,"swaps":43782,"time":1}]},{"n":7200,"k":1,"sorts":[{"name":"insert","compares":12816929,"swaps":12816929,"time":29},{"name":"select","compares":25916400,"swaps":14398,"time":59},{"name":"heap","compares":180055,"swaps":194404,"time":2},{"name":"quick","compares":167554,"swaps":55328,"time":0},{"name":"mquick","compares":134133,"swaps":44206,"time":1}]},{"n":7300,"k":1,"sorts":[{"name":"insert","compares":13438307,"swaps":13438307,"time":29},{"name":"select","compares":26641350,"swaps":14598,"time":59},{"name":"heap","compares":182496,"swaps":196764,"time":2},{"name":"quick","compares":165159,"swaps":56934,"time":1},{"name":"mquick","compares":134939,"swaps":45313,"time":0}]},{"n":7400,"k":1,"sorts":[{"name":"insert","compares":13699334,"swaps":13699334,"time":29},{"name":"select","compares":27376300,"swaps":14798,"time":62},{"name":"heap","compares":185163,"swaps":199620,"time":1},{"name":"quick","compares":163913,"swaps":58100,"time":1},{"name":"mquick","compares":131575,"swaps":46185,"time":1}]},{"n":7500,"k":1,"sorts":[{"name":"insert","compares":13903308,"swaps":13903308,"time":32},{"name":"select","compares":28121250,"swaps":14998,"time":66},{"name":"heap","compares":188269,"swaps":203140,"time":1},{"name":"quick","compares":169838,"swaps":58794,"time":1},{"name":"mquick","compares":134064,"swaps":47088,"time":1}]},{"n":7600,"k":1,"sorts":[{"name":"insert","compares":14434855,"swaps":14434855,"time":31},{"name":"select","compares":28876200,"swaps":15198,"time":66},{"name":"heap","compares":191031,"swaps":206202,"time":2},{"name":"quick","compares":174480,"swaps":59482,"time":1},{"name":"mquick","compares":135616,"swaps":47917,"time":1}]},{"n":7700,"k":1,"sorts":[{"name":"insert","compares":14703713,"swaps":14703713,"time":31},{"name":"select","compares":29641150,"swaps":15398,"time":68},{"name":"heap","compares":193850,"swaps":209180,"time":2},{"name":"quick","compares":173187,"swaps":60684,"time":0},{"name":"mquick","compares":144772,"swaps":47497,"time":1}]},{"n":7800,"k":1,"sorts":[{"name":"insert","compares":15355463,"swaps":15355463,"time":34},{"name":"select","compares":30416100,"swaps":15598,"time":68},{"name":"heap","compares":196428,"swaps":211692,"time":2},{"name":"quick","compares":182842,"swaps":61060,"time":1},{"name":"mquick","compares":146601,"swaps":47808,"time":0}]},{"n":7900,"k":1,"sorts":[{"name":"insert","compares":15659570,"swaps":15659570,"time":34},{"name":"select","compares":31201050,"swaps":15798,"time":69},{"name":"heap","compares":199190,"swaps":214776,"time":1},{"name":"quick","compares":181159,"swaps":63028,"time":1},{"name":"mquick","compares":143093,"swaps":48918,"time":1}]},{"n":8000,"k":1,"sorts":[{"name":"insert","compares":15977360,"swaps":15977360,"time":34},{"name":"select","compares":31996000,"swaps":15998,"time":72},{"name":"heap","compares":201942,"swaps":217682,"time":2},{"name":"quick","compares":177665,"swaps":63774,"time":1},{"name":"mquick","compares":147648,"swaps":49429,"time":0}]},{"n":8100,"k":1,"sorts":[{"name":"insert","compares":16466541,"swaps":16466541,"time":35},{"name":"select","compares":32800950,"swaps":16198,"time":73},{"name":"heap","compares":204595,"swaps":220318,"time":2},{"name":"quick","compares":176566,"swaps":65124,"time":1},{"name":"mquick","compares":140856,"swaps":50510,"time":1}]},{"n":8200,"k":1,"sorts":[{"name":"insert","compares":16797781,"swaps":16797781,"time":39},{"name":"select","compares":33615900,"swaps":16398,"time":75},{"name":"heap","compares":207654,"swaps":223994,"time":2},{"name":"quick","compares":190451,"swaps":65202,"time":1},{"name":"mquick","compares":152066,"swaps":50493,"time":0}]},{"n":8300,"k":1,"sorts":[{"name":"insert","compares":17237015,"swaps":17237015,"time":36},{"name":"select","compares":34440850,"swaps":16598,"time":74},{"name":"heap","compares":210198,"swaps":226506,"time":1},{"name":"quick","compares":185531,"swaps":66236,"time":1},{"name":"mquick","compares":151011,"swaps":51160,"time":1}]},{"n":8400,"k":1,"sorts":[{"name":"insert","compares":17600992,"swaps":17600992,"time":38},{"name":"select","compares":35275800,"swaps":16798,"time":76},{"name":"heap","compares":213306,"swaps":229892,"time":2},{"name":"quick","compares":188966,"swaps":67146,"time":0},{"name":"mquick","compares":152034,"swaps":51386,"time":1}]},{"n":8500,"k":1,"sorts":[{"name":"insert","compares":18002578,"swaps":18002578,"time":38},{"name":"select","compares":36120750,"swaps":16998,"time":79},{"name":"heap","compares":216008,"swaps":232636,"time":1},{"name":"quick","compares":191402,"swaps":68346,"time":1},{"name":"mquick","compares":165091,"swaps":51627,"time":1}]},{"n":8600,"k":1,"sorts":[{"name":"insert","compares":18496777,"swaps":18496777,"time":39},{"name":"select","compares":36975700,"swaps":17198,"time":79},{"name":"heap","compares":218912,"swaps":235654,"time":2},{"name":"quick","compares":193195,"swaps":69354,"time":1},{"name":"mquick","compares":155243,"swaps":52612,"time":1}]},{"n":8700,"k":1,"sorts":[{"name":"insert","compares":18927333,"swaps":18927333,"time":42},{"name":"select","compares":37840650,"swaps":17398,"time":88},{"name":"heap","compares":221701,"swaps":238830,"time":2},{"name":"quick","compares":197038,"swaps":69886,"time":2},{"name":"mquick","compares":162033,"swaps":52358,"time":1}]},{"n":8800,"k":1,"sorts":[{"name":"insert","compares":19449699,"swaps":19449699,"time":46},{"name":"select","compares":38715600,"swaps":17598,"time":102},{"name":"heap","compares":224558,"swaps":241832,"time":1},{"name":"quick","compares":198375,"swaps":70816,"time":1},{"name":"mquick","compares":164815,"swaps":52898,"time":1}]},{"n":8900,"k":1,"sorts":[{"name":"insert","compares":19988926,"swaps":19988926,"time":42},{"name":"select","compares":39600550,"swaps":17798,"time":86},{"name":"heap","compares":227318,"swaps":244708,"time":2},{"name":"quick","compares":205932,"swaps":71076,"time":1},{"name":"mquick","compares":164177,"swaps":53768,"time":0}]},{"n":9000,"k":1,"sorts":[{"name":"insert","compares":20284980,"swaps":20284980,"time":41},{"name":"select","compares":40495500,"swaps":17998,"time":96},{"name":"heap","compares":230169,"swaps":247612,"time":1},{"name":"quick","compares":213248,"swaps":71538,"time":1},{"name":"mquick","compares":170188,"swaps":54638,"time":1}]},{"n":9100,"k":1,"sorts":[{"name":"insert","compares":20710880,"swaps":20710880,"time":47},{"name":"select","compares":41400450,"swaps":18198,"time":93},{"name":"heap","compares":233132,"swaps":250890,"time":1},{"name":"quick","compares":224992,"swaps":71608,"time":1},{"name":"mquick","compares":164344,"swaps":54981,"time":1}]},{"n":9200,"k":1,"sorts":[{"name":"insert","compares":21062986,"swaps":21062986,"time":47},{"name":"select","compares":42315400,"swaps":18398,"time":100},{"name":"heap","compares":236530,"swaps":254952,"time":2},{"name":"quick","compares":214853,"swaps":73662,"time":1},{"name":"mquick","compares":166981,"swaps":56032,"time":1}]},{"n":9300,"k":1,"sorts":[{"name":"insert","compares":21539384,"swaps":21539384,"time":50},{"name":"select","compares":43240350,"swaps":18598,"time":101},{"name":"heap","compares":239026,"swaps":257186,"time":1},{"name":"quick","compares":214159,"swaps":74578,"time":1},{"name":"mquick","compares":174645,"swaps":56017,"time":1}]},{"n":9400,"k":1,"sorts":[{"name":"insert","compares":21995318,"swaps":21995318,"time":48},{"name":"select","compares":44175300,"swaps":18798,"time":104},{"name":"heap","compares":241949,"swaps":260484,"time":1},{"name":"quick","compares":226998,"swaps":74612,"time":1},{"name":"mquick","compares":181033,"swaps":55374,"time":0}]},{"n":9500,"k":1,"sorts":[{"name":"insert","compares":22687474,"swaps":22687474,"time":51},{"name":"select","compares":45120250,"swaps":18998,"time":102},{"name":"heap","compares":244795,"swaps":263468,"time":2},{"name":"quick","compares":231789,"swaps":76390,"time":1},{"name":"mquick","compares":182497,"swaps":56999,"time":1}]},{"n":9600,"k":1,"sorts":[{"name":"insert","compares":23185678,"swaps":23185678,"time":52},{"name":"select","compares":46075200,"swaps":19198,"time":179},{"name":"heap","compares":247503,"swaps":266282,"time":2},{"name":"quick","compares":220357,"swaps":78010,"time":1},{"name":"mquick","compares":177912,"swaps":57850,"time":1}]},{"n":9700,"k":1,"sorts":[{"name":"insert","compares":23779854,"swaps":23779854,"time":54},{"name":"select","compares":47040150,"swaps":19398,"time":112},{"name":"heap","compares":250455,"swaps":269278,"time":3},{"name":"quick","compares":229548,"swaps":78196,"time":1},{"name":"mquick","compares":177251,"swaps":58470,"time":0}]},{"n":9800,"k":1,"sorts":[{"name":"insert","compares":23865268,"swaps":23865268,"time":59},{"name":"select","compares":48015100,"swaps":19598,"time":115},{"name":"heap","compares":253512,"swaps":272564,"time":2},{"name":"quick","compares":248234,"swaps":78322,"time":2},{"name":"mquick","compares":175884,"swaps":59516,"time":1}]},{"n":9900,"k":1,"sorts":[{"name":"insert","compares":24603612,"swaps":24603612,"time":54},{"name":"select","compares":49000050,"swaps":19798,"time":144},{"name":"heap","compares":256091,"swaps":275408,"time":3},{"name":"quick","compares":234381,"swaps":79744,"time":2},{"name":"mquick","compares":179661,"swaps":59360,"time":1}]},{"n":10000,"k":1,"sorts":[{"name":"insert","compares":24880319,"swaps":24880319,"time":56},{"name":"select","compares":49995000,"swaps":19998,"time":113},{"name":"heap","compares":259418,"swaps":279200,"time":1},{"name":"quick","compares":231583,"swaps":81372,"time":1},{"name":"mquick","compares":187145,"swaps":59208,"time":1}]}]}
+{
+  "all": [
+    {
+      "n": 100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2511,
+          "swaps": 2511,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 4950,
+          "swaps": 198,
+          "time": 0
+        },
+        {
+          "name": "heap",
+          "compares": 1268,
+          "swaps": 1466,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 941,
+          "swaps": 440,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 880,
+          "swaps": 522,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 10433,
+          "swaps": 10433,
+          "time": 0
+        },
+        {
+          "name": "select",
+          "compares": 19900,
+          "swaps": 398,
+          "time": 1
+        },
+        {
+          "name": "heap",
+          "compares": 2923,
+          "swaps": 3318,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 2156,
+          "swaps": 1036,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 2121,
+          "swaps": 1028,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 22445,
+          "swaps": 22445,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 44850,
+          "swaps": 598,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 4737,
+          "swaps": 5344,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 3968,
+          "swaps": 1568,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 3277,
+          "swaps": 1618,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 38614,
+          "swaps": 38614,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 79800,
+          "swaps": 798,
+          "time": 1
+        },
+        {
+          "name": "heap",
+          "compares": 6677,
+          "swaps": 7502,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 5498,
+          "swaps": 2162,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 4901,
+          "swaps": 2235,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 62156,
+          "swaps": 62156,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 124750,
+          "swaps": 998,
+          "time": 1
+        },
+        {
+          "name": "heap",
+          "compares": 8626,
+          "swaps": 9614,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 6778,
+          "swaps": 2822,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 6386,
+          "swaps": 2948,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 93363,
+          "swaps": 93363,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 179700,
+          "swaps": 1198,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 10591,
+          "swaps": 11694,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 8395,
+          "swaps": 3488,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 7562,
+          "swaps": 3521,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 118762,
+          "swaps": 118762,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 244650,
+          "swaps": 1398,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 12832,
+          "swaps": 14246,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 10199,
+          "swaps": 4120,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 9811,
+          "swaps": 4147,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 158114,
+          "swaps": 158114,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 319600,
+          "swaps": 1598,
+          "time": 1
+        },
+        {
+          "name": "heap",
+          "compares": 14957,
+          "swaps": 16552,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 12025,
+          "swaps": 4712,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 10915,
+          "swaps": 4856,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 205713,
+          "swaps": 205713,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 404550,
+          "swaps": 1798,
+          "time": 6
+        },
+        {
+          "name": "heap",
+          "compares": 17059,
+          "swaps": 18836,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 13410,
+          "swaps": 5518,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 13406,
+          "swaps": 5461,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 1000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 252700,
+          "swaps": 252700,
+          "time": 0
+        },
+        {
+          "name": "select",
+          "compares": 499500,
+          "swaps": 1998,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 19138,
+          "swaps": 21018,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 15399,
+          "swaps": 6070,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 14127,
+          "swaps": 6353,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 301717,
+          "swaps": 301717,
+          "time": 0
+        },
+        {
+          "name": "select",
+          "compares": 604450,
+          "swaps": 2198,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 21431,
+          "swaps": 23582,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 18258,
+          "swaps": 6758,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 16353,
+          "swaps": 6910,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 364816,
+          "swaps": 364816,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 719400,
+          "swaps": 2398,
+          "time": 6
+        },
+        {
+          "name": "heap",
+          "compares": 23793,
+          "swaps": 26148,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 20309,
+          "swaps": 7458,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 17526,
+          "swaps": 7396,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 419596,
+          "swaps": 419596,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 844350,
+          "swaps": 2598,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 26104,
+          "swaps": 28716,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 22217,
+          "swaps": 8168,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 19608,
+          "swaps": 8125,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 493100,
+          "swaps": 493100,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 979300,
+          "swaps": 2798,
+          "time": 4
+        },
+        {
+          "name": "heap",
+          "compares": 28328,
+          "swaps": 31028,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 23225,
+          "swaps": 9052,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 21550,
+          "swaps": 9148,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 560019,
+          "swaps": 560019,
+          "time": 3
+        },
+        {
+          "name": "select",
+          "compares": 1124250,
+          "swaps": 2998,
+          "time": 4
+        },
+        {
+          "name": "heap",
+          "compares": 30666,
+          "swaps": 33594,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 24112,
+          "swaps": 9684,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 23047,
+          "swaps": 9376,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 648933,
+          "swaps": 648933,
+          "time": 3
+        },
+        {
+          "name": "select",
+          "compares": 1279200,
+          "swaps": 3198,
+          "time": 2
+        },
+        {
+          "name": "heap",
+          "compares": 32993,
+          "swaps": 36092,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 26348,
+          "swaps": 10414,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 24939,
+          "swaps": 10134,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 731750,
+          "swaps": 731750,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 1444150,
+          "swaps": 3398,
+          "time": 3
+        },
+        {
+          "name": "heap",
+          "compares": 35290,
+          "swaps": 38608,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 29114,
+          "swaps": 11172,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 27550,
+          "swaps": 10637,
+          "time": 2
+        }
+      ]
+    },
+    {
+      "n": 1800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 812209,
+          "swaps": 812209,
+          "time": 1
+        },
+        {
+          "name": "select",
+          "compares": 1619100,
+          "swaps": 3598,
+          "time": 4
+        },
+        {
+          "name": "heap",
+          "compares": 37729,
+          "swaps": 41282,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 33052,
+          "swaps": 11646,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 28012,
+          "swaps": 11484,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 1900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 925134,
+          "swaps": 925134,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 1804050,
+          "swaps": 3798,
+          "time": 4
+        },
+        {
+          "name": "heap",
+          "compares": 40111,
+          "swaps": 43780,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 34008,
+          "swaps": 12514,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 30112,
+          "swaps": 12372,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 989487,
+          "swaps": 989487,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 1999000,
+          "swaps": 3998,
+          "time": 5
+        },
+        {
+          "name": "heap",
+          "compares": 42498,
+          "swaps": 46388,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 35863,
+          "swaps": 13372,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 31229,
+          "swaps": 13059,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1104049,
+          "swaps": 1104049,
+          "time": 3
+        },
+        {
+          "name": "select",
+          "compares": 2203950,
+          "swaps": 4198,
+          "time": 5
+        },
+        {
+          "name": "heap",
+          "compares": 44903,
+          "swaps": 49046,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 37712,
+          "swaps": 14052,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 34308,
+          "swaps": 13532,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1177521,
+          "swaps": 1177521,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 2418900,
+          "swaps": 4398,
+          "time": 6
+        },
+        {
+          "name": "heap",
+          "compares": 47411,
+          "swaps": 51712,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 43526,
+          "swaps": 14578,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 35777,
+          "swaps": 14224,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1302838,
+          "swaps": 1302838,
+          "time": 2
+        },
+        {
+          "name": "select",
+          "compares": 2643850,
+          "swaps": 4598,
+          "time": 6
+        },
+        {
+          "name": "heap",
+          "compares": 49876,
+          "swaps": 54470,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 42567,
+          "swaps": 15694,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 36534,
+          "swaps": 14878,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1423128,
+          "swaps": 1423128,
+          "time": 3
+        },
+        {
+          "name": "select",
+          "compares": 2878800,
+          "swaps": 4798,
+          "time": 7
+        },
+        {
+          "name": "heap",
+          "compares": 52378,
+          "swaps": 57120,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 43787,
+          "swaps": 16218,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 39171,
+          "swaps": 15528,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 2500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1594659,
+          "swaps": 1594659,
+          "time": 3
+        },
+        {
+          "name": "select",
+          "compares": 3123750,
+          "swaps": 4998,
+          "time": 7
+        },
+        {
+          "name": "heap",
+          "compares": 54694,
+          "swaps": 59612,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 44720,
+          "swaps": 17172,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 41048,
+          "swaps": 16240,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1683731,
+          "swaps": 1683731,
+          "time": 4
+        },
+        {
+          "name": "select",
+          "compares": 3378700,
+          "swaps": 5198,
+          "time": 10
+        },
+        {
+          "name": "heap",
+          "compares": 57308,
+          "swaps": 62446,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 49084,
+          "swaps": 18158,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 43906,
+          "swaps": 16526,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1826542,
+          "swaps": 1826542,
+          "time": 8
+        },
+        {
+          "name": "select",
+          "compares": 3643650,
+          "swaps": 5398,
+          "time": 10
+        },
+        {
+          "name": "heap",
+          "compares": 59898,
+          "swaps": 65170,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 52938,
+          "swaps": 18624,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 45166,
+          "swaps": 17480,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 1939916,
+          "swaps": 1939916,
+          "time": 5
+        },
+        {
+          "name": "select",
+          "compares": 3918600,
+          "swaps": 5598,
+          "time": 10
+        },
+        {
+          "name": "heap",
+          "compares": 62492,
+          "swaps": 68060,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 51480,
+          "swaps": 19734,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 47494,
+          "swaps": 17814,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 2900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2098059,
+          "swaps": 2098059,
+          "time": 10
+        },
+        {
+          "name": "select",
+          "compares": 4203550,
+          "swaps": 5798,
+          "time": 13
+        },
+        {
+          "name": "heap",
+          "compares": 64836,
+          "swaps": 70530,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 56207,
+          "swaps": 20376,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 47575,
+          "swaps": 19014,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 3000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2263539,
+          "swaps": 2263539,
+          "time": 6
+        },
+        {
+          "name": "select",
+          "compares": 4498500,
+          "swaps": 5998,
+          "time": 21
+        },
+        {
+          "name": "heap",
+          "compares": 67459,
+          "swaps": 73438,
+          "time": 4
+        },
+        {
+          "name": "quick",
+          "compares": 57582,
+          "swaps": 21024,
+          "time": 2
+        },
+        {
+          "name": "mquick",
+          "compares": 51604,
+          "swaps": 19337,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 3100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2390000,
+          "swaps": 2390000,
+          "time": 5
+        },
+        {
+          "name": "select",
+          "compares": 4803450,
+          "swaps": 6198,
+          "time": 12
+        },
+        {
+          "name": "heap",
+          "compares": 70082,
+          "swaps": 76328,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 60645,
+          "swaps": 21912,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 53989,
+          "swaps": 20179,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2562852,
+          "swaps": 2562852,
+          "time": 7
+        },
+        {
+          "name": "select",
+          "compares": 5118400,
+          "swaps": 6398,
+          "time": 18
+        },
+        {
+          "name": "heap",
+          "compares": 72415,
+          "swaps": 78692,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 61027,
+          "swaps": 22626,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 55625,
+          "swaps": 20593,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 3300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2702052,
+          "swaps": 2702052,
+          "time": 6
+        },
+        {
+          "name": "select",
+          "compares": 5443350,
+          "swaps": 6598,
+          "time": 13
+        },
+        {
+          "name": "heap",
+          "compares": 75030,
+          "swaps": 81478,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 61502,
+          "swaps": 23754,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 58411,
+          "swaps": 21065,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 3400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 2844909,
+          "swaps": 2844909,
+          "time": 6
+        },
+        {
+          "name": "select",
+          "compares": 5778300,
+          "swaps": 6798,
+          "time": 15
+        },
+        {
+          "name": "heap",
+          "compares": 77714,
+          "swaps": 84536,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 66021,
+          "swaps": 24148,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 55782,
+          "swaps": 22210,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 3076478,
+          "swaps": 3076478,
+          "time": 7
+        },
+        {
+          "name": "select",
+          "compares": 6123250,
+          "swaps": 6998,
+          "time": 15
+        },
+        {
+          "name": "heap",
+          "compares": 80095,
+          "swaps": 86884,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 66274,
+          "swaps": 25074,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 60802,
+          "swaps": 22252,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 3289892,
+          "swaps": 3289892,
+          "time": 7
+        },
+        {
+          "name": "select",
+          "compares": 6478200,
+          "swaps": 7198,
+          "time": 15
+        },
+        {
+          "name": "heap",
+          "compares": 82734,
+          "swaps": 89796,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 70997,
+          "swaps": 25974,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 61446,
+          "swaps": 23474,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 3351864,
+          "swaps": 3351864,
+          "time": 7
+        },
+        {
+          "name": "select",
+          "compares": 6843150,
+          "swaps": 7398,
+          "time": 16
+        },
+        {
+          "name": "heap",
+          "compares": 85241,
+          "swaps": 92518,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 69728,
+          "swaps": 26990,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 63983,
+          "swaps": 23624,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 3547776,
+          "swaps": 3547776,
+          "time": 8
+        },
+        {
+          "name": "select",
+          "compares": 7218100,
+          "swaps": 7598,
+          "time": 16
+        },
+        {
+          "name": "heap",
+          "compares": 87823,
+          "swaps": 95320,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 78555,
+          "swaps": 27242,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 68285,
+          "swaps": 24247,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 3900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 3821284,
+          "swaps": 3821284,
+          "time": 8
+        },
+        {
+          "name": "select",
+          "compares": 7603050,
+          "swaps": 7798,
+          "time": 18
+        },
+        {
+          "name": "heap",
+          "compares": 90333,
+          "swaps": 97874,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 77338,
+          "swaps": 28398,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 67520,
+          "swaps": 25334,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 4000123,
+          "swaps": 4000123,
+          "time": 8
+        },
+        {
+          "name": "select",
+          "compares": 7998000,
+          "swaps": 7998,
+          "time": 18
+        },
+        {
+          "name": "heap",
+          "compares": 93015,
+          "swaps": 100930,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 80814,
+          "swaps": 29178,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 70168,
+          "swaps": 25783,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 4226846,
+          "swaps": 4226846,
+          "time": 9
+        },
+        {
+          "name": "select",
+          "compares": 8402950,
+          "swaps": 8198,
+          "time": 21
+        },
+        {
+          "name": "heap",
+          "compares": 95525,
+          "swaps": 103550,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 87609,
+          "swaps": 29744,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 70504,
+          "swaps": 26294,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 4200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 4412159,
+          "swaps": 4412159,
+          "time": 10
+        },
+        {
+          "name": "select",
+          "compares": 8817900,
+          "swaps": 8398,
+          "time": 21
+        },
+        {
+          "name": "heap",
+          "compares": 98431,
+          "swaps": 106840,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 87003,
+          "swaps": 30746,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 74174,
+          "swaps": 27248,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 4300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 4482316,
+          "swaps": 4482316,
+          "time": 12
+        },
+        {
+          "name": "select",
+          "compares": 9242850,
+          "swaps": 8598,
+          "time": 25
+        },
+        {
+          "name": "heap",
+          "compares": 101018,
+          "swaps": 109658,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 85789,
+          "swaps": 31866,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 75532,
+          "swaps": 27656,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 4951282,
+          "swaps": 4951282,
+          "time": 14
+        },
+        {
+          "name": "select",
+          "compares": 9677800,
+          "swaps": 8798,
+          "time": 32
+        },
+        {
+          "name": "heap",
+          "compares": 103449,
+          "swaps": 112058,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 92856,
+          "swaps": 32410,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 76621,
+          "swaps": 28542,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 4500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 5093026,
+          "swaps": 5093026,
+          "time": 17
+        },
+        {
+          "name": "select",
+          "compares": 10122750,
+          "swaps": 8998,
+          "time": 35
+        },
+        {
+          "name": "heap",
+          "compares": 106198,
+          "swaps": 115040,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 94387,
+          "swaps": 33094,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 76434,
+          "swaps": 29169,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 5349349,
+          "swaps": 5349349,
+          "time": 12
+        },
+        {
+          "name": "select",
+          "compares": 10577700,
+          "swaps": 9198,
+          "time": 33
+        },
+        {
+          "name": "heap",
+          "compares": 108862,
+          "swaps": 117800,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 97166,
+          "swaps": 34436,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 84175,
+          "swaps": 30057,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 5374868,
+          "swaps": 5374868,
+          "time": 15
+        },
+        {
+          "name": "select",
+          "compares": 11042650,
+          "swaps": 9398,
+          "time": 36
+        },
+        {
+          "name": "heap",
+          "compares": 111741,
+          "swaps": 121120,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 93779,
+          "swaps": 35066,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 84872,
+          "swaps": 29978,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 4800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 5791197,
+          "swaps": 5791197,
+          "time": 13
+        },
+        {
+          "name": "select",
+          "compares": 11517600,
+          "swaps": 9598,
+          "time": 27
+        },
+        {
+          "name": "heap",
+          "compares": 114204,
+          "swaps": 123606,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 102180,
+          "swaps": 35938,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 87216,
+          "swaps": 30534,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 4900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 6047137,
+          "swaps": 6047137,
+          "time": 14
+        },
+        {
+          "name": "select",
+          "compares": 12002550,
+          "swaps": 9798,
+          "time": 31
+        },
+        {
+          "name": "heap",
+          "compares": 116853,
+          "swaps": 126352,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 100980,
+          "swaps": 36766,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 85506,
+          "swaps": 31258,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 5000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 6244164,
+          "swaps": 6244164,
+          "time": 16
+        },
+        {
+          "name": "select",
+          "compares": 12497500,
+          "swaps": 9998,
+          "time": 37
+        },
+        {
+          "name": "heap",
+          "compares": 119551,
+          "swaps": 129310,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 104046,
+          "swaps": 37588,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 87748,
+          "swaps": 31888,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 5100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 6520341,
+          "swaps": 6520341,
+          "time": 13
+        },
+        {
+          "name": "select",
+          "compares": 13002450,
+          "swaps": 10198,
+          "time": 30
+        },
+        {
+          "name": "heap",
+          "compares": 122246,
+          "swaps": 132110,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 102831,
+          "swaps": 38754,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 93116,
+          "swaps": 32391,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 6807116,
+          "swaps": 6807116,
+          "time": 16
+        },
+        {
+          "name": "select",
+          "compares": 13517400,
+          "swaps": 10398,
+          "time": 37
+        },
+        {
+          "name": "heap",
+          "compares": 125030,
+          "swaps": 135230,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 103032,
+          "swaps": 39848,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 90158,
+          "swaps": 33839,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 6971896,
+          "swaps": 6971896,
+          "time": 14
+        },
+        {
+          "name": "select",
+          "compares": 14042350,
+          "swaps": 10598,
+          "time": 31
+        },
+        {
+          "name": "heap",
+          "compares": 127684,
+          "swaps": 138128,
+          "time": 0
+        },
+        {
+          "name": "quick",
+          "compares": 109284,
+          "swaps": 40334,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 97847,
+          "swaps": 33799,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 7318016,
+          "swaps": 7318016,
+          "time": 14
+        },
+        {
+          "name": "select",
+          "compares": 14577300,
+          "swaps": 10798,
+          "time": 33
+        },
+        {
+          "name": "heap",
+          "compares": 130450,
+          "swaps": 140996,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 122100,
+          "swaps": 40458,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 97295,
+          "swaps": 34317,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 7441335,
+          "swaps": 7441335,
+          "time": 16
+        },
+        {
+          "name": "select",
+          "compares": 15122250,
+          "swaps": 10998,
+          "time": 33
+        },
+        {
+          "name": "heap",
+          "compares": 133342,
+          "swaps": 144330,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 113272,
+          "swaps": 42214,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 96729,
+          "swaps": 35345,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 7813825,
+          "swaps": 7813825,
+          "time": 16
+        },
+        {
+          "name": "select",
+          "compares": 15677200,
+          "swaps": 11198,
+          "time": 35
+        },
+        {
+          "name": "heap",
+          "compares": 135956,
+          "swaps": 147076,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 118200,
+          "swaps": 42900,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 99175,
+          "swaps": 35645,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 5700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 8086040,
+          "swaps": 8086040,
+          "time": 20
+        },
+        {
+          "name": "select",
+          "compares": 16242150,
+          "swaps": 11398,
+          "time": 38
+        },
+        {
+          "name": "heap",
+          "compares": 138723,
+          "swaps": 150040,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 121225,
+          "swaps": 43672,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 101398,
+          "swaps": 36517,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 8378305,
+          "swaps": 8378305,
+          "time": 18
+        },
+        {
+          "name": "select",
+          "compares": 16817100,
+          "swaps": 11598,
+          "time": 38
+        },
+        {
+          "name": "heap",
+          "compares": 141278,
+          "swaps": 152602,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 126124,
+          "swaps": 43878,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 101792,
+          "swaps": 37105,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 5900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 8714149,
+          "swaps": 8714149,
+          "time": 20
+        },
+        {
+          "name": "select",
+          "compares": 17402050,
+          "swaps": 11798,
+          "time": 41
+        },
+        {
+          "name": "heap",
+          "compares": 143861,
+          "swaps": 155236,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 130574,
+          "swaps": 44830,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 107574,
+          "swaps": 37208,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 6000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 8927961,
+          "swaps": 8927961,
+          "time": 20
+        },
+        {
+          "name": "select",
+          "compares": 17997000,
+          "swaps": 11998,
+          "time": 38
+        },
+        {
+          "name": "heap",
+          "compares": 147076,
+          "swaps": 159092,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 130638,
+          "swaps": 46226,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 108253,
+          "swaps": 38344,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 6100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 9475036,
+          "swaps": 9475036,
+          "time": 19
+        },
+        {
+          "name": "select",
+          "compares": 18601950,
+          "swaps": 12198,
+          "time": 41
+        },
+        {
+          "name": "heap",
+          "compares": 149307,
+          "swaps": 161010,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 130048,
+          "swaps": 47292,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 108558,
+          "swaps": 38988,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 6200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 9670514,
+          "swaps": 9670514,
+          "time": 21
+        },
+        {
+          "name": "select",
+          "compares": 19216900,
+          "swaps": 12398,
+          "time": 43
+        },
+        {
+          "name": "heap",
+          "compares": 152252,
+          "swaps": 164430,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 131882,
+          "swaps": 48146,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 113293,
+          "swaps": 39044,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 6300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 9978563,
+          "swaps": 9978563,
+          "time": 21
+        },
+        {
+          "name": "select",
+          "compares": 19841850,
+          "swaps": 12598,
+          "time": 45
+        },
+        {
+          "name": "heap",
+          "compares": 155100,
+          "swaps": 167636,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 130198,
+          "swaps": 49222,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 111987,
+          "swaps": 40280,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 6400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 10173013,
+          "swaps": 10173013,
+          "time": 22
+        },
+        {
+          "name": "select",
+          "compares": 20476800,
+          "swaps": 12798,
+          "time": 48
+        },
+        {
+          "name": "heap",
+          "compares": 157757,
+          "swaps": 170316,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 144967,
+          "swaps": 48756,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 111577,
+          "swaps": 40952,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 6500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 10457220,
+          "swaps": 10457220,
+          "time": 23
+        },
+        {
+          "name": "select",
+          "compares": 21121750,
+          "swaps": 12998,
+          "time": 48
+        },
+        {
+          "name": "heap",
+          "compares": 160685,
+          "swaps": 173458,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 142736,
+          "swaps": 50286,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 122923,
+          "swaps": 39956,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 6600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 10995662,
+          "swaps": 10995662,
+          "time": 24
+        },
+        {
+          "name": "select",
+          "compares": 21776700,
+          "swaps": 13198,
+          "time": 49
+        },
+        {
+          "name": "heap",
+          "compares": 163169,
+          "swaps": 176088,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 141893,
+          "swaps": 51770,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 125628,
+          "swaps": 41202,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 6700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 11318476,
+          "swaps": 11318476,
+          "time": 24
+        },
+        {
+          "name": "select",
+          "compares": 22441650,
+          "swaps": 13398,
+          "time": 50
+        },
+        {
+          "name": "heap",
+          "compares": 166068,
+          "swaps": 179352,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 144138,
+          "swaps": 52316,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 118386,
+          "swaps": 42170,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 6800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 11486704,
+          "swaps": 11486704,
+          "time": 24
+        },
+        {
+          "name": "select",
+          "compares": 23116600,
+          "swaps": 13598,
+          "time": 50
+        },
+        {
+          "name": "heap",
+          "compares": 168830,
+          "swaps": 182350,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 152254,
+          "swaps": 52756,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 123682,
+          "swaps": 41966,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 6900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 11982983,
+          "swaps": 11982983,
+          "time": 25
+        },
+        {
+          "name": "select",
+          "compares": 23801550,
+          "swaps": 13798,
+          "time": 52
+        },
+        {
+          "name": "heap",
+          "compares": 171575,
+          "swaps": 185188,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 155217,
+          "swaps": 53676,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 122555,
+          "swaps": 43514,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 7000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 12240319,
+          "swaps": 12240319,
+          "time": 26
+        },
+        {
+          "name": "select",
+          "compares": 24496500,
+          "swaps": 13998,
+          "time": 53
+        },
+        {
+          "name": "heap",
+          "compares": 174422,
+          "swaps": 188370,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 150917,
+          "swaps": 55410,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 125583,
+          "swaps": 43858,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 7100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 12848160,
+          "swaps": 12848160,
+          "time": 30
+        },
+        {
+          "name": "select",
+          "compares": 25201450,
+          "swaps": 14198,
+          "time": 58
+        },
+        {
+          "name": "heap",
+          "compares": 176723,
+          "swaps": 190294,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 160461,
+          "swaps": 55662,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 136154,
+          "swaps": 43782,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 12816929,
+          "swaps": 12816929,
+          "time": 29
+        },
+        {
+          "name": "select",
+          "compares": 25916400,
+          "swaps": 14398,
+          "time": 59
+        },
+        {
+          "name": "heap",
+          "compares": 180055,
+          "swaps": 194404,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 167554,
+          "swaps": 55328,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 134133,
+          "swaps": 44206,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 13438307,
+          "swaps": 13438307,
+          "time": 29
+        },
+        {
+          "name": "select",
+          "compares": 26641350,
+          "swaps": 14598,
+          "time": 59
+        },
+        {
+          "name": "heap",
+          "compares": 182496,
+          "swaps": 196764,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 165159,
+          "swaps": 56934,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 134939,
+          "swaps": 45313,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 7400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 13699334,
+          "swaps": 13699334,
+          "time": 29
+        },
+        {
+          "name": "select",
+          "compares": 27376300,
+          "swaps": 14798,
+          "time": 62
+        },
+        {
+          "name": "heap",
+          "compares": 185163,
+          "swaps": 199620,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 163913,
+          "swaps": 58100,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 131575,
+          "swaps": 46185,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 13903308,
+          "swaps": 13903308,
+          "time": 32
+        },
+        {
+          "name": "select",
+          "compares": 28121250,
+          "swaps": 14998,
+          "time": 66
+        },
+        {
+          "name": "heap",
+          "compares": 188269,
+          "swaps": 203140,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 169838,
+          "swaps": 58794,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 134064,
+          "swaps": 47088,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 14434855,
+          "swaps": 14434855,
+          "time": 31
+        },
+        {
+          "name": "select",
+          "compares": 28876200,
+          "swaps": 15198,
+          "time": 66
+        },
+        {
+          "name": "heap",
+          "compares": 191031,
+          "swaps": 206202,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 174480,
+          "swaps": 59482,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 135616,
+          "swaps": 47917,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 14703713,
+          "swaps": 14703713,
+          "time": 31
+        },
+        {
+          "name": "select",
+          "compares": 29641150,
+          "swaps": 15398,
+          "time": 68
+        },
+        {
+          "name": "heap",
+          "compares": 193850,
+          "swaps": 209180,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 173187,
+          "swaps": 60684,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 144772,
+          "swaps": 47497,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 7800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 15355463,
+          "swaps": 15355463,
+          "time": 34
+        },
+        {
+          "name": "select",
+          "compares": 30416100,
+          "swaps": 15598,
+          "time": 68
+        },
+        {
+          "name": "heap",
+          "compares": 196428,
+          "swaps": 211692,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 182842,
+          "swaps": 61060,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 146601,
+          "swaps": 47808,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 7900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 15659570,
+          "swaps": 15659570,
+          "time": 34
+        },
+        {
+          "name": "select",
+          "compares": 31201050,
+          "swaps": 15798,
+          "time": 69
+        },
+        {
+          "name": "heap",
+          "compares": 199190,
+          "swaps": 214776,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 181159,
+          "swaps": 63028,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 143093,
+          "swaps": 48918,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 15977360,
+          "swaps": 15977360,
+          "time": 34
+        },
+        {
+          "name": "select",
+          "compares": 31996000,
+          "swaps": 15998,
+          "time": 72
+        },
+        {
+          "name": "heap",
+          "compares": 201942,
+          "swaps": 217682,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 177665,
+          "swaps": 63774,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 147648,
+          "swaps": 49429,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 8100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 16466541,
+          "swaps": 16466541,
+          "time": 35
+        },
+        {
+          "name": "select",
+          "compares": 32800950,
+          "swaps": 16198,
+          "time": 73
+        },
+        {
+          "name": "heap",
+          "compares": 204595,
+          "swaps": 220318,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 176566,
+          "swaps": 65124,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 140856,
+          "swaps": 50510,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 16797781,
+          "swaps": 16797781,
+          "time": 39
+        },
+        {
+          "name": "select",
+          "compares": 33615900,
+          "swaps": 16398,
+          "time": 75
+        },
+        {
+          "name": "heap",
+          "compares": 207654,
+          "swaps": 223994,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 190451,
+          "swaps": 65202,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 152066,
+          "swaps": 50493,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 8300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 17237015,
+          "swaps": 17237015,
+          "time": 36
+        },
+        {
+          "name": "select",
+          "compares": 34440850,
+          "swaps": 16598,
+          "time": 74
+        },
+        {
+          "name": "heap",
+          "compares": 210198,
+          "swaps": 226506,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 185531,
+          "swaps": 66236,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 151011,
+          "swaps": 51160,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 17600992,
+          "swaps": 17600992,
+          "time": 38
+        },
+        {
+          "name": "select",
+          "compares": 35275800,
+          "swaps": 16798,
+          "time": 76
+        },
+        {
+          "name": "heap",
+          "compares": 213306,
+          "swaps": 229892,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 188966,
+          "swaps": 67146,
+          "time": 0
+        },
+        {
+          "name": "mquick",
+          "compares": 152034,
+          "swaps": 51386,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 18002578,
+          "swaps": 18002578,
+          "time": 38
+        },
+        {
+          "name": "select",
+          "compares": 36120750,
+          "swaps": 16998,
+          "time": 79
+        },
+        {
+          "name": "heap",
+          "compares": 216008,
+          "swaps": 232636,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 191402,
+          "swaps": 68346,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 165091,
+          "swaps": 51627,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 18496777,
+          "swaps": 18496777,
+          "time": 39
+        },
+        {
+          "name": "select",
+          "compares": 36975700,
+          "swaps": 17198,
+          "time": 79
+        },
+        {
+          "name": "heap",
+          "compares": 218912,
+          "swaps": 235654,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 193195,
+          "swaps": 69354,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 155243,
+          "swaps": 52612,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 18927333,
+          "swaps": 18927333,
+          "time": 42
+        },
+        {
+          "name": "select",
+          "compares": 37840650,
+          "swaps": 17398,
+          "time": 88
+        },
+        {
+          "name": "heap",
+          "compares": 221701,
+          "swaps": 238830,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 197038,
+          "swaps": 69886,
+          "time": 2
+        },
+        {
+          "name": "mquick",
+          "compares": 162033,
+          "swaps": 52358,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 19449699,
+          "swaps": 19449699,
+          "time": 46
+        },
+        {
+          "name": "select",
+          "compares": 38715600,
+          "swaps": 17598,
+          "time": 102
+        },
+        {
+          "name": "heap",
+          "compares": 224558,
+          "swaps": 241832,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 198375,
+          "swaps": 70816,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 164815,
+          "swaps": 52898,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 8900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 19988926,
+          "swaps": 19988926,
+          "time": 42
+        },
+        {
+          "name": "select",
+          "compares": 39600550,
+          "swaps": 17798,
+          "time": 86
+        },
+        {
+          "name": "heap",
+          "compares": 227318,
+          "swaps": 244708,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 205932,
+          "swaps": 71076,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 164177,
+          "swaps": 53768,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 9000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 20284980,
+          "swaps": 20284980,
+          "time": 41
+        },
+        {
+          "name": "select",
+          "compares": 40495500,
+          "swaps": 17998,
+          "time": 96
+        },
+        {
+          "name": "heap",
+          "compares": 230169,
+          "swaps": 247612,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 213248,
+          "swaps": 71538,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 170188,
+          "swaps": 54638,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9100,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 20710880,
+          "swaps": 20710880,
+          "time": 47
+        },
+        {
+          "name": "select",
+          "compares": 41400450,
+          "swaps": 18198,
+          "time": 93
+        },
+        {
+          "name": "heap",
+          "compares": 233132,
+          "swaps": 250890,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 224992,
+          "swaps": 71608,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 164344,
+          "swaps": 54981,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9200,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 21062986,
+          "swaps": 21062986,
+          "time": 47
+        },
+        {
+          "name": "select",
+          "compares": 42315400,
+          "swaps": 18398,
+          "time": 100
+        },
+        {
+          "name": "heap",
+          "compares": 236530,
+          "swaps": 254952,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 214853,
+          "swaps": 73662,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 166981,
+          "swaps": 56032,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9300,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 21539384,
+          "swaps": 21539384,
+          "time": 50
+        },
+        {
+          "name": "select",
+          "compares": 43240350,
+          "swaps": 18598,
+          "time": 101
+        },
+        {
+          "name": "heap",
+          "compares": 239026,
+          "swaps": 257186,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 214159,
+          "swaps": 74578,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 174645,
+          "swaps": 56017,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9400,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 21995318,
+          "swaps": 21995318,
+          "time": 48
+        },
+        {
+          "name": "select",
+          "compares": 44175300,
+          "swaps": 18798,
+          "time": 104
+        },
+        {
+          "name": "heap",
+          "compares": 241949,
+          "swaps": 260484,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 226998,
+          "swaps": 74612,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 181033,
+          "swaps": 55374,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 9500,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 22687474,
+          "swaps": 22687474,
+          "time": 51
+        },
+        {
+          "name": "select",
+          "compares": 45120250,
+          "swaps": 18998,
+          "time": 102
+        },
+        {
+          "name": "heap",
+          "compares": 244795,
+          "swaps": 263468,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 231789,
+          "swaps": 76390,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 182497,
+          "swaps": 56999,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9600,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 23185678,
+          "swaps": 23185678,
+          "time": 52
+        },
+        {
+          "name": "select",
+          "compares": 46075200,
+          "swaps": 19198,
+          "time": 179
+        },
+        {
+          "name": "heap",
+          "compares": 247503,
+          "swaps": 266282,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 220357,
+          "swaps": 78010,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 177912,
+          "swaps": 57850,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9700,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 23779854,
+          "swaps": 23779854,
+          "time": 54
+        },
+        {
+          "name": "select",
+          "compares": 47040150,
+          "swaps": 19398,
+          "time": 112
+        },
+        {
+          "name": "heap",
+          "compares": 250455,
+          "swaps": 269278,
+          "time": 3
+        },
+        {
+          "name": "quick",
+          "compares": 229548,
+          "swaps": 78196,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 177251,
+          "swaps": 58470,
+          "time": 0
+        }
+      ]
+    },
+    {
+      "n": 9800,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 23865268,
+          "swaps": 23865268,
+          "time": 59
+        },
+        {
+          "name": "select",
+          "compares": 48015100,
+          "swaps": 19598,
+          "time": 115
+        },
+        {
+          "name": "heap",
+          "compares": 253512,
+          "swaps": 272564,
+          "time": 2
+        },
+        {
+          "name": "quick",
+          "compares": 248234,
+          "swaps": 78322,
+          "time": 2
+        },
+        {
+          "name": "mquick",
+          "compares": 175884,
+          "swaps": 59516,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 9900,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 24603612,
+          "swaps": 24603612,
+          "time": 54
+        },
+        {
+          "name": "select",
+          "compares": 49000050,
+          "swaps": 19798,
+          "time": 144
+        },
+        {
+          "name": "heap",
+          "compares": 256091,
+          "swaps": 275408,
+          "time": 3
+        },
+        {
+          "name": "quick",
+          "compares": 234381,
+          "swaps": 79744,
+          "time": 2
+        },
+        {
+          "name": "mquick",
+          "compares": 179661,
+          "swaps": 59360,
+          "time": 1
+        }
+      ]
+    },
+    {
+      "n": 10000,
+      "k": 1,
+      "sorts": [
+        {
+          "name": "insert",
+          "compares": 24880319,
+          "swaps": 24880319,
+          "time": 56
+        },
+        {
+          "name": "select",
+          "compares": 49995000,
+          "swaps": 19998,
+          "time": 113
+        },
+        {
+          "name": "heap",
+          "compares": 259418,
+          "swaps": 279200,
+          "time": 1
+        },
+        {
+          "name": "quick",
+          "compares": 231583,
+          "swaps": 81372,
+          "time": 1
+        },
+        {
+          "name": "mquick",
+          "compares": 187145,
+          "swaps": 59208,
+          "time": 1
+        }
+      ]
+    }
+  ]
+}
