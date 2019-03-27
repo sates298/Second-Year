@@ -29,7 +29,7 @@ public class Statistics {
         mquick = new ModifiedQuickSort();
     }
 
-    public void run(int k, String fileName, BiFunction<Comparable, Comparable, Integer> func) throws IOException, InterruptedException {
+    public void run(int k, String fileName, BiFunction<Comparable, Comparable, Integer> func) throws IOException {
         Comparable[] root;
         int n;
         File file = new File(fileName);
@@ -38,9 +38,9 @@ public class Statistics {
         JsonStatistics jsonStat;
         all.all = new ArrayList<>();
 
-        for(int i=1; i<=100; i++){
-            n = i*100;
-            for(int j=0; j<k; j++){
+        for (int i = 1; i <= 100; i++) {
+            n = i * 100;
+            for (int j = 0; j < k; j++) {
                 System.err.println("k = " + j + " n = " + n);
 
                 root = generateArray(n);
@@ -49,7 +49,7 @@ public class Statistics {
 
                 jsonStat = new JsonStatistics();
                 jsonStat.n = n;
-                jsonStat.k = j+1;
+                jsonStat.k = j + 1;
                 saveToFile(n, file, mapper, jsonStat);
                 all.all.add(jsonStat);
 
@@ -59,50 +59,30 @@ public class Statistics {
         mapper.writeValue(file, all);
     }
 
-    private Comparable[] generateArray(int n){
+    private Comparable[] generateArray(int n) {
         Comparable[] array = new Comparable[n];
-        for(int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             array[i] = rand.nextInt(1000);
         }
         return array;
     }
 
-    private void sortAllTypes(Comparable[] array, BiFunction<Comparable, Comparable, Integer> func) throws InterruptedException {
-        //Thread insertionThread = new Thread(() -> {
-            Comparable[] toInsert = array.clone();
-            insert.sortArray(toInsert, func);
-        //});
-        //Thread selectThread = new Thread(() -> {
-            Comparable[] toSelect = array.clone();
-            select.sortArray(toSelect, func);
-        //});
-        //Thread heapThread = new Thread(() -> {
-            Comparable[] toHeap = array.clone();
-            heap.sortArray(toHeap, func);
-        //});
-        //Thread quickThread = new Thread(() -> {
-            Comparable[] toQuick = array.clone();
-            quick.sortArray(toQuick, func);
-        //});
-        //Thread mquickThread = new Thread(() -> {
-            Comparable[] toMquick = array.clone();
-            mquick.sortArray(toMquick, func);
-        //});
+    private void sortAllTypes(Comparable[] array, BiFunction<Comparable, Comparable, Integer> func) {
 
-        /*insertionThread.run();
-        selectThread.run();
-        heapThread.run();
-        quickThread.run();
-        mquickThread.run();
+        Comparable[] toInsert = array.clone();
+        insert.sortArray(toInsert, func);
+        Comparable[] toSelect = array.clone();
+        select.sortArray(toSelect, func);
+        Comparable[] toHeap = array.clone();
+        heap.sortArray(toHeap, func);
+        Comparable[] toQuick = array.clone();
+        quick.sortArray(toQuick, func);
+        Comparable[] toMquick = array.clone();
+        mquick.sortArray(toMquick, func);
 
-       insertionThread.join();
-       selectThread.join();
-       heapThread.join();
-       quickThread.join();
-       mquickThread.join();*/
     }
 
-    private void saveToFile(int n,File file, ObjectMapper mapper, JsonStatistics jsonStat) throws IOException {
+    private void saveToFile(int n, File file, ObjectMapper mapper, JsonStatistics jsonStat) throws IOException {
 
         jsonStat.sorts = new ArrayList<>();
         JsonSortStatistics jsonInsert = new JsonSortStatistics();
@@ -141,11 +121,10 @@ public class Statistics {
         jsonStat.sorts.add(jsonMquick);
 
 
-
     }
 
 
-    private void resetCounters(){
+    private void resetCounters() {
         insert.resetCounters();
         select.resetCounters();
         heap.resetCounters();
