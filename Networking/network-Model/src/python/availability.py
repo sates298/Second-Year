@@ -6,7 +6,17 @@ import copy
 
 
 def draw_graph(graph):
-    nx.draw(graph, with_labels=True, font_weight='bold')
+    pos = nx.spring_layout(graph)
+    nx.draw_networkx_nodes(graph, pos)
+
+    w_edg = nx.get_edge_attributes(graph, 'weight')
+
+    nx.draw_networkx_edges(graph, pos, alpha=0.5)
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels=w_edg, font_size=7)
+
+    nx.draw_networkx_labels(graph, pos)
+
+    plt.axis('off')
     plt.show()
 
 
@@ -63,5 +73,6 @@ if __name__ == "__main__":
 
     r = [(random.randint(1, 20), random.randint(1, 20), 0.4) for i in range(0, 4)]
     model.add_weighted_edges_from(r)
+    print(r)
     print("fourth point: ", count_probability(model))
     draw_graph(model)
