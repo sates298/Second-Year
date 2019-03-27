@@ -2,6 +2,7 @@ import networkx as nx
 import networkx.algorithms.shortest_paths as alg
 import matplotlib.pyplot as plt
 import random
+import copy
 
 
 def draw_graph(graph):
@@ -30,10 +31,37 @@ def random_remove(graph):
     graph.remove_edges_from(to_drop)
 
 
+def count_probability(graph):
+    amount = 1000
+    successes = 0.0
+    for i in range(0, amount):
+        clone = copy.deepcopy(graph)
+        random_remove(clone)
+        if check_connectivity(clone):
+            successes = successes + 1
+    return successes/amount
+
+
 if __name__ == "__main__":
     model = nx.Graph()
     model.add_nodes_from([i for i in range(1, 21)])
     model.add_weighted_edges_from([(i, i + 1, 0.95) for i in range(1, 20)])
 
-    random_remove(model)
+    print("first point: ", count_probability(model))
+    draw_graph(model)
+
+    model.add_edge(1, 20)
+    model[1][20]['weight'] = 0.95
+    print("second point: ", count_probability(model))
+    draw_graph(model)
+
+    model.add_edges_from([(1, 10), (5, 15)])
+    model[1][10]['weight'] = 0.8
+    model[5][15]['weight'] = 0.7
+    print("third point: ", count_probability(model))
+    draw_graph(model)
+
+    r = [(random.randint(1, 20), random.randint(1, 20), 0.4) for i in range(0, 4)]
+    model.add_weighted_edges_from(r)
+    print("fourth point: ", count_probability(model))
     draw_graph(model)
