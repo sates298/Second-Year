@@ -19,8 +19,7 @@ def random_remove(graph):
     graph.remove_edges_from(to_drop)
 
 
-def count_probability(graph):
-    amount = 1000
+def count_probability(graph, amount):
     successes = 0.0
     for i in range(0, amount):
         clone = copy.deepcopy(graph)

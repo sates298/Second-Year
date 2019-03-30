@@ -80,13 +80,13 @@ def draw_matrix(matrix):
 
 
 N = [[0 for _ in range(10)] for _ in range(10)]
-generate_n(4, 20)
+generate_n(1, 64)
 
-network_model = create_graph(12, 0.1)
+network_model = create_graph(19, 0.5)
 all_edges = [i for i in network_model.edges]
 
-avg_package_weight = 32
-T_max = 0.001
+avg_package_weight = 64
+T_max = 0.5
 
 c_mode = "else"
 

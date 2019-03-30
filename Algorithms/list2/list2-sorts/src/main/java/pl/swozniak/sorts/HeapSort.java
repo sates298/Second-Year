@@ -41,15 +41,15 @@ public class HeapSort implements Sort {
     }
 
     private void shiftListDown(List<Comparable> heap, int index, int endHeap, BiFunction<Comparable, Comparable, Integer> func) {
-        if (index * 2 > endHeap) {
+        if ((index+1) * 2 - 1 > endHeap) {
             return;
         }
         int compareIndex;
-        if (index * 2 + 1 > endHeap) {
-            compareIndex = index * 2;
+        if ((index+1) * 2 > endHeap) {
+            compareIndex = (index+1) * 2 - 1;
         } else {
-            compareIndex = matchElement(heap.get(index * 2), heap.get(index * 2 + 1),
-                    index * 2, index * 2 + 1, func);
+            compareIndex = matchElement(heap.get((index+1) * 2 - 1), heap.get((index+1) * 2),
+                    (index+1) * 2 - 1, (index+1) * 2, func);
         }
         this.compareCounter++;
         System.err.println("compare in shiftDown " + heap.get(index) + " and " + heap.get(compareIndex));
@@ -102,15 +102,15 @@ public class HeapSort implements Sort {
     }
 
     private void shiftArrayDown(Comparable[] heap, int index, int endHeap, BiFunction<Comparable, Comparable, Integer> func){
-        if (index * 2 > endHeap) {
+        if ((index+1) * 2  - 1> endHeap) {
             return;
         }
         int compareIndex;
-        if (index * 2 + 1 > endHeap) {
-            compareIndex = index * 2;
+        if ((index+1) * 2 > endHeap) {
+            compareIndex = (index+1) * 2 - 1;
         } else {
-            compareIndex = matchElement(heap[index * 2], heap[index * 2 + 1],
-                    index * 2, index * 2 + 1, func);
+            compareIndex = matchElement(heap[(index+1) * 2 - 1], heap[(index+1) * 2],
+                    (index+1) * 2 - 1, (index+1) * 2, func);
         }
         this.compareCounter++;
         //System.err.println("compare in shiftDown " + heap[index] + " and " + heap[compareIndex]);
