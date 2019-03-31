@@ -71,10 +71,10 @@ public class PriorityQueue {
         if (this.heap[index].getPriority() <= p) return;
         if (this.heap[index].getValue() == x) {
             this.heap[index].setPriority(p);
-            if (this.size > index * 2) {
-                changePriority(x, p, index * 2);
-                if (this.size > index * 2 + 1) {
-                    changePriority(x, p, index * 2 + 1);
+            if (this.size > (index+1) * 2 - 1) {
+                changePriority(x, p, (index+1) * 2 -1);
+                if (this.size > (index+1) * 2 ) {
+                    changePriority(x, p, (index+1) * 2 );
                 }
             }
         }
