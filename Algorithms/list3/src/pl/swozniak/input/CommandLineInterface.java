@@ -1,5 +1,7 @@
 package pl.swozniak.input;
 
+import pl.swozniak.graph.DirectedWeightedEdge;
+import pl.swozniak.graph.DirectedWeightedGraph;
 import pl.swozniak.queue.PriorityQueue;
 
 import java.util.Scanner;
@@ -107,8 +109,49 @@ public class CommandLineInterface {
 
     }
 
-    private void runDjikstraInterface() {
-        System.out.println("Djikstra");
+    private void runDjikstraInterface() throws NumberFormatException {
+        String line;
+        String[] edgeS;
+        int n, m, start=0, u, v, w;
+        System.out.println("Enter number of nodes: ");
+        line = sc.nextLine();
+        n = Integer.parseInt(line);
+        System.out.println("Enter number of edges: ");
+        line = sc.nextLine();
+        m = Integer.parseInt(line);
+        DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
+        for(int i=0; i<m; i++){
+            line = sc.nextLine();
+            edgeS = line.split(" ");
+            try {
+                u = Integer.parseInt(edgeS[0]);
+                v = Integer.parseInt(edgeS[1]);
+                w = Integer.parseInt(edgeS[2]);
+                if(!graph.addEdge(u, v, w)){
+                    throw new Exception();
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Too few arguments");
+                i--;
+            }catch(NumberFormatException e){
+                System.out.println("Integer expected");
+                i--;
+            }catch (Exception e){
+                System.out.println("Can't add that edge");
+                i--;
+            }
+        }
+        while(start <= 0 || start > n){
+            System.out.println("Enter start node: ");
+            line = sc.nextLine();
+            try{
+                start = Integer.parseInt(line);
+            }catch(NumberFormatException e){
+                System.out.println("Integer between 1 and n expected ");
+            }
+        }
+        System.out.println("Score: ");
+        graph.printAllShortestPaths(start);
     }
 
     private void runSpanningTreeInterface(String arg){

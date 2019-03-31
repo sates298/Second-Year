@@ -6,7 +6,7 @@ import pl.swozniak.queue.PriorityQueue;
 public class Main {
 
     public static void main(String[] args) {
-        /*PriorityQueue heap = new PriorityQueue(10);
+       /* PriorityQueue heap = new PriorityQueue(10);
         heap.insert(3, 17);
         heap.insert(3, 12);
         heap.insert(3, 9);

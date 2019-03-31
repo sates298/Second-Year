@@ -37,12 +37,13 @@ public class PriorityQueue {
         }
     }
 
-    public void pop() {
+    public QueueElement pop() {
         if (empty()) {
             System.out.println();
+            return null;
         } else {
             System.out.println("top value is equal " + this.heap[0].getValue());
-            deleteTop();
+            return deleteTop();
         }
     }
 
@@ -82,16 +83,13 @@ public class PriorityQueue {
         }
     }
 
-    private void deleteTop() {
-        if (this.size <= 1) {
-            this.size = 0;
-            this.heap[0] = null;
-            return;
-        }
+    private QueueElement deleteTop() {
+        QueueElement deleted = this.heap[0];
         this.size--;
         this.heap[0] = this.heap[this.size];
         this.heap[size] = null;
         shiftDown(0);
+        return deleted;
     }
 
     private void shiftDown(int index) {
