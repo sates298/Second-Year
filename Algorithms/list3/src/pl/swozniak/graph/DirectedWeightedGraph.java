@@ -23,8 +23,7 @@ public class DirectedWeightedGraph {
     }
 
     public boolean addEdge(int u, int v, int w){
-        System.out.println(u + " " +edges.length+ " " + edgesNumber);
-        if(0 < u && u <= this.nodesNumber &&
+         if(0 < u && u <= this.nodesNumber &&
                 0 < v && v <= this.nodesNumber &&
                 0 <= w &&
                 this.edgesNumber < this.edges.length){
@@ -92,10 +91,10 @@ public class DirectedWeightedGraph {
             System.out.println("Id: " + n.getLabel() + ", weight: " + n.getDist());
         }
         for (DirectedWeightedEdge[] path: paths) {
-            System.err.println();
             for(DirectedWeightedEdge edge: path){
                 System.err.print(edge);
             }
+            System.err.println();
         }
     }
 

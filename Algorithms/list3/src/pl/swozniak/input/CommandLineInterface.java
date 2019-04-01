@@ -121,6 +121,7 @@ public class CommandLineInterface {
         m = Integer.parseInt(line);
         DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
         for(int i=0; i<m; i++){
+            System.out.println((i+1) + ". Enter new edge (u, v, w)");
             line = sc.nextLine();
             edgeS = line.split(" ");
             try {
