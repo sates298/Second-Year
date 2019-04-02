@@ -8,13 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         heapTest();
-        djikstrTest();
+        dijkstrTest();
         CommandLineInterface commandLineInterface = new CommandLineInterface();
 //        commandLineInterface.run(args);
     }
 
     private static void heapTest(){
-        PriorityQueue heap = new PriorityQueue(10);
+        PriorityQueue<Integer> heap = new PriorityQueue(10, 0);
         heap.insert(3, 17);
         heap.insert(3, 12);
         heap.insert(3, 9);
@@ -31,7 +31,7 @@ public class Main {
         heap.print();
     }
 
-    private static void djikstrTest(){
+    private static void dijkstrTest(){
         DirectedWeightedGraph graph = new DirectedWeightedGraph(5, 10);
         graph.addEdge(1, 5, 3);
         graph.addEdge(5, 3, 2);
@@ -43,6 +43,6 @@ public class Main {
         graph.addEdge(3, 1, 6);
         graph.addEdge(3, 2, 1);
         graph.addEdge(1, 2, 7);
-        graph.printAllShortestPaths(5);
+        graph.printAllShortestPaths(1);
     }
 }

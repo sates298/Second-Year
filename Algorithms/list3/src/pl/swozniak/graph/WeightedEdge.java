@@ -1,11 +1,11 @@
 package pl.swozniak.graph;
 
-public class DirectedWeightedEdge {
+public class WeightedEdge {
     private int u;
     private int v;
-    private int w;
+    private double w;
 
-    public DirectedWeightedEdge(int u, int v, int w) {
+    public WeightedEdge(int u, int v, double w) {
         this.u = u;
         this.v = v;
         this.w = w;
@@ -19,13 +19,13 @@ public class DirectedWeightedEdge {
         return v;
     }
 
-    public int getW() {
+    public double getW() {
         return w;
     }
 
     @Override
     public String toString() {
         return "(" + u + " --{" + w +
-                "}--> " + v + ')';
+                "}-- " + v + ')';
     }
 }

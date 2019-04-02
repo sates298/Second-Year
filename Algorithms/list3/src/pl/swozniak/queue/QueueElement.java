@@ -1,20 +1,20 @@
 package pl.swozniak.queue;
 
-public class QueueElement {
+public class QueueElement<T extends Comparable> {
     private int value;
-    private int priority;
+    private T priority;
 
 
-    public QueueElement(int value, int priority) {
+    public QueueElement(int value, T priority) {
         this.priority = priority;
         this.value = value;
     }
 
-    public int getPriority() {
+    public T getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(T priority) {
         this.priority = priority;
     }
 

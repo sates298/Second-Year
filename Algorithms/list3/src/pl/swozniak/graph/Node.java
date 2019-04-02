@@ -3,12 +3,12 @@ package pl.swozniak.graph;
 public class Node {
     private int label;
     private Node prev;
-    private DirectedWeightedEdge prevEdge;
-    private int dist;
+    private WeightedEdge prevEdge;
+    private Double dist;
 
     public Node(int label) {
         this.label = label;
-        this.dist = Integer.MAX_VALUE/2;
+        this.dist = Double.MAX_VALUE/2;
     }
 
     public int getLabel() {
@@ -19,15 +19,15 @@ public class Node {
         return prev;
     }
 
-    public int getDist() {
+    public Double getDist() {
         return dist;
     }
 
-    public DirectedWeightedEdge getPrevEdge() {
+    public WeightedEdge getPrevEdge() {
         return prevEdge;
     }
 
-    public void setPrevEdge(DirectedWeightedEdge prevEdge) {
+    public void setPrevEdge(WeightedEdge prevEdge) {
         this.prevEdge = prevEdge;
     }
 
@@ -35,7 +35,7 @@ public class Node {
         this.prev = prev;
     }
 
-    public void setDist(int dist) {
+    public void setDist(Double dist) {
         this.dist = dist;
     }
 }
