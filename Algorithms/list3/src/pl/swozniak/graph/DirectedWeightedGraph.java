@@ -6,22 +6,13 @@ import pl.swozniak.queue.QueueElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DirectedWeightedGraph {
-    private Node[] nodes;
-    private WeightedEdge[] edges;
-    private int nodesNumber;
-    private int edgesNumber;
+public class DirectedWeightedGraph extends WeightedGraph{
 
     public DirectedWeightedGraph(int n, int m){
-        this.nodes = new Node[n];
-        for(int i=1; i<=n; i++){
-            nodes[i-1] = new Node(i);
-        }
-        this.edges = new WeightedEdge[m];
-        this.edgesNumber = 0;
-        this.nodesNumber = n;
+        super(n, m);
     }
 
+    @Override
     public boolean addEdge(int u, int v, double w){
          if(0 < u && u <= this.nodesNumber &&
                 0 < v && v <= this.nodesNumber &&
@@ -29,6 +20,20 @@ public class DirectedWeightedGraph {
                 this.edgesNumber < this.edges.length){
             this.edges[this.edgesNumber] = new WeightedEdge(u, v, w);
             this.edgesNumber++;
+            this.nodes[u -1].addNeighbour(this.nodes[v-1], true);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addEdge(WeightedEdge e){
+        if(0 < e.getU() && e.getU() <= this.nodesNumber &&
+                0 < e.getV() && e.getV() <= this.nodesNumber &&
+                0 <= e.getW() && e.getU() != e.getV() &&
+                this.edgesNumber < this.edges.length){
+            this.edges[this.edgesNumber] = e;
+            this.edgesNumber++;
+            this.nodes[e.getU()-1].addNeighbour(this.nodes[e.getV() - 1], true);
             return true;
         }
         return false;
@@ -38,7 +43,7 @@ public class DirectedWeightedGraph {
         Node first = nodes[start-1];
         WeightedEdge[][] results = new WeightedEdge[nodesNumber][];
 
-        PriorityQueue<Double> heap = new PriorityQueue(nodesNumber, 0.0);
+        PriorityQueue<Double> heap = new PriorityQueue<>(nodesNumber, 0.0);
 
         first.setDist(0.0);
         for(int i=0; i< nodesNumber; i++) {
