@@ -9,43 +9,13 @@ import java.util.Set;
 public class UndirectedWeightedGraph extends WeightedGraph { ;
 
     public UndirectedWeightedGraph(int n, int m){
-        super(n,m);
-    }
-
-    @Override
-    public boolean addEdge(int u, int v, double w){
-        if(0 < u && u <= this.nodesNumber &&
-                0 < v && v <= this.nodesNumber &&
-                0 <= w && u != v &&
-                this.edgesNumber < this.edges.length){
-            this.edges[this.edgesNumber] = new WeightedEdge(u, v, w);
-            this.edgesNumber++;
-            this.nodes[u-1].addNeighbour(this.nodes[v - 1], false);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean addEdge(WeightedEdge e){
-        if(0 < e.getU() && e.getU() <= this.nodesNumber &&
-                0 < e.getV() && e.getV() <= this.nodesNumber &&
-                0 <= e.getW() && e.getU() != e.getV() &&
-                this.edgesNumber < this.edges.length){
-            this.edges[this.edgesNumber] = e;
-            this.edgesNumber++;
-            this.nodes[e.getU()-1].addNeighbour(this.nodes[e.getV() - 1], false);
-            return true;
-        }
-        return false;
+        super(n,m, false);
     }
 
     public UndirectedWeightedGraph PrimAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber - 1);
         PriorityQueue<Double> heap = new PriorityQueue<>(nodesNumber, 0.0);
-        Node[] spanningNodes = spanningTree.getNodes();
-        for(int i=1; i<nodesNumber; i++){
-            spanningNodes[i] = null;
-        }
+        spanningTree.addNode(1);
         heap.insert(this.nodes[0].getLabel(), 0.0);
 
         return spanningTree;
@@ -53,7 +23,6 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
 
     public UndirectedWeightedGraph KruskalAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber-1);
-        spanningTree.fillNodes();
         PriorityQueue<Double> heap = new PriorityQueue<>(edgesNumber, 0.0);
         for (int i=0; i<edgesNumber; i++) {
             heap.insert(i, this.edges[i].getW());
@@ -77,8 +46,8 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
             spanningTree.print();
             System.out.println("before if");
             if(uSet != vSet){
-//                spanningTree.addNode(u);
-//                spanningTree.addNode(v);
+                spanningTree.addNode(u);
+                spanningTree.addNode(v);
                 spanningTree.addEdge(curr);
                 union(indexU, indexV, sets);
             }

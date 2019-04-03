@@ -5,8 +5,11 @@ public abstract class WeightedGraph {
     protected WeightedEdge[] edges;
     protected int nodesNumber;
     protected int edgesNumber;
+    protected final boolean isDirected;
 
-    public WeightedGraph(int n, int m){
+
+    public WeightedGraph(int n, int m, boolean isDirected){
+        this.isDirected = isDirected;
         this.nodes = new Node[n];
         this.edges = new WeightedEdge[m];
         this.edgesNumber = 0;
@@ -19,16 +22,6 @@ public abstract class WeightedGraph {
         }
     }
 
-    public boolean addNode(int label){
-        if(label > this.nodes.length && this.nodes[label - 1] != null){
-            return false;
-        }else{
-            this.nodes[label - 1] = new Node(label);
-            this.nodesNumber++;
-            return true;
-        }
-    }
-
     public boolean addNode(Node n){
         if(n.getLabel() > this.nodes.length && this.nodes[n.getLabel() - 1] != null){
             return false;
@@ -38,10 +31,25 @@ public abstract class WeightedGraph {
             return true;
         }
     }
-    public abstract boolean addEdge(int u, int v, double p);
-    public abstract boolean addEdge(WeightedEdge e);
 
-    public Node[] getNodes(){
-        return this.nodes;
+    public boolean addNode(int label){
+        return addNode(new Node(label));
+    }
+
+    public boolean addEdge(WeightedEdge e){
+        if(0 < e.getU() && e.getU() <= this.nodes.length && this.nodes[e.getU() - 1] != null &&
+                0 < e.getV() && e.getV() <= this.nodes.length && this.nodes[e.getV() - 1] != null &&
+                0 <= e.getW() && this.edgesNumber < this.edges.length){
+            if(!isDirected && e.getU() == e.getV()) return false;
+            this.edges[this.edgesNumber] = e;
+            this.edgesNumber++;
+            this.nodes[e.getU()-1].addNeighbour(this.nodes[e.getV() - 1], isDirected);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addEdge(int u, int v, double w){
+        return addEdge(new WeightedEdge(u, v, w));
     }
 }

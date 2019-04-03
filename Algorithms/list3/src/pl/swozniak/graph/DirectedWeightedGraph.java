@@ -9,34 +9,7 @@ import java.util.List;
 public class DirectedWeightedGraph extends WeightedGraph{
 
     public DirectedWeightedGraph(int n, int m){
-        super(n, m);
-    }
-
-    @Override
-    public boolean addEdge(int u, int v, double w){
-         if(0 < u && u <= this.nodesNumber &&
-                0 < v && v <= this.nodesNumber &&
-                0 <= w &&
-                this.edgesNumber < this.edges.length){
-            this.edges[this.edgesNumber] = new WeightedEdge(u, v, w);
-            this.edgesNumber++;
-            this.nodes[u -1].addNeighbour(this.nodes[v-1], true);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean addEdge(WeightedEdge e){
-        if(0 < e.getU() && e.getU() <= this.nodesNumber &&
-                0 < e.getV() && e.getV() <= this.nodesNumber &&
-                0 <= e.getW() && e.getU() != e.getV() &&
-                this.edgesNumber < this.edges.length){
-            this.edges[this.edgesNumber] = e;
-            this.edgesNumber++;
-            this.nodes[e.getU()-1].addNeighbour(this.nodes[e.getV() - 1], true);
-            return true;
-        }
-        return false;
+        super(n, m, true);
     }
 
     public WeightedEdge[][] dijkstra(int start){
