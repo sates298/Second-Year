@@ -15,8 +15,6 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
     public UndirectedWeightedGraph PrimAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber - 1);
         PriorityQueue<Double> heap = new PriorityQueue<>(nodesNumber, 0.0);
-        spanningTree.addNode(1);
-        heap.insert(this.nodes[0].getLabel(), 0.0);
 
         return spanningTree;
     }
@@ -43,16 +41,12 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
             Set<Node> uSet = sets.get(indexU);
             Set<Node> vSet = sets.get(indexV);
 
-            spanningTree.print();
-            System.out.println("before if");
             if(uSet != vSet){
                 spanningTree.addNode(u);
                 spanningTree.addNode(v);
                 spanningTree.addEdge(curr);
                 union(indexU, indexV, sets);
             }
-            spanningTree.print();
-            System.out.println("after if");
         }
         return spanningTree;
     }

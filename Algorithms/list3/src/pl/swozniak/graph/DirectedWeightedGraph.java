@@ -28,12 +28,17 @@ public class DirectedWeightedGraph extends WeightedGraph{
                 if(edges[i].getU() == curr.getValue()){
                     Node u = nodes[edges[i].getU() - 1];
                     Node v = nodes[edges[i].getV() - 1];
+                    System.out.println(u.getLabel() + " u and dist" + u.getDist());
+                    System.out.println(v.getLabel() + " v and dist" + v.getDist());
+                    System.out.println("edge " + edges[i].getW());
                     if(v.getDist() > u.getDist() + edges[i].getW()){
                         v.setDist(u.getDist() + edges[i].getW());
                         v.setPrev(u);
                         v.setPrevEdge(edges[i]);
                         heap.priority(v.getLabel(), v.getDist());
+                        heap.print();
                     }
+
                 }
             }
         }

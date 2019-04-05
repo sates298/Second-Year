@@ -13,7 +13,7 @@ public class Node {
 
     public Node(int label) {
         this.label = label;
-        this.dist = Double.MAX_VALUE/2;
+        this.dist = Double.MAX_VALUE;
         this.neighbours = new ArrayList<>();
     }
 

@@ -1,13 +1,19 @@
 package pl.swozniak.queue;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PriorityQueue<T extends Comparable> {
     private QueueElement<T>[] heap;
     private int size;
     private T maxPriority;
+    private Map<Integer, ArrayList<Integer>> mapping;
 
     public PriorityQueue(int n, T maxPriority) {
         this.heap = new QueueElement[n];
+        this.mapping = new HashMap<>();
         size = 0;
         this.maxPriority = maxPriority;
     }
@@ -18,9 +24,21 @@ public class PriorityQueue<T extends Comparable> {
         if (empty()) {
             this.size = 1;
             this.heap[0] = newElement;
+
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(0);
+            this.mapping.put(newElement.getValue(), list);
+
         } else if (this.size < this.heap.length) {
             this.size++;
             this.heap[this.size - 1] = newElement;
+            if (mapping.get(newElement.getValue()) == null) {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(this.size - 1);
+                this.mapping.put(newElement.getValue(), list);
+            }else{
+                this.mapping.get(newElement.getValue()).add(this.size - 1);
+            }
             shiftUp(this.size - 1);
         } else {
             System.out.println("Too many elements");
@@ -50,7 +68,15 @@ public class PriorityQueue<T extends Comparable> {
     }
 
     public void priority(int x, T p) {
-        changePriority(x, p, 0);
+        ArrayList<Integer> array = this.mapping.get(x);
+        int tmp = array.size();
+        for(int i=0; i<tmp; i++){
+            QueueElement curr = this.heap[array.get(i)];
+            if(curr.getPriority().compareTo(p) > 0){
+                curr.setPriority(p);
+                shiftUp(array.get(i));
+            }
+        }
     }
 
     public void print() {
@@ -66,6 +92,15 @@ public class PriorityQueue<T extends Comparable> {
             QueueElement<T> temp = this.heap[(index - 1) / 2];
             this.heap[(index - 1) / 2] = this.heap[index];
             this.heap[index] = temp;
+
+            int i = this.mapping.get(temp.getValue()).indexOf((index - 1) / 2);
+            this.mapping.get(temp.getValue()).remove(i);
+            this.mapping.get(temp.getValue()).add(i, index);
+
+            i = this.mapping.get(this.heap[(index - 1) / 2].getValue()).indexOf(index);
+            this.mapping.get(this.heap[(index - 1) / 2].getValue()).remove(i);
+            this.mapping.get(this.heap[(index - 1) / 2].getValue()).add(i, (index - 1) / 2);
+
             shiftUp((index - 1) / 2);
         }
     }
@@ -90,21 +125,29 @@ public class PriorityQueue<T extends Comparable> {
         this.size--;
         this.heap[0] = this.heap[this.size];
         this.heap[size] = null;
+
+        this.mapping.get(deleted.getValue()).remove(new Integer(0));
+        if(!empty()) {
+            int i = this.mapping.get(this.heap[0].getValue()).indexOf(this.size);
+            this.mapping.get(this.heap[0].getValue()).remove(i);
+            this.mapping.get(this.heap[0].getValue()).add(i, 0);
+        }
+
         shiftDown(0);
         return deleted;
     }
 
     private void shiftDown(int index) {
-        if ((index + 1) * 2 > this.size - 1) return;
+        if ((index + 1) * 2 - 1 > this.size - 1) return;
         int compareIndex;
-        if ((index + 1) * 2 - 1 > this.size - 1) {
-            compareIndex = (index + 1) * 2 - 1;
-        } else {
+        if ((index + 1) * 2 < this.size) {
             if (this.heap[(index + 1) * 2 - 1].getPriority().compareTo(this.heap[(index + 1) * 2].getPriority()) < 0) {
                 compareIndex = (index + 1) * 2 - 1;
             } else {
                 compareIndex = (index + 1) * 2;
             }
+        } else {
+            compareIndex = (index + 1) * 2 - 1;
         }
         if (this.heap[index].getPriority().compareTo(heap[compareIndex].getPriority()) > 0) {
 
@@ -112,6 +155,11 @@ public class PriorityQueue<T extends Comparable> {
             this.heap[index] = this.heap[compareIndex];
             this.heap[compareIndex] = tmp;
 
+            this.mapping.get(tmp.getValue()).remove(new Integer(index));
+            this.mapping.get(tmp.getValue()).add(compareIndex);
+
+            this.mapping.get(this.heap[index].getValue()).remove(new Integer(compareIndex));
+            this.mapping.get(this.heap[index].getValue()).add(index);
             shiftDown(compareIndex);
         }
     }
