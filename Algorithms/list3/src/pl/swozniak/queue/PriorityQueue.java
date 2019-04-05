@@ -67,16 +67,17 @@ public class PriorityQueue<T extends Comparable> {
         }
     }
 
-    public void priority(int x, T p) {
-        ArrayList<Integer> array = this.mapping.get(x);
-        int tmp = array.size();
-        for(int i=0; i<tmp; i++){
-            QueueElement curr = this.heap[array.get(i)];
+    public boolean priority(int x, T p) {
+        boolean result = false;
+        for(Integer i: this.mapping.get(x)){
+            QueueElement curr = this.heap[i];
             if(curr.getPriority().compareTo(p) > 0){
+                result = true;
                 curr.setPriority(p);
-                shiftUp(array.get(i));
+                shiftUp(i);
             }
         }
+        return result;
     }
 
     public void print() {
@@ -105,7 +106,7 @@ public class PriorityQueue<T extends Comparable> {
         }
     }
 
-    private void changePriority(int x, T p, int index) {
+    /*private void changePriority(int x, T p, int index) {
         if (this.heap[index].getPriority().compareTo(p) > 0) {
             if (this.heap[index].getValue() == x) {
                 this.heap[index].setPriority(p);
@@ -118,7 +119,7 @@ public class PriorityQueue<T extends Comparable> {
                 changePriority(x, p, (index + 1) * 2);
             }
         }
-    }
+    }*/
 
     private QueueElement<T> deleteTop() {
         QueueElement<T> deleted = this.heap[0];

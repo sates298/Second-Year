@@ -40,7 +40,7 @@ public class SelectSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
-        //System.err.println("select");
+        System.err.println("select");
         time = System.currentTimeMillis();
 
         int index;
@@ -49,22 +49,22 @@ public class SelectSort implements Sort {
             index = i;
             for(int j=i+1; j < toSort.length; j++){
                 this.compareCounter++;
-                //System.err.println("compare in sort " + toSort[index] + " and " + toSort[j]);
+                System.err.println("compare in sort " + toSort[index] + " and " + toSort[j]);
                 if(func.apply(toSort[index], toSort[j]) < 0){
                     index = j;
                 }
             }
             this.swapCounter+=2;
-            //System.err.println("swap indexes in sort " + index + " and " + i);
+            System.err.println("swap indexes in sort " + index + " and " + i);
             tmp = toSort[index];
             toSort[index] = toSort[i];
             toSort[i] = tmp;
         }
 
         time = System.currentTimeMillis() - time;
-        //System.err.println("Algorithm time: " + time  + " ms");
-        //System.err.println("CompareCounter = " + getCompareCounter());
-        //System.err.println("SwapCounter = " + getSwapCounter());
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     @Override

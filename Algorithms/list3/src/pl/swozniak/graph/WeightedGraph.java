@@ -43,7 +43,6 @@ public abstract class WeightedGraph {
             if(!isDirected && e.getU() == e.getV()) return false;
             this.edges[this.edgesNumber] = e;
             this.edgesNumber++;
-            this.nodes[e.getU()-1].addNeighbour(this.nodes[e.getV() - 1], isDirected);
             return true;
         }
         return false;

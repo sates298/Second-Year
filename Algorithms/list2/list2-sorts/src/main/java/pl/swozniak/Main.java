@@ -6,12 +6,10 @@ import pl.swozniak.statistics.Statistics;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.BiFunction;
-import java.util.logging.Logger;
 
 
 public class Main {
 
-    //private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
     private static Sort sortAlgorithm;
     private static BiFunction<Comparable, Comparable, Integer> comparator = Comparators::descending;
     private static List<Comparable> list = new ArrayList<>();

@@ -45,15 +45,15 @@ public class InsertionSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
-        //System.err.println("insert");
+        System.err.println("insert");
         time = System.currentTimeMillis();
 
         sortPartOfArrayInsert(toSort, 0, toSort.length - 1, func);
 
         time = System.currentTimeMillis() - time;
-        //System.err.println("Algorithm time: " + time  + " ms");
-        //System.err.println("CompareCounter = " + getCompareCounter());
-        //System.err.println("SwapCounter = " + getSwapCounter());
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     public void sortPartOfArrayInsert(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func){
@@ -64,17 +64,17 @@ public class InsertionSort implements Sort {
             finalIndex = i;
             this.compareCounter++;
 
-            //System.err.println("compare in sortPart " + curr + " and " + part[finalIndex - 1]);
+            System.err.println("compare in sortPart " + curr + " and " + part[finalIndex - 1]);
             while(finalIndex > start  && func.apply(curr, part[finalIndex-1]) > 0){
                 this.compareCounter++;
                 this.swapCounter++;
-                //System.err.println("shift elements in sortPartOfArray");
+                System.err.println("shift elements in sortPartOfArray");
                 part[finalIndex] = part[finalIndex - 1];
-                //System.err.println("compare in sortPart " + curr + " and " + part[finalIndex - 1]);
+                System.err.println("compare in sortPart " + curr + " and " + part[finalIndex - 1]);
                 finalIndex--;
             }
             this.swapCounter++;
-            //System.err.println("set current element in index " + finalIndex);
+            System.err.println("set current element in index " + finalIndex);
             part[finalIndex] = curr;
         }
     }

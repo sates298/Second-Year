@@ -8,14 +8,54 @@ import java.util.Set;
 
 public class UndirectedWeightedGraph extends WeightedGraph { ;
 
+    private WeightedEdge[][] matrixRepresentation;
+
     public UndirectedWeightedGraph(int n, int m){
         super(n,m, false);
+        matrixRepresentation = new WeightedEdge[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                matrixRepresentation[i][j] = new WeightedEdge(i, j, Double.POSITIVE_INFINITY);
+                if(i == j){
+                    matrixRepresentation[i][j] = new WeightedEdge(i, i, 0.0);
+                }
+            }
+        }
     }
+
+    @Override
+    public boolean addEdge(WeightedEdge e){
+        boolean result = super.addEdge(e);
+        if(result){
+            matrixRepresentation[e.getU() - 1][e.getV() - 1] = e;
+            matrixRepresentation[e.getV() - 1][e.getU() - 1] = e;
+        }
+        return result;
+    }
+
 
     public UndirectedWeightedGraph PrimAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber - 1);
         PriorityQueue<Double> heap = new PriorityQueue<>(nodesNumber, 0.0);
+        spanningTree.addNode(this.nodes[0]);
+        this.nodes[0].setPrev(this.nodes[0]);
+        this.nodes[0].setDist(0.0);
+        for(Node n: this.nodes){
+            heap.insert(n.getLabel(), n.getDist());
+        }
 
+        while(!heap.empty()){
+            Node curr = this.nodes[heap.pop().getValue() - 1];
+            spanningTree.addNode(curr);
+            spanningTree.addEdge(matrixRepresentation[curr.getLabel() - 1][curr.getPrev().getLabel() - 1]);
+            for(Node n: this.nodes){
+                if(n.getLabel() != curr.getLabel()) {
+                    if (heap.priority(n.getLabel(), matrixRepresentation[n.getLabel() - 1][curr.getLabel() - 1].getW())) {
+                        n.setPrev(curr);
+                    }
+                }
+            }
+        }
         return spanningTree;
     }
 
@@ -89,9 +129,12 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
     }
 
     public void print(){
+        double sum = 0;
         for(WeightedEdge we: edges){
             System.out.print(we);
+            sum += we.getW();
         }
         System.out.println();
+        System.out.println("Weight of MST = " + sum);
     }
 }

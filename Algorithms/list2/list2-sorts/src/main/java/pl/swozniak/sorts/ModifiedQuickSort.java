@@ -52,15 +52,15 @@ public class ModifiedQuickSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
-        //System.err.println("mquick");
+        System.err.println("mquick");
         time = System.currentTimeMillis();
 
         sortPartOfArrayModified(toSort,0, toSort.length - 1, func);
 
         time = System.currentTimeMillis() - time;
-        //System.err.println("Algorithm time: " + time  + " ms");
-        //System.err.println("CompareCounter = " + getCompareCounter());
-        //System.err.println("SwapCounter = " + getSwapCounter());
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     private void sortPartOfArrayModified(Comparable[] part, int start, int end, BiFunction<Comparable, Comparable, Integer> func){
@@ -84,7 +84,7 @@ public class ModifiedQuickSort implements Sort {
     }
 
     private int findMedian(Comparable a,int indexA, Comparable b,int indexB, Comparable c, int indexC){
-        //System.err.println("comparisons to find median from " +a+", " + b + " and " + c);
+        System.err.println("comparisons to find median from " +a+", " + b + " and " + c);
         this.compareCounter++;
         if(a.compareTo(b) <= 0) {
             this.compareCounter++;

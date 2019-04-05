@@ -120,7 +120,7 @@ def draw_all_plots_by_k(k):
 
 
 if __name__ == '__main__':
-    main_k = 1000  # it's working only for k = 1, 10,100 or 1000
+    main_k = 10 # it's working only for k = 1, 10,100 or 1000
     fileKx = '../../k' + str(main_k) + '.json'
     data = json.load(open(fileKx))
     sorts = [i for i in data['all']]

@@ -31,12 +31,12 @@ public class HeapSort implements Sort {
 
     private void shiftListUp(List<Comparable> heap, int index, BiFunction<Comparable, Comparable, Integer> func) {
         this.compareCounter++;
-        System.err.println("compare in shiftUp " + heap.get(index) + " and " + heap.get(index/2));
-        if (func.apply(heap.get(index), heap.get(index / 2)) < 0) {
+        System.err.println("compare in shiftUp " + heap.get(index) + " and " + heap.get((index-1)/2));
+        if (func.apply(heap.get(index), heap.get((index-1)/2)) < 0) {
             this.swapCounter+=2;
-            System.err.println("swap indexes in shiftUp " + index + " and " + index/2);
-            Collections.swap(heap, index, index / 2);
-            shiftListUp(heap, index / 2, func);
+            System.err.println("swap indexes in shiftUp " + index + " and " + (index-1)/2);
+            Collections.swap(heap, index, (index-1)/2);
+            shiftListUp(heap, (index-1)/2, func);
         }
     }
 
@@ -70,7 +70,7 @@ public class HeapSort implements Sort {
 
     @Override
     public void sortArray(Comparable[] toSort, BiFunction<Comparable, Comparable, Integer> func) {
-        //System.err.println("heap");
+        System.err.println("heap");
         time = System.currentTimeMillis();
 
         for (int i = 1; i<toSort.length; i++){
@@ -82,22 +82,22 @@ public class HeapSort implements Sort {
         }
 
         time = System.currentTimeMillis() - time;
-        //System.err.println("Algorithm time: " + time  + " ms");
-        //System.err.println("CompareCounter = " + getCompareCounter());
-        //System.err.println("SwapCounter = " + getSwapCounter());
+        System.err.println("Algorithm time: " + time  + " ms");
+        System.err.println("CompareCounter = " + getCompareCounter());
+        System.err.println("SwapCounter = " + getSwapCounter());
     }
 
     private void shiftArrayUp(Comparable[] heap, int index, BiFunction<Comparable, Comparable, Integer> func){
         this.compareCounter++;
-        //System.err.println("compare in shiftUp " + heap[index] + " and " + heap[index/2]);
-        if (func.apply(heap[index], heap[index / 2]) < 0) {
+        System.err.println("compare in shiftUp " + heap[index] + " and " + heap[index/2]);
+        if (func.apply(heap[index], heap[(index-1)/2]) < 0) {
             this.swapCounter+=2;
-            //System.err.println("swap indexes in shiftUp " + index + " and " + index/2);
+            System.err.println("swap indexes in shiftUp " + index + " and " + index/2);
             Comparable tmp = heap[index];
-            heap[index] = heap[index/2];
-            heap[index/2] = tmp;
+            heap[index] = heap[(index-1)/2];
+            heap[(index-1)/2] = tmp;
 
-            shiftArrayUp(heap, index / 2, func);
+            shiftArrayUp(heap, (index-1)/2, func);
         }
     }
 
@@ -113,10 +113,10 @@ public class HeapSort implements Sort {
                     (index+1) * 2 - 1, (index+1) * 2, func);
         }
         this.compareCounter++;
-        //System.err.println("compare in shiftDown " + heap[index] + " and " + heap[compareIndex]);
+        System.err.println("compare in shiftDown " + heap[index] + " and " + heap[compareIndex]);
         if (func.apply(heap[index], heap[compareIndex]) > 0) {
             this.swapCounter+=2;
-            //System.err.println("swap indexes " + index +" and " + compareIndex);
+            System.err.println("swap indexes " + index +" and " + compareIndex);
             Comparable tmp = heap[index];
             heap[index] = heap[compareIndex];
             heap[compareIndex] = tmp;
@@ -127,7 +127,7 @@ public class HeapSort implements Sort {
 
     private void deleteArrayTop(Comparable[] heap, int endHeap, BiFunction<Comparable, Comparable, Integer> func) {
         this.swapCounter+=2;
-        //System.err.println("swap indexes in deleteTop 0 and " + endHeap);
+        System.err.println("swap indexes in deleteTop 0 and " + endHeap);
         Comparable tmp = heap[0];
         heap[0] = heap[endHeap];
         heap[endHeap] = tmp;
@@ -137,7 +137,7 @@ public class HeapSort implements Sort {
 
     private int matchElement(Comparable a, Comparable b, int indexA, int indexB, BiFunction<Comparable, Comparable, Integer> func) {
         this.compareCounter++;
-        //System.err.println("compare in matchElement " + a + " and " + b);
+        System.err.println("compare in matchElement " + a + " and " + b);
         if (func.apply(a, b) > 0) return indexB;
         return indexA;
     }
