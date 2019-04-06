@@ -5,6 +5,8 @@ import pl.swozniak.graph.UndirectedWeightedGraph;
 import pl.swozniak.input.CommandLineInterface;
 import pl.swozniak.queue.PriorityQueue;
 
+import java.util.Random;
+
 
 public class Main {
 
@@ -37,9 +39,12 @@ public class Main {
     }
 
     private static void dijkstraTest(){
-        DirectedWeightedGraph graph = new DirectedWeightedGraph(5, 10);
+        int n = 10000;
+        int m = 100000;
+        DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
         graph.fillNodes();
-        graph.addEdge(1, 5, 3);
+        graph.fillRandomEdges();
+        /*graph.addEdge(1, 5, 3);
         graph.addEdge(5, 3, 21);
         graph.addEdge(3, 5, 32);
         graph.addEdge(4, 5, 2);
@@ -48,13 +53,16 @@ public class Main {
         graph.addEdge(5, 1, 2);
         graph.addEdge(3, 1, 24);
         graph.addEdge(3, 2, 37);
-        graph.addEdge(1, 2, 7);
-        graph.printAllShortestPaths(5);
+        graph.addEdge(1, 2, 7);*/
+        graph.printAllShortestPaths(1);
     }
 
     private static void kruskalTest(){
-        UndirectedWeightedGraph graph = new UndirectedWeightedGraph(5, 10);
+        int n = 5;
+        int m = 15;
+        UndirectedWeightedGraph graph = new UndirectedWeightedGraph(n, m);
         graph.fillNodes();
+//        graph.fillRandomEdges();
         graph.addEdge(1, 5, 3);
         graph.addEdge(5, 3, 2);
         graph.addEdge(3, 5, 3);
@@ -69,18 +77,21 @@ public class Main {
     }
 
     private static void primTest(){
-        UndirectedWeightedGraph graph = new UndirectedWeightedGraph(5, 10);
+        int n = 8;
+        int m = 18;
+        UndirectedWeightedGraph graph = new UndirectedWeightedGraph(n, m);
         graph.fillNodes();
+//        graph.fillRandomEdges();
         graph.addEdge(1, 5, 3);
         graph.addEdge(5, 3, 2);
         graph.addEdge(3, 5, 3);
         graph.addEdge(4, 5, 2);
-        graph.addEdge(2, 4, 4);
+        graph.addEdge(6, 7, 4);
         graph.addEdge(4, 3, 2);
-        graph.addEdge(5, 1, 2);
+        graph.addEdge(5, 7, 2);
         graph.addEdge(3, 1, 6);
-        graph.addEdge(3, 2, 1);
-        graph.addEdge(1, 2, 7);
+        graph.addEdge(6, 2, 1);
+        graph.addEdge(1, 8, 7);
         graph.PrimAlgorithm().print();
     }
 

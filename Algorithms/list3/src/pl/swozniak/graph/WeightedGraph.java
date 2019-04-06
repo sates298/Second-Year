@@ -1,8 +1,11 @@
 package pl.swozniak.graph;
 
+import java.util.Random;
+
 public abstract class WeightedGraph {
     protected Node[] nodes;
     protected WeightedEdge[] edges;
+    protected WeightedEdge[][] matrixRepresentation;
     protected int nodesNumber;
     protected int edgesNumber;
     protected final boolean isDirected;
@@ -14,6 +17,15 @@ public abstract class WeightedGraph {
         this.edges = new WeightedEdge[m];
         this.edgesNumber = 0;
         this.nodesNumber = 0;
+        matrixRepresentation = new WeightedEdge[n][n];
+        for(int i=0; i<n; i++){
+//            for(int j=0; j<n; j++){
+//                matrixRepresentation[i][j] = new WeightedEdge(i, j, Double.POSITIVE_INFINITY);
+                if(/*i == j &&*/ !isDirected){
+                    matrixRepresentation[i][i] = new WeightedEdge(i, i, 0.0);
+                }
+//            }
+        }
     }
 
     public void fillNodes(){
@@ -50,5 +62,18 @@ public abstract class WeightedGraph {
 
     public boolean addEdge(int u, int v, double w){
         return addEdge(new WeightedEdge(u, v, w));
+    }
+    public boolean addEdge(int u, int v){
+        return addEdge(new WeightedEdge(u, v, 1.0));
+    }
+
+    public void fillRandomEdges(){
+        Random r = new Random(System.currentTimeMillis());
+        for(int i=0; i<edges.length; i++){
+            int f = r.nextInt(nodesNumber + 1);
+            int s = r.nextInt(nodesNumber + 1);
+            while(s == f) s = r.nextInt(nodesNumber + 1);
+            this.addEdge(f, s, 0.5 + r.nextDouble()*10);
+        }
     }
 }

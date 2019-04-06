@@ -6,21 +6,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UndirectedWeightedGraph extends WeightedGraph { ;
-
-    private WeightedEdge[][] matrixRepresentation;
+public class UndirectedWeightedGraph extends WeightedGraph {
 
     public UndirectedWeightedGraph(int n, int m){
         super(n,m, false);
-        matrixRepresentation = new WeightedEdge[n][n];
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                matrixRepresentation[i][j] = new WeightedEdge(i, j, Double.POSITIVE_INFINITY);
-                if(i == j){
-                    matrixRepresentation[i][j] = new WeightedEdge(i, i, 0.0);
-                }
-            }
-        }
     }
 
     @Override
@@ -41,6 +30,7 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
         this.nodes[0].setPrev(this.nodes[0]);
         this.nodes[0].setDist(0.0);
         for(Node n: this.nodes){
+            if(n.getLabel() > 1) n.setDist(Double.POSITIVE_INFINITY);
             heap.insert(n.getLabel(), n.getDist());
         }
 
@@ -50,7 +40,8 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
             spanningTree.addEdge(matrixRepresentation[curr.getLabel() - 1][curr.getPrev().getLabel() - 1]);
             for(Node n: this.nodes){
                 if(n.getLabel() != curr.getLabel()) {
-                    if (heap.priority(n.getLabel(), matrixRepresentation[n.getLabel() - 1][curr.getLabel() - 1].getW())) {
+                    WeightedEdge tmp = matrixRepresentation[n.getLabel() - 1][curr.getLabel() - 1];
+                    if (tmp != null && heap.priority(n.getLabel(), tmp.getW())) {
                         n.setPrev(curr);
                     }
                 }
@@ -131,10 +122,11 @@ public class UndirectedWeightedGraph extends WeightedGraph { ;
     public void print(){
         double sum = 0;
         for(WeightedEdge we: edges){
-            System.out.print(we);
+            if(we.getU() > we.getV()) {
+                System.out.println("(" + we.getV() + " --{" + we.getW() + "}-- " + we.getU() + ")");
+            }else System.out.println(we);
             sum += we.getW();
         }
-        System.out.println();
         System.out.println("Weight of MST = " + sum);
     }
 }

@@ -23,6 +23,14 @@ public class WeightedEdge {
         return w;
     }
 
+    public void setU(int u) {
+        this.u = u;
+    }
+
+    public void setV(int v) {
+        this.v = v;
+    }
+
     @Override
     public String toString() {
         return "(" + u + " --{" + w +

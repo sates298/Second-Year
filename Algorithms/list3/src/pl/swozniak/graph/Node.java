@@ -7,6 +7,11 @@ public class Node {
     private WeightedEdge prevEdge;
     private Double dist;
 
+    private boolean visited;
+    private int first;
+    private int last;
+    private int componentLabel;
+
     public Node(int label) {
         this.label = label;
         this.dist = Double.POSITIVE_INFINITY;
@@ -40,4 +45,35 @@ public class Node {
         this.dist = dist;
     }
 
+    public int getFirst() {
+        return first;
+    }
+
+    public void setFirst(int first) {
+        this.first = first;
+    }
+
+    public int getLast() {
+        return last;
+    }
+
+    public void setLast(int last) {
+        this.last = last;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public int getComponentLabel() {
+        return componentLabel;
+    }
+
+    public void setComponentLabel(int componentLabel) {
+        this.componentLabel = componentLabel;
+    }
 }
