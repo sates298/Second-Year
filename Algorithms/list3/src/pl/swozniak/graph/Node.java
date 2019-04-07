@@ -10,7 +10,6 @@ public class Node {
     private boolean visited;
     private int first;
     private int last;
-    private int componentLabel;
 
     public Node(int label) {
         this.label = label;
@@ -67,13 +66,5 @@ public class Node {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
-    }
-
-    public int getComponentLabel() {
-        return componentLabel;
-    }
-
-    public void setComponentLabel(int componentLabel) {
-        this.componentLabel = componentLabel;
     }
 }

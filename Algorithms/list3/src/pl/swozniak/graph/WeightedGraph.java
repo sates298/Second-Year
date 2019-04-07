@@ -67,6 +67,16 @@ public abstract class WeightedGraph {
         return addEdge(new WeightedEdge(u, v, 1.0));
     }
 
+    public boolean deleteNode(int label){
+        if(label > this.nodes.length) return false;
+        if(this.nodes[label - 1] != null){
+            this.nodes[label - 1] = null;
+            this.nodesNumber--;
+            return true;
+        }
+        return false;
+    }
+
     public void fillRandomEdges(){
         Random r = new Random(System.currentTimeMillis());
         for(int i=0; i<edges.length; i++){

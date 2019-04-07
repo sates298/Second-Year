@@ -15,6 +15,7 @@ public class Main {
         dijkstraTest();
         kruskalTest();
         primTest();
+        stronglyConnectedComponentTest();
         CommandLineInterface commandLineInterface = new CommandLineInterface();
 //        commandLineInterface.run(args);
     }
@@ -39,8 +40,8 @@ public class Main {
     }
 
     private static void dijkstraTest(){
-        int n = 10000;
-        int m = 100000;
+        int n = 10;
+        int m = 100;
         DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
         graph.fillNodes();
         graph.fillRandomEdges();
@@ -93,6 +94,19 @@ public class Main {
         graph.addEdge(6, 2, 1);
         graph.addEdge(1, 8, 7);
         graph.PrimAlgorithm().print();
+    }
+
+    private static void stronglyConnectedComponentTest(){
+        int n = 5;
+        int m = 18;
+        DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
+        graph.fillNodes();
+//        graph.fillRandomEdges();
+        graph.addEdge(1, 5);
+        graph.addEdge(5, 3);
+        graph.addEdge(3, 5);
+        graph.addEdge(1, 2);
+        graph.printAllComponents();
     }
 
 }
