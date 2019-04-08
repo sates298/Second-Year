@@ -12,8 +12,8 @@ import (
  */
 func main() {
 
-	var workers [config.WorkersNo]Worker
-	var clients [config.ClientsNo]Client
+	var workers [config.WorkersNo]*Worker
+	var clients [config.ClientsNo]*Client
 	var taskCreator Boss
 
 	done := make(chan bool)
@@ -32,11 +32,11 @@ func main() {
 	go storeServer.run()
 
 	for i := 0; i < config.WorkersNo; i++ {
-		workers[i] = Worker{id: i}
+		workers[i] = &Worker{id: i, completed: 0}
 	}
 
 	for i := 0; i < config.ClientsNo; i++ {
-		clients[i] = Client{id: i}
+		clients[i] = &Client{id: i}
 	}
 
 	go taskCreator.run(writeTasks)

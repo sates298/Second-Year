@@ -6,7 +6,7 @@ import (
 
 //struct representing the one task
 type Task struct {
-	first, second int
+	first, second, result int
 	op            string
 }
 
