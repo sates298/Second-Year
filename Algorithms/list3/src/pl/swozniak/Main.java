@@ -5,16 +5,14 @@ import pl.swozniak.graph.UndirectedWeightedGraph;
 import pl.swozniak.input.CommandLineInterface;
 import pl.swozniak.queue.PriorityQueue;
 
-import java.util.Random;
-
 
 public class Main {
 
     public static void main(String[] args) {
-        heapTest();
-        dijkstraTest();
-        kruskalTest();
-        primTest();
+//        heapTest();
+//        dijkstraTest();
+//        kruskalTest();
+//        primTest();
         stronglyConnectedComponentTest();
         CommandLineInterface commandLineInterface = new CommandLineInterface();
 //        commandLineInterface.run(args);
@@ -97,16 +95,36 @@ public class Main {
     }
 
     private static void stronglyConnectedComponentTest(){
-        int n = 5;
-        int m = 18;
+        int n = 8;
+        int m = 14;
         DirectedWeightedGraph graph = new DirectedWeightedGraph(n, m);
         graph.fillNodes();
 //        graph.fillRandomEdges();
-        graph.addEdge(1, 5);
-        graph.addEdge(5, 3);
-        graph.addEdge(3, 5);
         graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 8);
+        graph.addEdge(4, 3);
+        graph.addEdge(3, 7);
+        graph.addEdge(8, 8);
+        graph.addEdge(7, 8);
+        graph.addEdge(2, 5);
+        graph.addEdge(5, 1);
+        graph.addEdge(5, 6);
+        graph.addEdge(6, 7);
+        graph.addEdge(7, 6);
+        graph.addEdge(2, 6);
         graph.printAllComponents();
+
+        DirectedWeightedGraph graph1 = new DirectedWeightedGraph(6, 6);
+        graph1.fillNodes();
+        graph1.addEdge(6, 3);
+        graph1.addEdge(6, 1);
+        graph1.addEdge(5, 1);
+        graph1.addEdge(5, 2);
+        graph1.addEdge(3, 4);
+        graph1.addEdge(4, 2);
+        graph1.printAllComponents();
     }
 
 }

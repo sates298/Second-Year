@@ -9,9 +9,15 @@ import java.util.List;
 public class DirectedWeightedGraph extends WeightedGraph {
 
     private int dfsTime;
+    private List<Node> topologicalSort;
 
     public DirectedWeightedGraph(int n, int m) {
         super(n, m, true);
+        topologicalSort = new ArrayList<>();
+    }
+
+    public List<Node> getTopologicalSort() {
+        return topologicalSort;
     }
 
     @Override
@@ -22,6 +28,7 @@ public class DirectedWeightedGraph extends WeightedGraph {
         }
         return result;
     }
+
 
     public WeightedEdge[][] dijkstra(int start) {
         Node first = nodes[start - 1];
@@ -90,7 +97,7 @@ public class DirectedWeightedGraph extends WeightedGraph {
         System.err.println("Time of dijkstra algorithm: " + (System.currentTimeMillis() - time));
     }
 
-    public Node[][] stronglyConnectedComponents(){
+    public Node[][] stronglyConnectedComponents() {
         this.normalDFS();
         this.transpose();
         this.secondDFS();
@@ -101,46 +108,46 @@ public class DirectedWeightedGraph extends WeightedGraph {
 
     private void normalDFS() {
         dfsTime = 0;
-        for(Node n: this.nodes){
+        for (Node n : this.nodes) {
             n.setVisited(false);
             n.setPrev(null);
             n.setPrevEdge(null);
             n.setLast(-1);
+            n.setFirst(-1);
         }
-        for(Node n: this.nodes){
-            if (!n.isVisited()){
-                explore(n,  false);
+        for (Node n : this.nodes) {
+            if (!n.isVisited()) {
+                explore(n, false);
             }
         }
     }
 
-    private void secondDFS(){
+    private void secondDFS() {
         Node[] tmp = new Node[nodesNumber];
-        for(int i=0; i< nodesNumber; i++){
+        for (int i = 0; i < nodesNumber; i++) {
             tmp[i] = this.nodes[i];
         }
         dfsTime = 0;
-        for(Node n: this.nodes){
+        for (Node n : this.nodes) {
             n.setVisited(false);
             n.setPrev(null);
             n.setPrevEdge(null);
-            n.setFirst(-1);
+//            n.setFirst(-1);
         }
 
-        while(nodesNumber > 0){
+        while (nodesNumber > 0) {
             Node max = findMaxLast();
-            if(max == null) break;
-            explore(max, true);
+            if (max != null) explore(max, true);
         }
 
-        for(Node n: tmp) this.addNode(n);
+        for (Node n : tmp) this.addNode(n);
     }
 
     private void explore(Node u, boolean isSecond) {
         u.setVisited(true);
         u.setFirst(++dfsTime);
-        for(WeightedEdge e: this.matrixRepresentation[u.getLabel() - 1]){
-            if( e != null) {
+        for (WeightedEdge e : this.matrixRepresentation[u.getLabel() - 1]) {
+            if (e != null) {
                 Node v = this.nodes[e.getV() - 1];
                 if (e.getW() < Double.POSITIVE_INFINITY && v != null && !v.isVisited()) {
                     explore(v, isSecond);
@@ -150,30 +157,35 @@ public class DirectedWeightedGraph extends WeightedGraph {
             }
         }
         u.setLast(++dfsTime);
-        if(isSecond) deleteNode(u.getLabel());
+        if (isSecond) {
+            deleteNode(u.getLabel());
+        } else{
+            this.topologicalSort.add(u);
+            //u.setLast(++dfsTime);
+        }
     }
 
-    private void transpose(){
-        for(int i=0; i<this.edgesNumber; i++){
+    private void transpose() {
+        for (int i = 0; i < this.edgesNumber; i++) {
             WeightedEdge e = this.edges[i];
             int u = e.getU();
             int v = e.getV();
             e.setU(v);
             e.setV(u);
-            if(matrixRepresentation[u-1][v-1] == e) matrixRepresentation[u-1][v-1] = null;
-            matrixRepresentation[v-1][u-1] = e;
+            if (matrixRepresentation[u - 1][v - 1] == e) matrixRepresentation[u - 1][v - 1] = null;
+            matrixRepresentation[v - 1][u - 1] = e;
         }
     }
 
-    private Node findMaxLast(){
+    private Node findMaxLast() {
         Node max;
-        int j=0;
-        while(j < this.nodes.length && this.nodes[j] == null) j++;
-        if(j >= this.nodes.length) return null;
+        int j = 0;
+        while (j < this.nodes.length && this.nodes[j] == null) j++;
+        if (j >= this.nodes.length) return null;
         max = this.nodes[j];
-        if(max.getLast() == -1) return max;
-        for(int i=0; i<this.nodesNumber; i++){
-            if(this.nodes[i] != null) {
+        if (max.getLast() == -1) return max;
+        for (int i = 0; i < this.nodes.length; i++) {
+            if (this.nodes[i] != null) {
                 if (max.getLast() < this.nodes[i].getLast()) {
                     max = this.nodes[i];
                 }
@@ -182,14 +194,14 @@ public class DirectedWeightedGraph extends WeightedGraph {
         return max;
     }
 
-    private Node findMaxFirst(){
+    private Node findMaxFirst() {
         Node max;
-        int j=0;
-        while(j < this.nodes.length && this.nodes[j] == null) j++;
-        if(j >= this.nodes.length) return null;
+        int j = 0;
+        while (j < this.nodes.length && this.nodes[j] == null) j++;
+        if (j >= this.nodes.length) return null;
         max = this.nodes[j];
-        if(max.getFirst() == -1) return max;
-        for(int i=0; i<this.nodesNumber; i++) {
+        if (max.getFirst() == -1) return max;
+        for (int i = 0; i < this.nodes.length; i++) {
             if (this.nodes[i] != null) {
                 if (max.getFirst() < this.nodes[i].getFirst()) {
                     max = this.nodes[i];
@@ -199,54 +211,82 @@ public class DirectedWeightedGraph extends WeightedGraph {
         return max;
     }
 
-    private Node[][] findAllNodesPaths(){
+    private Node[][] findAllNodesPaths() {
         Node[] tmp = new Node[nodesNumber];
-        for(int i=0; i<nodesNumber; i++){
+        for (int i = 0; i < nodesNumber; i++) {
             this.nodes[i].setVisited(false);
             tmp[i] = this.nodes[i];
         }
         ArrayList<Node[]> array = new ArrayList<>();
-        while(this.nodesNumber > 0){
+        while (this.nodesNumber > 0) {
             Node n = findMaxFirst();
             array.add(this.getNodesPath(n));
         }
 
-        for(Node n: tmp) this.addNode(n);
+        for (Node n : tmp) this.addNode(n);
         Node[][] result = new Node[array.size()][];
-        for(int i=0; i<array.size();i++){
-            result[i] = array.get(i);
+        for (int i = 0; i < array.size(); i++) {
+            result[array.size() - 1 - i] = array.get(i);
         }
         return result;
     }
 
-    private Node[] getNodesPath(Node n){
+    private Node[] getNodesPath(Node n) {
         Node[] result;
         ArrayList<Node> tmp = new ArrayList<>();
         Node curr = n;
-        while(curr != null){
+        while (curr != null) {
             tmp.add(curr);
             this.deleteNode(curr.getLabel());
             curr = curr.getPrev();
         }
         result = new Node[tmp.size()];
-        for(int i=0; i<tmp.size(); i++){
+        for (int i = 0; i < tmp.size(); i++) {
             result[i] = tmp.get(i);
         }
 
         return result;
     }
 
-    public void printAllComponents(){
+    private Node[][] getSortedComponents(Node[][] components) {
+        DirectedWeightedGraph dag = new DirectedWeightedGraph(components.length, this.edgesNumber);
+        dag.fillNodes();
+        for (int i = 0; i < components.length; i++) {
+            for (Node n : components[i]) {
+                for (int j = 0; j < components.length; j++) {
+                    if (i != j) {
+                        for (Node u : components[j]) {
+                            if (matrixRepresentation[n.getLabel() - 1][u.getLabel() - 1] != null) {
+                                dag.addEdge(i+1, j+1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        dag.normalDFS();
+        List<Node> sorted = dag.getTopologicalSort();
+        Node[][] sortedNodes = new Node[sorted.size()][];
+        for(int i=0; i<sorted.size(); i++){
+            sortedNodes[i] = components[sorted.get(sorted.size() - 1 - i).getLabel() - 1];
+        }
+        return sortedNodes;
+    }
+
+    public void printAllComponents() {
         long time = System.currentTimeMillis();
-        Node[][] components = stronglyConnectedComponents();
-        for(Node[] comp: components){
+        Node[][] components = getSortedComponents(stronglyConnectedComponents());
+        for (Node[] comp : components) {
             System.out.print("[");
-            for(Node n: comp){
-                System.out.print(n.getLabel() +",");
+            for (Node n : comp) {
+                System.out.print(n.getLabel() + " ");
             }
             System.out.println("]");
         }
         System.err.println("Time of getting strongly connected components: " + (System.currentTimeMillis() - time));
+        for (Node n : topologicalSort) {
+            System.out.print(n.getLabel() + " and " + n.getLast() + " ");
+        }
     }
 
 }
