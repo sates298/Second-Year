@@ -13,9 +13,9 @@ public class Main {
 //        dijkstraTest();
 //        kruskalTest();
 //        primTest();
-        stronglyConnectedComponentTest();
+//        stronglyConnectedComponentTest();
         CommandLineInterface commandLineInterface = new CommandLineInterface();
-//        commandLineInterface.run(args);
+        commandLineInterface.run(args);
     }
 
     private static void heapTest(){
@@ -72,7 +72,7 @@ public class Main {
         graph.addEdge(3, 1, 6);
         graph.addEdge(3, 2, 1);
         graph.addEdge(1, 2, 7);
-        graph.KruskalAlgorithm().print();
+        graph.kruskalAlgorithm().print();
     }
 
     private static void primTest(){
@@ -91,7 +91,7 @@ public class Main {
         graph.addEdge(3, 1, 6);
         graph.addEdge(6, 2, 1);
         graph.addEdge(1, 8, 7);
-        graph.PrimAlgorithm().print();
+        graph.primAlgorithm().print();
     }
 
     private static void stronglyConnectedComponentTest(){

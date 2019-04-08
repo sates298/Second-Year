@@ -23,7 +23,7 @@ public class UndirectedWeightedGraph extends WeightedGraph {
     }
 
 
-    public UndirectedWeightedGraph PrimAlgorithm(){
+    public UndirectedWeightedGraph primAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber - 1);
         PriorityQueue<Double> heap = new PriorityQueue<>(nodesNumber, 0.0);
         spanningTree.addNode(this.nodes[0]);
@@ -50,7 +50,7 @@ public class UndirectedWeightedGraph extends WeightedGraph {
         return spanningTree;
     }
 
-    public UndirectedWeightedGraph KruskalAlgorithm(){
+    public UndirectedWeightedGraph kruskalAlgorithm(){
         UndirectedWeightedGraph spanningTree = new UndirectedWeightedGraph(nodesNumber, nodesNumber-1);
         PriorityQueue<Double> heap = new PriorityQueue<>(edgesNumber, 0.0);
         for (int i=0; i<edgesNumber; i++) {

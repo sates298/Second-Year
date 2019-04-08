@@ -284,9 +284,6 @@ public class DirectedWeightedGraph extends WeightedGraph {
             System.out.println("]");
         }
         System.err.println("Time of getting strongly connected components: " + (System.currentTimeMillis() - time));
-        for (Node n : topologicalSort) {
-            System.out.print(n.getLabel() + " and " + n.getLast() + " ");
-        }
     }
 
 }
