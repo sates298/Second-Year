@@ -6,47 +6,45 @@ import (
 	"time"
 )
 
-type SendToMachineOp struct{
+type SendToMachineOp struct {
 	current *Task
-	resp chan bool
+	resp    chan bool
 }
 
-type MultiplicatingMachine struct{
-	id int
+type MultiplyingMachine struct {
+	id       int
 	requests chan SendToMachineOp
 }
 
-type AddingMachine struct{
-	id int
+type AddingMachine struct {
+	id       int
 	requests chan SendToMachineOp
-}
-
-func (m AddingMachine) compute(task *Task, resp chan bool){
-	task.result = task.first + task.second
-	resp <- true
 }
 
 func (m AddingMachine) run() {
-	for{
-		select {
-		case curr := <-m.requests:
-			sleep := config.AddMachineSpeed*rand.Intn(100)
-			time.Sleep(time.Duration(sleep))
-			m.compute(curr.current, curr.resp)
+	for {
+		curr := <-m.requests
+		sleep := config.AddMachineSpeed * rand.Intn(100)
+		time.Sleep(time.Duration(sleep))
+		task := curr.current
+		switch task.op {
+		case "-":
+			task.result = task.first - task.second
+		default:
+			task.result = task.first + task.second
 		}
+		curr.resp <- true
 	}
 }
-func (m MultiplicatingMachine) compute(task *Task, resp chan bool){
-	task.result = task.first * task.second
-	resp <- true
-}
-func (m MultiplicatingMachine) run() {
-	for{
-		select {
-		case curr := <-m.requests:
-			sleep := config.MulMachineSpeed*rand.Intn(100)
-			time.Sleep(time.Duration(sleep))
-			m.compute(curr.current, curr.resp)
-		}
+
+func (m MultiplyingMachine) run() {
+	for {
+		curr := <-m.requests
+		sleep := config.MulMachineSpeed * rand.Intn(100)
+		time.Sleep(time.Duration(sleep))
+		task := curr.current
+		task.result = task.first * task.second
+		curr.resp <- true
+
 	}
 }

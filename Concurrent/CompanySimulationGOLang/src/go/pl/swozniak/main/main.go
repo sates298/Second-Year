@@ -5,6 +5,7 @@ package main
 
 import (
 	"../config"
+	"math/rand"
 )
 
 /*
@@ -15,6 +16,11 @@ func main() {
 	var workers [config.WorkersNo]*Worker
 	var clients [config.ClientsNo]*Client
 	var taskCreator Boss
+
+	var addMachines [config.AddMachineNo]AddingMachine
+	var mulMachines [config.MulMachineNo]MultiplyingMachine
+	addChannel := make(chan SendToMachineOp)
+	mulChannel := make(chan SendToMachineOp)
 
 	done := make(chan bool)
 
@@ -31,8 +37,28 @@ func main() {
 	go taskServer.run()
 	go storeServer.run()
 
+	for i := 0; i < config.AddMachineNo; i++ {
+		addMachines[i] = AddingMachine{id: i, requests: addChannel}
+	}
+
+	for i := 0; i < config.MulMachineNo; i++ {
+		mulMachines[i] = MultiplyingMachine{id: i, requests: mulChannel}
+	}
+
 	for i := 0; i < config.WorkersNo; i++ {
-		workers[i] = &Worker{id: i, completed: 0}
+		r := rand.Int() % 2
+		var isPatient bool
+		if r == 0 {
+			isPatient = false
+		} else {
+			isPatient = true
+		}
+		workers[i] = &Worker{
+			id: i,
+			addMachines: &addMachines,
+			mulMachines: &mulMachines,
+			completed: 0,
+			isPatient: isPatient}
 	}
 
 	for i := 0; i < config.ClientsNo; i++ {
@@ -40,6 +66,12 @@ func main() {
 	}
 
 	go taskCreator.run(writeTasks)
+	for _, m:=range addMachines{
+		go m.run()
+	}
+	for _, m:= range mulMachines{
+		go m.run()
+	}
 	for _, w := range workers {
 		go w.run(readTasks, writeProduct)
 	}
@@ -47,7 +79,7 @@ func main() {
 		go c.run(readStore)
 	}
 
-	go guiRun(getAllTasks, getAllProducts)
+	go guiRun(getAllTasks, getAllProducts, workers)
 
 	<-done
 }

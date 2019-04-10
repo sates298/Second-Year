@@ -13,8 +13,10 @@ type Boss struct{}
 //struct representing the worker of the company
 type Worker struct {
 	id, completed int
-	executed  Task
-	isPatient bool
+	executed      Task
+	addMachines   *[config.AddMachineNo]AddingMachine
+	mulMachines   *[config.MulMachineNo]MultiplyingMachine
+	isPatient     bool
 }
 
 //struct representing the client of the company
@@ -35,17 +37,43 @@ func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp)
 	tasks <- read
 
 	w.executed = <-read.resp
-
-	result := 0
+	request := SendToMachineOp{current: &w.executed, resp: make(chan bool)}
+	done := false
 	switch w.executed.op {
-	case "+":
-		result = w.executed.first + w.executed.second
 	case "*":
-		result = w.executed.first * w.executed.second
+		machine := w.mulMachines[rand.Intn(config.MulMachineNo)]
+		if !w.isPatient {
+			for !done {
+				select {
+				case machine.requests <- request:
+					done = <-request.resp
+				case <-time.After(500 * time.Millisecond):
+					machine = w.mulMachines[rand.Intn(config.MulMachineNo)]
+				}
+			}
+		} else {
+			machine.requests <- request
+			<-request.resp
+		}
+	default:
+		machine := w.addMachines[rand.Intn(config.AddMachineNo)]
+		if !w.isPatient {
+			for !done {
+				select {
+				case machine.requests <- request:
+					done = <-request.resp
+				case <-time.After(500 * time.Millisecond):
+					machine = w.addMachines[rand.Intn(config.AddMachineNo)]
+				}
+			}
+		} else {
+			machine.requests <- request
+			<-request.resp
+		}
 	}
 
 	write := &WriteStoreOp{
-		newResult: result,
+		newResult: w.executed.result,
 		resp:      make(chan bool)}
 	store <- write
 
@@ -53,7 +81,8 @@ func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp)
 
 	w.completed += 1
 	if !PeacefulMode {
-		fmt.Println("Worker: ", *w, ", Result: ", result)
+		fmt.Println("Worker: {id:", w.id, " task: {", w.executed.first,
+			w.executed.second, w.executed.op, "} Result: ", w.executed.result)
 	}
 
 }
@@ -64,7 +93,7 @@ func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp)
  */
 func (w *Worker) run(tasks chan *ReadTaskOp, store chan *WriteStoreOp) {
 	for {
-		time.Sleep(time.Duration(config.WorkerSpeed*time.Millisecond))
+		time.Sleep(time.Duration(config.WorkerSpeed * time.Millisecond))
 		number := rand.Int() % 100
 		if number < config.WorkerSensitive {
 			w.getAndExecute(tasks, store)
@@ -82,11 +111,13 @@ func (w *Worker) run(tasks chan *ReadTaskOp, store chan *WriteStoreOp) {
 */
 func (b *Boss) createTask(tasks chan *WriteTaskOp) {
 	var operator string
-	number := rand.Int() % 2
+	number := rand.Int() % 3
 	switch number {
 	case 0:
 		operator = "+"
 	case 1:
+		operator = "-"
+	case 2:
 		operator = "*"
 	}
 
@@ -109,7 +140,7 @@ func (b *Boss) createTask(tasks chan *WriteTaskOp) {
  */
 func (b *Boss) run(tasks chan *WriteTaskOp) {
 	for {
-		time.Sleep(time.Duration(config.BossSpeed*time.Millisecond))
+		time.Sleep(time.Duration(config.BossSpeed * time.Millisecond))
 		number := rand.Int() % 100
 		if number < config.BossSensitive {
 			b.createTask(tasks)
@@ -146,7 +177,7 @@ func (c *Client) getProduct(store chan *ReadStoreOp) {
  */
 func (c *Client) run(store chan *ReadStoreOp) {
 	for {
-		time.Sleep(time.Duration(config.ClientSpeed*time.Millisecond))
+		time.Sleep(time.Duration(config.ClientSpeed * time.Millisecond))
 		number := rand.Int() % 100
 		if number < config.ClientSensitive {
 			c.getProduct(store)

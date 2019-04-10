@@ -8,7 +8,7 @@ const ClientsNo int = 2
 const AddMachineNo int = 1
 const MulMachineNo int = 2
 
-const TasksMaxNo int = 20
+const TasksMaxNo int = 5
 const ProductsMaxNo int = 15
 
 const ClientsProductsMaxNo int = 3
