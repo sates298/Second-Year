@@ -1,11 +1,13 @@
 with Ada.Text_IO;
 with Ada.Numerics.Discrete_Random;
 with Constants;
+with Machines;
 with Servers;
 with Menu;
 
 package body Employees is
    use Constants;
+   use Machines;
    use Servers;
    use Menu;
 
@@ -23,7 +25,7 @@ package body Employees is
       op: Integer;
       oper: Character;
       sensitive: range100;
-      created: Servers.Job;
+      created: Job_Access;
    begin
       loop
          delay BossSpeed;
@@ -48,7 +50,7 @@ package body Employees is
                oper := '*';
             end case;
 
-            created := (first => firstInt, second => secondInt, operation => oper);
+            created := new Job'(first => firstInt, second => secondInt,result=>0, operation => oper);
 
 
             Servers.JobsServer.JobsWriteOp(newJob => created);
@@ -72,8 +74,12 @@ package body Employees is
       gen : Rand_Int.Generator;
       sensitive: range100;
 
-      resultOp: Integer;
-      id: Integer := actual.id;
+
+      r : Integer;
+      delayedPatience : Duration := 0.3;
+      done : Boolean;
+      addMachine: AM_Access;
+      mulMachine: MM_Access;
    begin
        loop
          delay WorkerSpeed;
@@ -83,21 +89,50 @@ package body Employees is
          if sensitive < WorkerSensitive then
 
             Servers.JobsServer.JobsReadOp(nextJob => actual.executed);
-
+            done := False;
             case actual.executed.operation is
-               when '+' =>
-                  resultOp := actual.executed.first + actual.executed.second;
-               when '-' =>
-                  resultOp := actual.executed.first - actual.executed.second;
+               when '*' =>
+                  r := Random(gen) mod MulMachinesNo;
+                  mulMachine := actual.mulMachines(r + 1);
+                  if actual.isPatient then
+                     mulMachine.Compute(actual.executed);
+                  else
+                     while not done loop
+                        select
+                           mulMachine.Compute(actual.executed);
+                           done := True;
+                        else
+                           delay delayedPatience;
+                           r := Random(gen) mod MulMachinesNo;
+                           mulMachine := actual.mulMachines(r + 1);
+                        end select;
+                     end loop;
+                  end if;
                when others =>
-                  resultOp := actual.executed.first * actual.executed.second;
+                   r := Random(gen) mod AddMachinesNo;
+                   addMachine := actual.addMachines(r + 1);
+                   if actual.isPatient then
+                     addMachine.Compute(actual.executed);
+                   else
+                     while not done loop
+                        select
+                           addMachine.Compute(actual.executed);
+                           done := True;
+                        else
+                           delay delayedPatience;
+                           r := Random(gen) mod AddMachinesNo;
+                           addMachine := actual.addMachines(r + 1);
+                        end select;
+                     end loop;
+                   end if;
             end case;
 
-            Servers.StoreServer.StoreWriteOp(result => resultOp);
+            Servers.StoreServer.StoreWriteOp(result => actual.executed.result);
+            actual.completed := actual.completed + 1;
             if not isPeacfull then
-            Ada.Text_IO.Put_Line("Worker(id:" & Integer'Image(id) & "): Task{" & Integer'Image(actual.executed.first) & ", "
+            Ada.Text_IO.Put_Line("Worker(id:" & Integer'Image(actual.id) & "): Task{" & Integer'Image(actual.executed.first) & ", "
                                  & Integer'Image(actual.executed.second) & ", " & actual.executed.operation
-                                 & "},  Result{" & Integer'Image(resultOp) & " }");
+                                 & "},  Result{" & Integer'Image(actual.executed.result) & " }");
             end if;
 
          end if;
@@ -153,35 +188,5 @@ package body Employees is
 
    end ClientRun;
 
-   -----------------------
-   -- GenerateEmployees --
-   -----------------------
-
-   task body GenerateEmployees is
-      type workers is array (1..WorkersNo) of W_Access;
-      type clients is array (1..ClientsNo) of C_Access;
-
-      w_array: workers;
-      c_array: clients;
-      w_Tasks: WorkersTasks;
-      c_Tasks: ClientsTasks;
-   begin
-      for I in 1..WorkersNo loop
-         w_array(I) := new Worker'(I-1,(first => 0, second => 0, operation => '0'));
-      end loop;
-
-      for J in 1..ClientsNo loop
-         c_array(J) := new Client'(J-1,(others => 0));
-      end loop;
-
-      for K in 1..WorkersNo loop
-         w_Tasks(K) := new WorkerRun(actual => w_array(K));
-      end loop;
-
-      for L in 1..ClientsNo loop
-         c_Tasks(L) := new ClientRun(actual => c_array(L));
-      end loop;
-
-   end GenerateEmployees;
 
 end Employees;

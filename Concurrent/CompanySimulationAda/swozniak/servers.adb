@@ -50,7 +50,7 @@ package body Servers is
    ----------------  
    
    task body JobsServer is
-      jobs : JobsArray := (others => (first => 0, second => 0, operation => '0'));
+      jobs : JobsArray := (others => new Job'(first => 0, second =>0 ,result => 0, operation => '0'));
       checkJobs: JobsChecksArray := (others => False);
       writeIterator : Integer := 1;
       readIterator: Integer := 1;
@@ -58,7 +58,7 @@ package body Servers is
       loop
          select
             when checkJobs(readIterator) =>
-               accept JobsReadOp (nextJob : out Job) do
+               accept JobsReadOp (nextJob : out Job_Access) do
                   nextJob := jobs(readIterator);
                   checkJobs(readIterator) := False;
                   readIterator := readIterator + 1;
@@ -68,7 +68,7 @@ package body Servers is
                end JobsReadOp; 
          or
             when not checkJobs(writeIterator) =>
-               accept JobsWriteOp (newJob : in Job) do
+               accept JobsWriteOp (newJob : in Job_Access) do
                   jobs(writeIterator) := newJob;
                   checkJobs(writeIterator) := True;
                   writeIterator := writeIterator + 1;

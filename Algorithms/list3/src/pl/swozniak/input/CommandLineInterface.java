@@ -2,7 +2,6 @@ package pl.swozniak.input;
 
 import pl.swozniak.graph.DirectedWeightedGraph;
 import pl.swozniak.graph.UndirectedWeightedGraph;
-import pl.swozniak.graph.WeightedEdge;
 import pl.swozniak.graph.WeightedGraph;
 import pl.swozniak.queue.PriorityQueue;
 
@@ -69,7 +68,7 @@ public class CommandLineInterface {
         mS = this.sc.nextLine();
         m = Integer.parseInt(mS);
         if (m < 1) throw new NumberFormatException();
-        PriorityQueue<Integer> heap = new PriorityQueue(m, 0);
+        PriorityQueue<Integer> heap = new PriorityQueue<>(m, 0);
         for (int i = 0; i < m; i++) {
             System.out.println((i + 1) + ". Write operation: ");
             line = this.sc.nextLine();

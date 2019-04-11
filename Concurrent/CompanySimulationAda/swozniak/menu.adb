@@ -1,6 +1,7 @@
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
 with Servers;
+with Employees;
 with Constants;
 
 package body Menu is
@@ -8,6 +9,7 @@ package body Menu is
    use Ada.Integer_Text_IO;
    use Servers;
    use Constants;
+   use Employees;
    
    task body Gui is
       choose: Integer;
@@ -17,15 +19,16 @@ package body Menu is
       store: StoreArray;
       storeCheck: StoreChecksArray;
       
-      actualJob: Job;
+      actualJob: Job_Access;
       jobs: JobsArray;
       jobsCheck: JobsChecksArray;
-      
+            
    begin
       loop
          if isPeacfull then
             Put_Line("1. Show list of tasks.");
             Put_Line("2. Show store.");
+            Put_Line("3. Show workers.");
             Put_Line("others. Change mode on loud.");
             Get(choose);
             case choose is
@@ -58,6 +61,16 @@ package body Menu is
                   end loop;
                   Put_Line("]");
                   iterator := 1;
+               when 3 =>
+                  Put("Workers :[");
+                  for I in 1..WorkersNo loop
+                     Put("{ id:" & Integer'Image(w_array(I).id) &
+                           ", Completed: " &
+                           Integer'Image(w_array(I).completed) &
+                           ", isPatient: " &
+                           Boolean'Image(w_array(I).isPatient) & "}");
+                  end loop;
+                  Put_Line("]");
                when others =>
                   isPeacfull := False;
             end case;

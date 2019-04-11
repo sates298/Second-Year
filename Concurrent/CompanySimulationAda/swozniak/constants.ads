@@ -2,6 +2,9 @@ package Constants is
    WorkersNo: constant Integer:= 3;
    ClientsNo: constant Integer := 2;
    
+   AddMachinesNo: constant Integer := 3;
+   MulMachinesNo: constant Integer := 2;
+   
    JobsMaxNo: constant Integer := 20;
    ProductsMaxNo: constant Integer := 15;
    
@@ -15,4 +18,7 @@ package Constants is
    
    ClientSpeed: Duration := 2.0; --seconds
    ClientSensitive: constant Integer := 40; --%
+   
+   AddMachineSpeed: Duration := 0.7; --seconds
+   MulMachineSpeed: Duration := 0.9; --seconds
 end Constants;
