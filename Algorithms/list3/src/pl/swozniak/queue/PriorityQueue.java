@@ -69,6 +69,7 @@ public class PriorityQueue<T extends Comparable> {
 
     public boolean priority(int x, T p) {
         boolean result = false;
+//        if(this.mapping.get(x) == null) return false;
         for(Integer i: this.mapping.get(x)){
             QueueElement curr = this.heap[i];
             if(curr.getPriority().compareTo(p) > 0){
