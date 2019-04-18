@@ -20,9 +20,14 @@ class Computer:
         return random.randint(2*self.wire_length, 2.5*self.wire_length)
 
     def random_sleep(self):
-        random.seed(int(round(time.time() * random.randint(500, 1500))))
-        curr_max_sleep = int((1 - self.probability) * self.max_sleep)
-        r = random.randint(1, curr_max_sleep)
+        if self.probability == 0.0:
+            return 1000
+        elif self.probability == 1.0:
+            return 1
+        else:
+            random.seed(int(round(time.time() * random.randint(500, 1500))))
+            curr_max_sleep = int((1 - self.probability) * self.max_sleep)
+            r = random.randint(1, curr_max_sleep)
         return r
 
     def stop_sending(self):

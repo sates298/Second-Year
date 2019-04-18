@@ -3,7 +3,7 @@ from csma_cd.computer import *
 
 class Wire:
 
-    def __init__(self, l=32):
+    def __init__(self, l=10):
         self.length = l
         self.computer1 = Computer('1', wire_length=l)
         self.computer2 = Computer('2', wire_length=l)
@@ -59,13 +59,13 @@ class Wire:
             elif left2right == self.computer1.name and curr2right == self.computer2.name:
                 collision = i
 
-        if collision > 0:
+        if collision >= 0:
             self.channel[collision] = COLLISION_FIELD
         if self.msg1 > 0:
             if self.channel[0] == EMPTY_FIELD and self.computer1.is_sender:
                 self.channel[0] = self.computer1.name
                 self.msg1 -= 1
-            elif self.channel[0] == COLLISION_FIELD:
+            elif self.channel[0] == COLLISION_FIELD and self.computer1.is_sender:
                 self.computer1.stop_sending()
             if self.msg1 == 0:
                 self.computer1.message = self.computer1.create_new_msg()
@@ -74,8 +74,7 @@ class Wire:
             if self.channel[self.length - 1] == EMPTY_FIELD and self.computer2.is_sender:
                 self.channel[self.length - 1] = self.computer2.name
                 self.msg2 -= 1
-            elif self.channel[self.length - 1] == COLLISION_FIELD:
-
+            elif self.channel[self.length - 1] == COLLISION_FIELD and self.computer2.is_sender:
                 self.computer2.stop_sending()
             if self.msg2 == 0:
                 self.computer2.message = self.computer2.create_new_msg()
