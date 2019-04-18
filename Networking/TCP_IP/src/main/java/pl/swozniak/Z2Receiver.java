@@ -16,6 +16,7 @@ public class Z2Receiver
     ReceiverThread receiver;
 
     List<Z2Packet> received;
+    List<Integer> receivedIdx;
     Deque<Integer> printed;
 
     public Z2Receiver(int myPort, int destPort)
@@ -27,6 +28,7 @@ public class Z2Receiver
         receiver=new ReceiverThread();
 
         received = new ArrayList<>();
+        receivedIdx = new ArrayList<>();
         printed = new ArrayDeque<>();
     }
 
@@ -50,8 +52,9 @@ public class Z2Receiver
                             new DatagramPacket(data, datagramSize);
                     socket.receive(packet);
                     Z2Packet p=new Z2Packet(packet.getData());
-                    if(!printed.contains(p.getIntAt(0))){
+                    if(!receivedIdx.contains(p.getIntAt(0))){
                         received.add(p);
+                        receivedIdx.add(p.getIntAt(0));
                     }
                     // WYSLANIE POTWIERDZENIA
                     packet.setPort(destinationPort);
