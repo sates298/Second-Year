@@ -58,7 +58,7 @@ public class Z2Receiver
                     socket.send(packet);
 
                     if(received.size() > 0){
-                        int lastPrinted = 0;
+                        int lastPrinted = -1;
                         if(printed.size() > 0) {
                             lastPrinted = printed.peek();
                         }

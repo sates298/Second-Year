@@ -1,5 +1,6 @@
 package pl.swozniak;
 
+import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,16 @@ class Z2Sender
 
     class SenderThread extends Thread
     {
+        private void sentFirst() throws InterruptedException, IOException {
+            Z2Packet p0 = sent.get(0);
+            DatagramPacket packet0 =
+                    new DatagramPacket(p0.data, p0.data.length,
+                            localHost, destinationPort);
+            socket.send(packet0);
+            sleep(sleepTime);
+        }
+
+
         public void run()
         {
             int i, x;
@@ -39,12 +50,7 @@ class Z2Sender
                 for(i=0; (x=System.in.read()) >= 0 ; i++)
                 {
                     if(sent.size() > 0){
-                        Z2Packet p0 = sent.get(0);
-                        DatagramPacket packet0 =
-                                new DatagramPacket(p0.data, p0.data.length,
-                                        localHost, destinationPort);
-                        socket.send(packet0);
-                        sleep(sleepTime);
+                        sentFirst();
                     }
                     Z2Packet p=new Z2Packet(4+1);
                     p.setIntAt(i,0);
@@ -55,6 +61,10 @@ class Z2Sender
                     sent.add(p);
                     socket.send(packet);
                     sleep(sleepTime);
+                }
+
+                while(sent.size() > 0){
+                    sentFirst();
                 }
             }
             catch(Exception e)
@@ -81,8 +91,8 @@ class Z2Sender
                             new DatagramPacket(data, datagramSize);
                     socket.receive(packet);
                     Z2Packet p=new Z2Packet(packet.getData());
-                    System.out.println("S:"+p.getIntAt(0)+
-                            ": "+(char) p.data[4]);
+                    //System.out.println("S:"+p.getIntAt(0)+
+                    //        ": "+(char) p.data[4]);
 
                     for (int i=0; i<sent.size(); i++) {
                         if(sent.get(i).getIntAt(0) == p.getIntAt(0)){
