@@ -1,6 +1,10 @@
 package pl.swozniak;
 
 import java.net.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 public class Z2Receiver
 {
@@ -11,6 +15,9 @@ public class Z2Receiver
 
     ReceiverThread receiver;
 
+    List<Z2Packet> received;
+    Deque<Integer> printed;
+
     public Z2Receiver(int myPort, int destPort)
             throws Exception
     {
@@ -18,10 +25,19 @@ public class Z2Receiver
         destinationPort=destPort;
         socket=new DatagramSocket(myPort);
         receiver=new ReceiverThread();
+
+        received = new ArrayList<>();
+        printed = new ArrayDeque<>();
     }
 
     class ReceiverThread extends Thread
     {
+        private void printPacket(Z2Packet p){
+            received.remove(p);
+            System.out.println("R:"+p.getIntAt(0)
+                    +": "+(char) p.data[4]);
+            printed.push(p.getIntAt(0));
+        }
 
         public void run()
         {
@@ -34,11 +50,25 @@ public class Z2Receiver
                             new DatagramPacket(data, datagramSize);
                     socket.receive(packet);
                     Z2Packet p=new Z2Packet(packet.getData());
-                    System.out.println("R:"+p.getIntAt(0)
-                            +": "+(char) p.data[4]);
+                    if(!printed.contains(p.getIntAt(0))){
+                        received.add(p);
+                    }
                     // WYSLANIE POTWIERDZENIA
                     packet.setPort(destinationPort);
                     socket.send(packet);
+
+                    if(received.size() > 0){
+                        int lastPrinted = 0;
+                        if(printed.size() > 0) {
+                            lastPrinted = printed.peek();
+                        }
+                        for(int i=0; i<received.size(); i++){
+                            if(received.get(i).getIntAt(0) == lastPrinted + 1){
+                                printPacket(received.get(i));
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             catch(Exception e)

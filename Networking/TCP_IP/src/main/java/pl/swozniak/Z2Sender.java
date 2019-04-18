@@ -1,6 +1,8 @@
 package pl.swozniak;
 
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class Z2Sender
 {
@@ -13,6 +15,8 @@ class Z2Sender
     SenderThread sender;
     ReceiverThread receiver;
 
+    List<Z2Packet> sent;
+
     public Z2Sender(int myPort, int destPort)
             throws Exception
     {
@@ -21,6 +25,8 @@ class Z2Sender
         socket=new DatagramSocket(myPort);
         sender=new SenderThread();
         receiver=new ReceiverThread();
+
+        sent = new ArrayList<>();
     }
 
     class SenderThread extends Thread
@@ -32,12 +38,21 @@ class Z2Sender
             {
                 for(i=0; (x=System.in.read()) >= 0 ; i++)
                 {
+                    if(sent.size() > 0){
+                        Z2Packet p0 = sent.get(0);
+                        DatagramPacket packet0 =
+                                new DatagramPacket(p0.data, p0.data.length,
+                                        localHost, destinationPort);
+                        socket.send(packet0);
+                        sleep(sleepTime);
+                    }
                     Z2Packet p=new Z2Packet(4+1);
                     p.setIntAt(i,0);
                     p.data[4]= (byte) x;
                     DatagramPacket packet =
                             new DatagramPacket(p.data, p.data.length,
                                     localHost, destinationPort);
+                    sent.add(p);
                     socket.send(packet);
                     sleep(sleepTime);
                 }
@@ -68,6 +83,14 @@ class Z2Sender
                     Z2Packet p=new Z2Packet(packet.getData());
                     System.out.println("S:"+p.getIntAt(0)+
                             ": "+(char) p.data[4]);
+
+                    for (int i=0; i<sent.size(); i++) {
+                        if(sent.get(i).getIntAt(0) == p.getIntAt(0)){
+                            sent.remove(i);
+                            break;
+                        }
+                    }
+
                 }
             }
             catch(Exception e)
