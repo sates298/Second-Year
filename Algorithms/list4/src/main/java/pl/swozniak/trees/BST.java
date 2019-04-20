@@ -84,7 +84,7 @@ public class BST extends AbstractBinaryTree {
         }
     }
 
-    private Node getNodeByValue(String s) {
+    protected Node getNodeByValue(String s) {
         if (s == null) return null;
         Node curr = this.root;
         String currValue;
