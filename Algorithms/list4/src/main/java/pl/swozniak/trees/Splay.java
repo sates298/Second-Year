@@ -4,6 +4,8 @@ import pl.swozniak.trees.basetree.Node;
 
 import java.util.Comparator;
 
+import static pl.swozniak.trees.basetree.Node.nullNode;
+
 public class Splay extends BST {
     public Splay(Comparator comparator) {
         super(comparator);
@@ -17,7 +19,7 @@ public class Splay extends BST {
     @Override
     public void insertValue(String s) {
         splay(s);
-        if (this.root == null) {
+        if (this.root == nullNode) {
             super.insertValue(s);
         } else {
             Node add = new Node(s);
@@ -35,11 +37,11 @@ public class Splay extends BST {
     @Override
     public void delete(String s) {
         splay(s);
-        if (this.root != null && this.root.getValue().equals(s)) {
+        if (this.root != nullNode && this.root.getValue().equals(s)) {
             Splay left = new Splay(this.comparator, this.root.getLeft());
             Splay right = new Splay(this.comparator, this.root.getRight());
             right.splay(s);
-            if (right.root != null) {
+            if (right.root != nullNode) {
                 this.setRoot(right.root);
                 this.root.setLeft(left.root);
             } else {
@@ -52,7 +54,7 @@ public class Splay extends BST {
     @Override
     public boolean search(String s) {
         splay(s);
-        if ((this.root != null) && (this.root.getValue().equals(s))) {
+        if ((this.root != nullNode) && (this.root.getValue().equals(s))) {
             System.out.println(s + " -> 1");
             return true;
         }
@@ -62,10 +64,10 @@ public class Splay extends BST {
 
     private void splay(String s) {
         Node found = getClosestOne(s);
-        if (found == null) return;
+        if (found == nullNode) return;
 
-        while (found.getParent() != null) {
-            if (found.getParent().getParent() == null) {
+        while (found.getParent() != nullNode) {
+            if (found.getParent().getParent() == nullNode) {
                 zig(found);
             } else if ((found.getParent().getLeft() == found &&
                     found.getParent().getParent().getLeft() == found.getParent()) ||
@@ -82,9 +84,9 @@ public class Splay extends BST {
 
     private Node getClosestOne(String s) {
         if (s == null) return null;
-        Node parent = null;
+        Node parent = nullNode;
         Node curr = this.root;
-        while (curr != null) {
+        while (curr != nullNode) {
             if (comparator.compare(s, curr.getValue()) == 0) {
                 return curr;
             } else if (comparator.compare(s, curr.getValue()) < 0) {
@@ -100,16 +102,16 @@ public class Splay extends BST {
 
     private void zig(Node child) {
         Node parent = child.getParent();
-        if (parent != null) {
+        if (parent != nullNode) {
             //set new parent for child
-            if(parent.getParent() != null) {
+            if(parent.getParent() != nullNode) {
                 if(parent.getParent().getRight() == parent){
                     parent.getParent().setRight(child);
                 }else{
                     parent.getParent().setLeft(child);
                 }
             }else{
-                child.setParent(null);
+                child.setParent(nullNode);
             }
 
             //rotation parent and child

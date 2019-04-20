@@ -5,25 +5,28 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Comparator;
 
+import static pl.swozniak.trees.basetree.Node.nullNode;
+
 public abstract class AbstractBinaryTree {
     protected Node root;
     protected int size;
 
     protected Comparator comparator;
 
+
     public AbstractBinaryTree(Comparator c){
-        this.root = null;
+        this.root = nullNode;
         this.size = 0;
         this.comparator = c;
     }
 
     protected void setRoot(Node node){
         this.root = node;
-        if(node != null) node.setParent(null);
+        if(node != nullNode) node.setParent(nullNode);
     }
 
     public boolean isEmpty(){
-        return root == null;
+        return root == nullNode;
     }
 
     public void insert(String s){

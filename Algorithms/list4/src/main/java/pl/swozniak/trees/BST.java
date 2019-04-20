@@ -7,6 +7,8 @@ import java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.Deque;
 
+import static pl.swozniak.trees.basetree.Node.nullNode;
+
 public class BST extends AbstractBinaryTree {
 
     public BST(Comparator comparator) {
@@ -17,22 +19,22 @@ public class BST extends AbstractBinaryTree {
     public void insertValue(String s) {
         Node add = new Node(s);
         size++;
-        if (this.root == null) {
+        if (this.root == nullNode) {
             this.root = add;
             return;
         }
         Node prev;
         Node curr = this.root;
-        while (curr != null) {
+        while (curr != nullNode) {
             prev = curr;
             if (comparator.compare(s, curr.getValue()) < 0) {
                 curr = curr.getLeft();
-                if (curr == null) {
+                if (curr == nullNode) {
                     prev.setLeft(add);
                 }
             } else {
                 curr = curr.getRight();
-                if (curr == null) {
+                if (curr == nullNode) {
                     prev.setRight(add);
                 }
             }
@@ -42,13 +44,13 @@ public class BST extends AbstractBinaryTree {
     @Override
     public void delete(String s) {
         Node deleted = getNodeByValue(s);
-        if (deleted == null) return;
+        if (deleted == nullNode) return;
         Node curr;
-        if (deleted.getLeft() == null && deleted.getRight() == null) {
-            curr = null;
-        }else if (deleted.getLeft() == null) {
+        if (deleted.getLeft() == nullNode && deleted.getRight() == nullNode) {
+            curr = nullNode;
+        }else if (deleted.getLeft() == nullNode) {
             curr = deleted.getRight();
-        }else if (deleted.getRight() == null) {
+        }else if (deleted.getRight() == nullNode) {
             curr = deleted.getLeft();
         }else{
             curr = findSuccessor(deleted);
@@ -60,7 +62,7 @@ public class BST extends AbstractBinaryTree {
         }
 
         Node parent = deleted.getParent();
-        if (parent == null) {
+        if (parent == nullNode) {
             this.setRoot(curr);
         }else{
             if(parent.getLeft() == deleted){
@@ -75,7 +77,7 @@ public class BST extends AbstractBinaryTree {
     @Override
     public boolean search(String s) {
         Node curr = getNodeByValue(s);
-        if (curr == null) {
+        if (curr == nullNode) {
             System.out.println(s + " -> 0");
             return false;
         } else {
@@ -84,11 +86,11 @@ public class BST extends AbstractBinaryTree {
         }
     }
 
-    protected Node getNodeByValue(String s) {
-        if (s == null) return null;
+    private Node getNodeByValue(String s) {
+        if (s == null) return nullNode;
         Node curr = this.root;
         String currValue;
-        while (curr != null) {
+        while (curr != nullNode) {
             currValue = curr.getValue();
             if (comparator.compare(s, currValue) == 0) {
                 return curr;
@@ -106,8 +108,8 @@ public class BST extends AbstractBinaryTree {
     public void inOrder() {
         Deque<Node> stack = new ArrayDeque<>();
         Node curr = this.root;
-        while (!stack.isEmpty() || curr != null) {
-            if (curr != null) {
+        while (!stack.isEmpty() || curr != nullNode) {
+            if (curr != nullNode) {
                 stack.push(curr);
                 curr = curr.getLeft();
             } else {
@@ -126,31 +128,31 @@ public class BST extends AbstractBinaryTree {
 
     // Stack Overflow for file for example aspell_wordlist.txt
     private void recursiveInOrder(Node n) {
-        if (n == null) return;
+        if (n == nullNode) return;
         System.out.println(" in");
         recursiveInOrder(n.getLeft());
         System.out.print(n.getValue() + " ");
         recursiveInOrder(n.getRight());
     }
 
-    protected Node findSuccessor(Node n) {
-        if(n == null) return null;
-        if (n.getRight() != null) {
+    private Node findSuccessor(Node n) {
+        if(n == nullNode) return nullNode;
+        if (n.getRight() != nullNode) {
             return findMin(n.getRight());
         }
         Node parent = n.getParent();
         Node curr = n;
-        while (parent != null && parent.getLeft() != curr) {
+        while (parent != nullNode && parent.getLeft() != curr) {
             curr = parent;
             parent = parent.getParent();
         }
         return parent;
     }
 
-    protected Node findMin(Node n) {
-        if(n == null) return null;
+    private Node findMin(Node n) {
+        if(n == nullNode) return nullNode;
         Node curr = n;
-        while (curr.getLeft() != null) {
+        while (curr.getLeft() != nullNode) {
             curr = curr.getLeft();
         }
         return curr;

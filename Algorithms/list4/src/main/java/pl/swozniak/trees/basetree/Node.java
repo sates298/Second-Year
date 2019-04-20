@@ -9,13 +9,21 @@ public class Node {
     private Node left;
     private Node right;
 
-    private Color color = Color.NONE;
+    private Color color;
+
+    public final static Node nullNode;
+    static{
+        nullNode = new Node("", Node.Color.BLACK);
+        nullNode.setRight(nullNode);
+        nullNode.setLeft(nullNode);
+    }
 
     public Node(String value){
         this.value = value;
-        this.parent = null;
-        this.left = null;
-        this.right = null;
+        this.parent = nullNode;
+        this.left = nullNode;
+        this.right = nullNode;
+        this.color = Color.NONE;
     }
 
     public Node(String value, Color color){
@@ -41,7 +49,7 @@ public class Node {
 
     public void setLeft(Node left) {
         this.left = left;
-        if(left != null) left.setParent(this);
+        if(left != nullNode) left.setParent(this);
     }
 
     public Node getRight() {
@@ -50,7 +58,7 @@ public class Node {
 
     public void setRight(Node right) {
         this.right = right;
-        if(right != null) right.setParent(this);
+        if(right != nullNode) right.setParent(this);
     }
 
     public Color getColor() {
@@ -61,7 +69,7 @@ public class Node {
         this.color = color;
     }
 
-    enum Color{
+    public enum Color{
         BLACK, RED, NONE
     }
 
