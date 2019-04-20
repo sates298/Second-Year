@@ -11,10 +11,10 @@ public abstract class AbstractBinaryTree {
     protected Node root;
     protected int size;
 
-    protected Comparator comparator;
+    protected Comparator<String> comparator;
 
 
-    public AbstractBinaryTree(Comparator c){
+    public AbstractBinaryTree(Comparator<String> c){
         this.root = nullNode;
         this.size = 0;
         this.comparator = c;
@@ -22,7 +22,7 @@ public abstract class AbstractBinaryTree {
 
     protected void setRoot(Node node){
         this.root = node;
-        if(node != nullNode) node.setParent(nullNode);
+        node.setParent(nullNode);
     }
 
     public boolean isEmpty(){

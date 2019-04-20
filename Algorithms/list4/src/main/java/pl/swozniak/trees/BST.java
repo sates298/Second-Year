@@ -11,7 +11,7 @@ import static pl.swozniak.trees.basetree.Node.nullNode;
 
 public class BST extends AbstractBinaryTree {
 
-    public BST(Comparator comparator) {
+    public BST(Comparator<String> comparator) {
         super(comparator);
     }
 
@@ -101,7 +101,7 @@ public class BST extends AbstractBinaryTree {
                 curr = curr.getRight();
             }
         }
-        return null;
+        return nullNode;
     }
 
     @Override
@@ -150,7 +150,6 @@ public class BST extends AbstractBinaryTree {
     }
 
     private Node findMin(Node n) {
-        if(n == nullNode) return nullNode;
         Node curr = n;
         while (curr.getLeft() != nullNode) {
             curr = curr.getLeft();

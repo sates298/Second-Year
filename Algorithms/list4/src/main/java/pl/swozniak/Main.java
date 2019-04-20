@@ -9,9 +9,9 @@ import pl.swozniak.trees.basetree.AbstractBinaryTree;
 public class Main {
 
     public static void main(String[] args) {
-        AbstractBinaryTree tree = new Splay(new StringComparator());
-        //AbstractBinaryTree tree = new RBT(new StringComparator());
-        //AbstractBinaryTree tree = new BST(new StringComparator());
+        AbstractBinaryTree tree = new Splay(new StringComparator<>());
+        //AbstractBinaryTree tree = new RBT(new StringComparator<>());
+        //AbstractBinaryTree tree = new BST(new StringComparator<>());
         long time = System.currentTimeMillis();
         tree.load(CommandLineInterface.SAMPLE_PATH);
         tree.inOrder();

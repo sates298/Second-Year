@@ -2,9 +2,9 @@ package pl.swozniak;
 
 import java.util.Comparator;
 
-public class StringComparator implements Comparator {
+public class StringComparator<T> implements Comparator<T> {
     @Override
-    public int compare(Object o1, Object o2) {
+    public int compare(T o1, T o2) {
         return stringCompare(o1.toString(), o2.toString());
     }
 

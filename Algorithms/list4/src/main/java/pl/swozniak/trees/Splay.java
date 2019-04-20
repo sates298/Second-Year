@@ -7,11 +7,11 @@ import java.util.Comparator;
 import static pl.swozniak.trees.basetree.Node.nullNode;
 
 public class Splay extends BST {
-    public Splay(Comparator comparator) {
+    public Splay(Comparator<String> comparator) {
         super(comparator);
     }
 
-    public Splay(Comparator comparator, Node root) {
+    public Splay(Comparator<String> comparator, Node root) {
         super(comparator);
         setRoot(root);
     }

@@ -7,7 +7,7 @@ import java.util.Comparator;
 public class RBT extends BST {
 
 
-    public RBT(Comparator comparator) {
+    public RBT(Comparator<String> comparator) {
         super(comparator);
     }
 
