@@ -17,25 +17,29 @@ public class BST extends AbstractBinaryTree {
 
     @Override
     public void insertValue(String s) {
-        Node add = new Node(s);
+        Node added = new Node(s);
+        insertNode(added);
+    }
+
+    void insertNode(Node added){
         size++;
         if (this.root == nullNode) {
-            this.root = add;
+            setRoot(added);
             return;
         }
         Node prev;
         Node curr = this.root;
         while (curr != nullNode) {
             prev = curr;
-            if (comparator.compare(s, curr.getValue()) < 0) {
+            if (comparator.compare(added.getValue(), curr.getValue()) < 0) {
                 curr = curr.getLeft();
                 if (curr == nullNode) {
-                    prev.setLeft(add);
+                    prev.setLeft(added);
                 }
             } else {
                 curr = curr.getRight();
                 if (curr == nullNode) {
-                    prev.setRight(add);
+                    prev.setRight(added);
                 }
             }
         }
@@ -114,7 +118,7 @@ public class BST extends AbstractBinaryTree {
                 curr = curr.getLeft();
             } else {
                 curr = stack.pop();
-                System.out.println(curr.getValue());
+                System.out.println(curr.getValue() + " \"" + curr.getColor() + "\"");
                 curr = curr.getRight();
             }
         }
@@ -155,5 +159,30 @@ public class BST extends AbstractBinaryTree {
             curr = curr.getLeft();
         }
         return curr;
+    }
+
+    protected void rotation(Node child) {
+        Node parent = child.getParent();
+        if (parent != nullNode) {
+            //set new parent for child
+            if(parent.getParent() != nullNode) {
+                if(parent.getParent().getRight() == parent){
+                    parent.getParent().setRight(child);
+                }else{
+                    parent.getParent().setLeft(child);
+                }
+            }else{
+                child.setParent(nullNode);
+            }
+
+            //rotation parent and child
+            if (parent.getLeft() == child) {
+                parent.setLeft(child.getRight());
+                child.setRight(parent);
+            } else {
+                parent.setRight(child.getLeft());
+                child.setLeft(parent);
+            }
+        }
     }
 }

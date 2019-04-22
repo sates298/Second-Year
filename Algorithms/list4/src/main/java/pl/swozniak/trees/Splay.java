@@ -22,14 +22,14 @@ public class Splay extends BST {
         if (this.root == nullNode) {
             super.insertValue(s);
         } else {
-            Node add = new Node(s);
+            Node added = new Node(s);
             size++;
             if (comparator.compare(s, this.root.getValue()) < 0) {
-                add.setLeft(this.root.getLeft());
-                this.root.setLeft(add);
+                added.setLeft(this.root.getLeft());
+                this.root.setLeft(added);
             } else {
-                add.setRight(this.root.getRight());
-                this.root.setRight(add);
+                added.setRight(this.root.getRight());
+                this.root.setRight(added);
             }
         }
     }
@@ -101,28 +101,7 @@ public class Splay extends BST {
     }
 
     private void zig(Node child) {
-        Node parent = child.getParent();
-        if (parent != nullNode) {
-            //set new parent for child
-            if(parent.getParent() != nullNode) {
-                if(parent.getParent().getRight() == parent){
-                    parent.getParent().setRight(child);
-                }else{
-                    parent.getParent().setLeft(child);
-                }
-            }else{
-                child.setParent(nullNode);
-            }
-
-            //rotation parent and child
-            if (parent.getLeft() == child) {
-                parent.setLeft(child.getRight());
-                child.setRight(parent);
-            } else {
-                parent.setRight(child.getLeft());
-                child.setLeft(parent);
-            }
-        }
+        super.rotation(child);
     }
 
     private void zigZig(Node child){
