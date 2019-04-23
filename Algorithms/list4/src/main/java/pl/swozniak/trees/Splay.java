@@ -79,11 +79,11 @@ public class Splay extends BST {
             }
         }
 
-        setRoot(found);
+        //setRoot(found);
     }
 
     private Node getClosestOne(String s) {
-        if (s == null) return null;
+        if (s == null) return nullNode;
         Node parent = nullNode;
         Node curr = this.root;
         while (curr != nullNode) {

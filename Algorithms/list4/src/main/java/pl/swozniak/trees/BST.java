@@ -65,17 +65,21 @@ public class BST extends AbstractBinaryTree {
             }
         }
 
+        setParentAfterDeletion(deleted, curr);
+        this.size--;
+    }
+
+    void setParentAfterDeletion(Node deleted, Node replacement){
         Node parent = deleted.getParent();
         if (parent == nullNode) {
-            this.setRoot(curr);
+            this.setRoot(replacement);
         }else{
             if(parent.getLeft() == deleted){
-                parent.setLeft(curr);
+                parent.setLeft(replacement);
             }else{
-                parent.setRight(curr);
+                parent.setRight(replacement);
             }
         }
-        this.size--;
     }
 
     @Override
@@ -90,7 +94,7 @@ public class BST extends AbstractBinaryTree {
         }
     }
 
-    private Node getNodeByValue(String s) {
+    Node getNodeByValue(String s) {
         if (s == null) return nullNode;
         Node curr = this.root;
         String currValue;
@@ -118,7 +122,7 @@ public class BST extends AbstractBinaryTree {
                 curr = curr.getLeft();
             } else {
                 curr = stack.pop();
-                System.out.println(curr.getValue() + " \"" + curr.getColor() + "\"");
+                System.out.println(curr.getValue() + " \"" + curr.getColor() + "\""); // + curr.getLeft().getValue() + " " + curr.getRight().getValue());
                 curr = curr.getRight();
             }
         }
@@ -139,7 +143,7 @@ public class BST extends AbstractBinaryTree {
         recursiveInOrder(n.getRight());
     }
 
-    private Node findSuccessor(Node n) {
+    Node findSuccessor(Node n) {
         if(n == nullNode) return nullNode;
         if (n.getRight() != nullNode) {
             return findMin(n.getRight());
@@ -172,7 +176,7 @@ public class BST extends AbstractBinaryTree {
                     parent.getParent().setLeft(child);
                 }
             }else{
-                child.setParent(nullNode);
+                setRoot(child);
             }
 
             //rotation parent and child

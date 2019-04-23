@@ -16,6 +16,7 @@ public class Node {
         nullNode = new Node("", Node.Color.BLACK);
         nullNode.setRight(nullNode);
         nullNode.setLeft(nullNode);
+        nullNode.setParent(nullNode);
     }
 
     public Node(String value){
