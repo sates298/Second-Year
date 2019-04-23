@@ -9,39 +9,32 @@ import pl.swozniak.trees.basetree.AbstractBinaryTree;
 public class Main {
 
     public static void main(String[] args) {
-//        AbstractBinaryTree tree = new Splay(new StringComparator<>());
-        AbstractBinaryTree tree = new RBT(new StringComparator<>());
-//        AbstractBinaryTree tree = new BST(new StringComparator<>());
-        long time = System.currentTimeMillis();
-//        tree.load(CommandLineInterface.SAMPLE_PATH);
-        //tree.inOrder();
-        tree.insert("A");
-        tree.insert("B");
-        tree.insert("C");
-//        tree.delete("right");
-//        tree.delete("right");
-//        tree.delete("three");
-//        tree.delete("First");
-//        tree.delete("Five");
-        tree.inOrder();
-        System.out.println("insert");
-        tree.insert("AB");
-        tree.inOrder();
-        System.out.println("insert");
-        tree.insert("AA");
-        tree.insert("A");
-        tree.insert("AAA");
-        tree.insert("AAAB");
-        tree.inOrder();
-        System.out.println("delete");
-//        tree.delete("AA");
-        tree.delete("B");
-        tree.inOrder();
-        //tree.search("Amon");
-        //tree.search("amon");
-        System.out.println(tree.getSize());
-        System.out.println("time tree = " + (System.currentTimeMillis() - time));
-
+        CommandLineInterface cli = new CommandLineInterface();
+        cli.run(args);
+//        String path = CommandLineInterface.ASPELL_WORDLIST_PATH;
+//        AbstractBinaryTree splay = new Splay(new StringComparator<>());
+//        AbstractBinaryTree rbt = new RBT(new StringComparator<>());
+//        AbstractBinaryTree bst = new BST(new StringComparator<>());
+//        long time = System.currentTimeMillis();
+//        splay.load(path);
+//        System.out.println("splays: " + ((Splay) splay).getSplays());
+//        System.out.println("size: " + splay.getSize());
+//        System.out.println("comparisons: " + splay.getComparisons());
+//        System.out.println("swaps: " + splay.getSwapNodes());
+//        System.out.println("time tree = " + (System.currentTimeMillis() - time));
+//        time = System.currentTimeMillis();
+//        rbt.load(path);
+//        System.out.println("size: " + rbt.getSize());
+//        System.out.println("comparisons: " + rbt.getComparisons());
+//        System.out.println("swaps: " + rbt.getSwapNodes());
+//        System.out.println("time tree = " + (System.currentTimeMillis() - time));
+//
+//        time = System.currentTimeMillis();
+//        bst.load(path);
+//        System.out.println("size: " + bst.getSize());
+//        System.out.println("comparisons: " + bst.getComparisons());
+//        System.out.println("swaps: " + bst.getSwapNodes());
+//        System.out.println("time tree = " + (System.currentTimeMillis() - time));
 
     }
 }

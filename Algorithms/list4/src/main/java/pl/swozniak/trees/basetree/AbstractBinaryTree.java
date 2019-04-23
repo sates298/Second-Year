@@ -13,6 +13,10 @@ public abstract class AbstractBinaryTree {
 
     protected Comparator<String> comparator;
 
+    protected long comparisons = 0;
+    protected int maxCapacity = 0;
+    protected long swapNodes = 0;
+
 
     public AbstractBinaryTree(Comparator<String> c){
         this.root = nullNode;
@@ -22,6 +26,7 @@ public abstract class AbstractBinaryTree {
 
     protected void setRoot(Node node){
         this.root = node;
+        swapNodes++;
         node.setParent(nullNode);
     }
 
@@ -83,6 +88,15 @@ public abstract class AbstractBinaryTree {
         return size;
     }
 
+    public long getComparisons() {
+        return comparisons;
+    }
 
+    public long getSwapNodes() {
+        return swapNodes;
+    }
 
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
 }

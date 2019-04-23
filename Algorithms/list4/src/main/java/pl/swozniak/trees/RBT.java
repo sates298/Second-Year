@@ -1,11 +1,10 @@
 package pl.swozniak.trees;
 
 
-import com.sun.org.apache.regexp.internal.REDebugCompiler;
 import pl.swozniak.trees.basetree.Node;
 
 import java.util.Comparator;
-import java.util.concurrent.BlockingDeque;
+
 
 import static pl.swozniak.trees.basetree.Node.nullNode;
 
@@ -24,16 +23,20 @@ public class RBT extends BST {
     }
 
     private void fixAfterInsertion(Node curr) {
+        comparisons++;
         while (curr != nullNode) {
+            comparisons++;
             curr = checkRBTConditionsAfterInsertion(curr);
         }
     }
 
     private Node checkRBTConditionsAfterInsertion(Node current) {
+        comparisons++;
         if (this.root == current) {
             current.setColor(Node.Color.BLACK);
             return nullNode;
         }
+        comparisons+=2;
         if (current.getColor() == Node.Color.BLACK || current.getParent().getColor() == Node.Color.BLACK)
             return nullNode;
         if (isFirstCaseAfterInsertion(current)) {
@@ -58,17 +61,21 @@ public class RBT extends BST {
 
     private boolean isFirstCaseAfterInsertion(Node child) {
         Node grand = child.getParent().getParent();
+        comparisons+=2;
         return grand.getRight().getColor() == Node.Color.RED && grand.getLeft().getColor() == Node.Color.RED;
     }
 
     private boolean isSecondCaseAfterInsertion(Node child) {
         Node grand = child.getParent().getParent();
         Node uncle;
+        comparisons++;
         if (grand.getRight() == child.getParent()) {
             uncle = grand.getLeft();
+            comparisons+=2;
             return uncle.getColor() == Node.Color.BLACK && child.getParent().getLeft() == child;
         } else {
             uncle = grand.getRight();
+            comparisons+=2;
             return uncle.getColor() == Node.Color.BLACK && child.getParent().getRight() == child;
         }
     }
@@ -76,32 +83,45 @@ public class RBT extends BST {
     @Override
     public void delete(String s) {
         Node deleted = super.getNodeByValue(s);
+        comparisons++;
         if (deleted == nullNode) return;
         Node curr, replacement = nullNode, parentReplacement = nullNode;
+        comparisons+=2;
         if (deleted.getLeft() == nullNode && deleted.getRight() == nullNode) {
             curr = nullNode;
         } else if (deleted.getLeft() == nullNode) {
             curr = deleted.getRight();
+            comparisons++;
+            comparisons++;
             if (deleted.getColor() == Node.Color.BLACK) {
                 curr.setColor(Node.Color.BLACK);
             }
         } else if (deleted.getRight() == nullNode) {
+            comparisons+=2;
             curr = deleted.getLeft();
+            comparisons++;
             if (deleted.getColor() == Node.Color.BLACK) {
                 curr.setColor(Node.Color.BLACK);
             }
         } else {
+            comparisons+=2;
             curr = findSuccessor(deleted);
 
             curr.setLeft(deleted.getLeft());
+            swapNodes++;
+            comparisons++;
             if (curr.getParent() != deleted) {
+                comparisons++;
                 if (curr.getColor() == Node.Color.BLACK) {
                     parentReplacement = curr.getParent();
                     replacement = curr.getRight();
                 }
                 curr.getParent().setLeft(curr.getRight());
+                swapNodes++;
                 curr.setRight(deleted.getRight());
+                swapNodes++;
             }else{
+                comparisons++;
                 if(curr.getColor() == Node.Color.BLACK){
                     parentReplacement = curr;
                     replacement = curr.getRight();
@@ -117,18 +137,22 @@ public class RBT extends BST {
     }
 
     private void fixAfterDeletion(Node replacement, Node parent) {
+        comparisons+=2;
         while(parent != nullNode && replacement.getColor() == Node.Color.BLACK){
             replacement = checkRBTConditionsAfterDeletion(parent, replacement);
             parent = replacement.getParent();
+            comparisons+=2;
         }
     }
 
     private Node checkRBTConditionsAfterDeletion(Node parent, Node child) {
+        comparisons++;
         if (parent == nullNode) {
             setRoot(child);
             return child;
         }
 
+        comparisons++;
         Node brother = parent.getRight() == child ? parent.getLeft() : parent.getRight();
         if (isFirstCaseAfterDeletion(brother)) {
             parent.setColor(Node.Color.RED);
@@ -144,6 +168,7 @@ public class RBT extends BST {
         }
 
         Node innerChild, outerChild;
+        comparisons++;
         if (brother.getParent().getRight() == brother) {
             outerChild = brother.getRight();
             innerChild = brother.getLeft();
@@ -159,6 +184,7 @@ public class RBT extends BST {
 
             //update brother and his outer child
             brother = innerChild;
+            comparisons++;
             if (brother.getParent().getRight() == brother) {
                 outerChild = brother.getRight();
             } else {
@@ -174,16 +200,19 @@ public class RBT extends BST {
     }
 
     private boolean isFirstCaseAfterDeletion(Node brother) {
+        comparisons++;
         return brother.getColor() == Node.Color.RED;
     }
 
     private boolean isSecondCaseAfterDeletion(Node brother) {
+        comparisons+=3;
         return brother.getColor() == Node.Color.BLACK &&
                 brother.getRight().getColor() == Node.Color.BLACK &&
                 brother.getLeft().getColor() == Node.Color.BLACK;
     }
 
     private boolean isThirdCaseAfterDeletion(Node inner, Node outer) {
+        comparisons+=2;
         return inner.getColor() == Node.Color.RED && outer.getColor() == Node.Color.BLACK;
     }
 
