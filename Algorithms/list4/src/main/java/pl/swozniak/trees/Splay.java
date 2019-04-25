@@ -10,6 +10,9 @@ public class Splay extends BST {
 
     private int splays = 0;
 
+    private double avgSplay = 0;
+    private int splayAmount = 0;
+
     public Splay(Comparator<String> comparator) {
         super(comparator);
     }
@@ -48,6 +51,7 @@ public class Splay extends BST {
 
     @Override
     public void delete(String s) {
+        long time = System.currentTimeMillis();
         splay(s);
         comparisons+=2;
         if (this.root != nullNode && this.root.getValue().equals(s)) {
@@ -66,22 +70,32 @@ public class Splay extends BST {
                 this.setRoot(left.root);
             }
             size--;
+
+            time = System.currentTimeMillis() - time;
+            updateAvgDelete(time);
         }
     }
 
     @Override
     public boolean search(String s) {
+        long time = System.currentTimeMillis();
         splay(s);
         comparisons+=2;
         if ((this.root != nullNode) && (this.root.getValue().equals(s))) {
-            System.out.println(s + " -> 1");
+            if(isPatient)System.out.println(s + " -> 1");
+            time = System.currentTimeMillis() - time;
+            updateAvgSearch(time);
             return true;
         }
-        System.out.println(s + " -> 0");
+        if(isPatient)System.out.println(s + " -> 0");
+        time = System.currentTimeMillis() - time;
+        updateAvgSearch(time);
         return false;
     }
 
     private void splay(String s) {
+        long time = System.currentTimeMillis();
+
         splays++;
         Node found = getClosestOne(s);
         comparisons++;
@@ -104,6 +118,8 @@ public class Splay extends BST {
             }
         }
 
+        time = System.currentTimeMillis() - time;
+        updateAvgSplay(time);
         //setRoot(found);
     }
 
@@ -147,5 +163,14 @@ public class Splay extends BST {
 
     public int getSplays() {
         return splays;
+    }
+
+    private void updateAvgSplay(long time){
+        double sum = this.splayAmount*this.avgSplay;
+        this.avgSplay = (sum + time)/(++this.splayAmount);
+    }
+
+    public double getAvgSplay() {
+        return avgSplay;
     }
 }

@@ -1,5 +1,6 @@
-package pl.swozniak;
+package pl.swozniak.studytasks;
 
+import pl.swozniak.StringComparator;
 import pl.swozniak.trees.BST;
 import pl.swozniak.trees.RBT;
 import pl.swozniak.trees.Splay;
@@ -8,7 +9,7 @@ import pl.swozniak.trees.basetree.AbstractBinaryTree;
 
 import java.util.Scanner;
 
-public class CommandLineInterface {
+public class FirstTask {
 
     public static final String SAMPLE_PATH = "out/production/list4/sample.txt";
     public static final String ASPELL_WORDLIST_PATH = "out/production/list4/aspell_wordlist.txt";
@@ -17,7 +18,7 @@ public class CommandLineInterface {
 
     private Scanner sc;
 
-    public CommandLineInterface() {
+    public FirstTask() {
         this.sc = new Scanner(System.in);
     }
 

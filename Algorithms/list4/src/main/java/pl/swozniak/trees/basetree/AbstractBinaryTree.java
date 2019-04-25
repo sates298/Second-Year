@@ -17,6 +17,14 @@ public abstract class AbstractBinaryTree {
     protected int maxCapacity = 0;
     protected long swapNodes = 0;
 
+    private double avgInsert = 0;
+    private int insertAmount = 0;
+    private double avgSearch = 0;
+    private int searchAmount = 0;
+    private double avgDelete = 0;
+    private int deleteAmount = 0;
+
+
 
     public AbstractBinaryTree(Comparator<String> c){
         this.root = nullNode;
@@ -35,6 +43,8 @@ public abstract class AbstractBinaryTree {
     }
 
     public void insert(String s){
+        long time = System.currentTimeMillis();
+        if(s.length() < 1) return;
         char last = s.charAt(s.length() - 1);
         char first = s.charAt(0);
         StringBuilder builder = new StringBuilder();
@@ -57,6 +67,8 @@ public abstract class AbstractBinaryTree {
         String result = builder.toString();
         if(result.length() > 0) {
             insertValue(result);
+            time = System.currentTimeMillis() - time;
+            updateAvgInsert(time);
         }
     }
     protected abstract void insertValue(String s);
@@ -83,6 +95,32 @@ public abstract class AbstractBinaryTree {
     }
 
     public abstract void inOrder();
+
+    private void updateAvgInsert(long time){
+        double sum = this.insertAmount*this.avgInsert;
+        this.avgInsert = (sum + time)/(++this.insertAmount);
+    }
+
+    protected void updateAvgSearch(long time){
+        double sum = this.searchAmount*this.avgSearch;
+        this.avgSearch = (sum + time)/(++this.searchAmount);
+    }
+
+    protected void updateAvgDelete(long time){
+       double sum = this.deleteAmount*this.avgDelete;
+        this.avgDelete = (sum + time)/(++this.deleteAmount);
+    }
+    public double getAvgInsert() {
+        return avgInsert;
+    }
+
+    public double getAvgSearch() {
+        return avgSearch;
+    }
+
+    public double getAvgDelete() {
+        return avgDelete;
+    }
 
     public int getSize(){
         return size;

@@ -82,6 +82,8 @@ public class RBT extends BST {
 
     @Override
     public void delete(String s) {
+        long time = System.currentTimeMillis();
+
         Node deleted = super.getNodeByValue(s);
         comparisons++;
         if (deleted == nullNode) return;
@@ -134,6 +136,8 @@ public class RBT extends BST {
 
         fixAfterDeletion(replacement, parentReplacement);
         this.size--;
+        time = System.currentTimeMillis() - time;
+        updateAvgDelete(time);
     }
 
     private void fixAfterDeletion(Node replacement, Node parent) {

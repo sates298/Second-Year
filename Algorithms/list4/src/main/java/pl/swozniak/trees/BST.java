@@ -11,14 +11,21 @@ import static pl.swozniak.trees.basetree.Node.nullNode;
 
 public class BST extends AbstractBinaryTree {
 
+    protected boolean isPatient;
+
     public BST(Comparator<String> comparator) {
         super(comparator);
+        isPatient = true;
     }
 
     @Override
     public void insertValue(String s) {
         Node added = new Node(s);
         insertNode(added);
+    }
+
+    public void setPatient(boolean patient) {
+        isPatient = patient;
     }
 
     void insertNode(Node added){
@@ -58,6 +65,8 @@ public class BST extends AbstractBinaryTree {
 
     @Override
     public void delete(String s) {
+        long time = System.currentTimeMillis();
+
         Node deleted = getNodeByValue(s);
         comparisons++;
         if (deleted == nullNode) return;
@@ -87,6 +96,9 @@ public class BST extends AbstractBinaryTree {
 
         setParentAfterDeletion(deleted, curr);
         this.size--;
+
+        time = System.currentTimeMillis() - time;
+        updateAvgDelete(time);
     }
 
     void setParentAfterDeletion(Node deleted, Node replacement){
@@ -108,13 +120,18 @@ public class BST extends AbstractBinaryTree {
 
     @Override
     public boolean search(String s) {
+        long time = System.currentTimeMillis();
         Node curr = getNodeByValue(s);
         comparisons++;
         if (curr == nullNode) {
-            System.out.println(s + " -> 0");
+            if(isPatient)System.out.println(s + " -> 0");
+            time = System.currentTimeMillis() - time;
+            updateAvgSearch(time);
             return false;
         } else {
-            System.out.println(s + " -> 1");
+            if(isPatient)System.out.println(s + " -> 1");
+            time = System.currentTimeMillis() - time;
+            updateAvgSearch(time);
             return true;
         }
     }
