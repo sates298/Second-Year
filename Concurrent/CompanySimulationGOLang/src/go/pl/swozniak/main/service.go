@@ -9,6 +9,7 @@ import (
 type ComplainOp struct {
 	machineType  int
 	machineIndex int
+	collisionNo  int
 }
 
 type ServiceWorker struct {
@@ -18,72 +19,79 @@ type ServiceWorker struct {
 }
 
 type Service struct {
-	complains   chan *ComplainOp
-	response    chan *ComplainOp
-	workers     [config.ServiceWorkersNo]*ServiceWorker
-	addMachines [config.AddMachineNo]bool
-	mulMachines [config.MulMachineNo]bool
+	complains      chan *ComplainOp
+	response       chan *ComplainOp
+	workers        [config.ServiceWorkersNo]*ServiceWorker
+	addMachines    [config.AddMachineNo]bool
+	addMachinesLog [config.AddMachineNo]int
+	mulMachines    [config.MulMachineNo]bool
+	mulMachinesLog [config.MulMachineNo]int
 }
 
 func (s *Service) run() {
 	for i := 0; i < config.AddMachineNo; i++ {
 		s.addMachines[i] = true
+		s.addMachinesLog[i] = 0
 	}
 	for i := 0; i < config.MulMachineNo; i++ {
 		s.mulMachines[i] = true
+		s.mulMachinesLog[i] = 0
 	}
 
-	s.response = make(chan *ComplainOp)
+	resp := make(chan *ComplainOp)
 
 	for {
 		select {
-		case response := <-s.response:
+		case response := <-resp:
 			switch response.machineType {
 			case ADDMACHINE:
 				s.addMachines[response.machineIndex] = true
 			case MULMACHINE:
 				s.mulMachines[response.machineIndex] = true
 			}
-		case complain := <-s.complains:
+		case complain := <-s.checkAvailability():
 			inProgress := false
+			number := complain.collisionNo
 			switch complain.machineType {
 			case ADDMACHINE:
-				if s.addMachines[complain.machineIndex] {
+				if s.addMachinesLog[complain.machineIndex] < number {
 					s.addMachines[complain.machineIndex] = false
+					s.addMachinesLog[complain.machineIndex] = number
 				} else {
 					inProgress = true
 				}
 			case MULMACHINE:
-				if s.mulMachines[complain.machineIndex] {
+				if s.mulMachinesLog[complain.machineIndex] < number {
 					s.mulMachines[complain.machineIndex] = false
+					s.mulMachinesLog[complain.machineIndex] = number
 				} else {
 					inProgress = true
 				}
 			}
 			if !inProgress {
-				var worker *ServiceWorker
-				worker = nil
-				iterator := 0
-				for worker == nil {
-					if iterator >= config.ServiceWorkersNo {
-						iterator = 0
-					} else {
-						if !s.workers[iterator].isBusy {
-							worker = s.workers[iterator]
-							worker.isBusy = true
-						}
-						iterator++
+				for _, w := range s.workers {
+					if !w.isBusy {
+						w.isBusy = true
+						go w.fix(complain, resp)
+						break
 					}
 				}
-
-				go worker.fix(complain, s.response)
 			}
 		}
 	}
 }
 
+func (s *Service) checkAvailability() chan *ComplainOp {
+	for _, sw := range s.workers {
+		if !sw.isBusy {
+			return s.complains
+		}
+	}
+	return nil
+}
+
 func (sw *ServiceWorker) fix(complain *ComplainOp, resp chan *ComplainOp) {
-	time.Sleep(config.ServiceWorkerSpeed)
+	time.Sleep(config.ServiceWorkerSpeed * time.Millisecond)
 	machineType := complain.machineType
 	index := complain.machineIndex
 

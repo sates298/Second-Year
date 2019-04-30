@@ -39,24 +39,34 @@ func main() {
 	go storeServer.run()
 
 	for i := 0; i < config.AddMachineNo; i++ {
-		addMachines[i] = &AddingMachine{id: i, requests: addChannel}
+		addMachines[i] = &AddingMachine{
+			id:          i,
+			requests:    addChannel,
+			backdoor:    make(chan bool),
+			isBroken:    false,
+			collisionNo: 0}
 	}
 
 	for i := 0; i < config.MulMachineNo; i++ {
-		mulMachines[i] = &MultiplyingMachine{id: i, requests: mulChannel}
+		mulMachines[i] = &MultiplyingMachine{
+			id:          i,
+			requests:    mulChannel,
+			backdoor:    make(chan bool),
+			isBroken:    false,
+			collisionNo: 0}
+
 	}
 
-	machines := &Machines{mulMachines:mulMachines, addMachines:addMachines}
+	machines := &Machines{mulMachines: mulMachines, addMachines: addMachines}
 
-	for i:= 0; i< config.ServiceWorkersNo; i++{
-		serviceWorkers[i] = &ServiceWorker{id: i, isBusy:false, machines:machines}
+	for i := 0; i < config.ServiceWorkersNo; i++ {
+		serviceWorkers[i] = &ServiceWorker{id: i, isBusy: false, machines: machines}
 	}
 
 	complainChannel := make(chan *ComplainOp)
-	service := &Service{complains:complainChannel, workers:serviceWorkers}
+	service := &Service{complains: complainChannel, workers: serviceWorkers}
 
 	go service.run()
-
 
 	for i := 0; i < config.WorkersNo; i++ {
 		r := rand.Int() % 2
@@ -67,8 +77,8 @@ func main() {
 			isPatient = true
 		}
 		workers[i] = &Worker{
-			id: i,
-			machines:machines,
+			id:        i,
+			machines:  machines,
 			completed: 0,
 			isPatient: isPatient}
 	}
@@ -78,10 +88,10 @@ func main() {
 	}
 
 	go taskCreator.run(writeTasks)
-	for _, m:=range addMachines{
+	for _, m := range addMachines {
 		go m.run()
 	}
-	for _, m:= range mulMachines{
+	for _, m := range mulMachines {
 		go m.run()
 	}
 	for _, w := range workers {
@@ -91,7 +101,14 @@ func main() {
 		go c.run(readStore)
 	}
 
-	go guiRun(getAllTasks, getAllProducts, workers)
+	menu := &Menu{
+		tasks:    getAllTasks,
+		store:    getAllProducts,
+		workers:  workers,
+		services: serviceWorkers,
+		machines: machines}
+
+	go menu.guiRun()
 
 	<-done
 }

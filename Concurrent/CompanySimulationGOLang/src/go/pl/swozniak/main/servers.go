@@ -4,10 +4,10 @@ import (
 	"../config"
 )
 
-//struct representing the one task
+//struct representing one task
 type Task struct {
 	first, second, result int
-	op            string
+	op                    string
 }
 
 /*
@@ -19,7 +19,7 @@ type ReadStoreOp struct {
 
 type WriteStoreOp struct {
 	newResult int
-	resp    chan bool
+	resp      chan bool
 }
 
 type GetAllStoreOp struct {
@@ -28,11 +28,11 @@ type GetAllStoreOp struct {
 }
 
 type StoreServer struct {
-	reads chan *ReadStoreOp
+	reads  chan *ReadStoreOp
 	writes chan *WriteStoreOp
 	getAll chan *GetAllStoreOp
 
-	products [config.ProductsMaxNo]int
+	products      [config.ProductsMaxNo]int
 	productsCheck [config.ProductsMaxNo]bool
 }
 
@@ -41,14 +41,14 @@ func (ss StoreServer) run() {
 	var writeIterator = 0
 	for {
 		select {
-		case read := <- ss.guardReadStore(ss.productsCheck[readIterator]):
+		case read := <-ss.guardReadStore(ss.productsCheck[readIterator]):
 			read.resp <- ss.products[readIterator]
 			ss.productsCheck[readIterator] = false
 			readIterator++
 			if readIterator == config.ProductsMaxNo {
 				readIterator = 0
 			}
-		case write := <- ss.guardWriteStore(!ss.productsCheck[writeIterator]):
+		case write := <-ss.guardWriteStore(!ss.productsCheck[writeIterator]):
 			ss.products[writeIterator] = write.newResult
 			write.resp <- true
 			ss.productsCheck[writeIterator] = true
@@ -63,27 +63,25 @@ func (ss StoreServer) run() {
 	}
 }
 
-func (ss StoreServer) guardReadStore(cond bool) chan *ReadStoreOp{
+func (ss StoreServer) guardReadStore(cond bool) chan *ReadStoreOp {
 	if cond {
 		return ss.reads
 	}
 	return nil
 }
 
-func (ss StoreServer) guardWriteStore(cond bool) chan *WriteStoreOp{
+func (ss StoreServer) guardWriteStore(cond bool) chan *WriteStoreOp {
 	if cond {
 		return ss.writes
 	}
 	return nil
 }
 
-
-
 /*
 	structures and methods responsible for write and read operations on list of tasks
  */
 type ReadTaskOp struct {
-	resp chan Task
+	resp chan *Task
 }
 
 type WriteTaskOp struct {
@@ -92,7 +90,7 @@ type WriteTaskOp struct {
 }
 
 type GetAllTasksOp struct {
-	respTask chan [config.TasksMaxNo]Task
+	respTask  chan [config.TasksMaxNo]Task
 	respCheck chan [config.TasksMaxNo]bool
 }
 
@@ -101,23 +99,23 @@ type TasksServer struct {
 	writes chan *WriteTaskOp
 	getAll chan *GetAllTasksOp
 
-	tasks [config.TasksMaxNo]Task
+	tasks      [config.TasksMaxNo]Task
 	tasksCheck [config.TasksMaxNo]bool
 }
 
-func (ts TasksServer) run() {
+func (ts *TasksServer) run() {
 	var readIterator = 0
 	var writeIterator = 0
 	for {
 		select {
-		case read := <- ts.guardReadTasks(ts.tasksCheck[readIterator]):
-			read.resp <- ts.tasks[readIterator]
+		case read := <-ts.guardReadTasks(ts.tasksCheck[readIterator]):
+			read.resp <- &ts.tasks[readIterator]
 			ts.tasksCheck[readIterator] = false
 			readIterator++
 			if readIterator == config.TasksMaxNo {
 				readIterator = 0
 			}
-		case write := <- ts.guardWriteTasks(!ts.tasksCheck[writeIterator]):
+		case write := <-ts.guardWriteTasks(!ts.tasksCheck[writeIterator]):
 			ts.tasks[writeIterator] = write.newTask
 			write.resp <- true
 			ts.tasksCheck[writeIterator] = true
@@ -132,19 +130,16 @@ func (ts TasksServer) run() {
 	}
 }
 
-func (ts TasksServer) guardReadTasks(cond bool) chan *ReadTaskOp{
+func (ts TasksServer) guardReadTasks(cond bool) chan *ReadTaskOp {
 	if cond {
 		return ts.reads
 	}
 	return nil
 }
 
-func (ts TasksServer) guardWriteTasks(cond bool) chan *WriteTaskOp{
+func (ts TasksServer) guardWriteTasks(cond bool) chan *WriteTaskOp {
 	if cond {
 		return ts.writes
 	}
 	return nil
 }
-
-
-
