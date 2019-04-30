@@ -16,11 +16,12 @@ func main() {
 	var workers [config.WorkersNo]*Worker
 	var clients [config.ClientsNo]*Client
 	var taskCreator Boss
+	var serviceWorkers [config.ServiceWorkersNo]*ServiceWorker
 
-	var addMachines [config.AddMachineNo]AddingMachine
-	var mulMachines [config.MulMachineNo]MultiplyingMachine
-	addChannel := make(chan SendToMachineOp)
-	mulChannel := make(chan SendToMachineOp)
+	var addMachines [config.AddMachineNo]*AddingMachine
+	var mulMachines [config.MulMachineNo]*MultiplyingMachine
+	addChannel := make(chan *SendToMachineOp)
+	mulChannel := make(chan *SendToMachineOp)
 
 	done := make(chan bool)
 
@@ -38,12 +39,24 @@ func main() {
 	go storeServer.run()
 
 	for i := 0; i < config.AddMachineNo; i++ {
-		addMachines[i] = AddingMachine{id: i, requests: addChannel}
+		addMachines[i] = &AddingMachine{id: i, requests: addChannel}
 	}
 
 	for i := 0; i < config.MulMachineNo; i++ {
-		mulMachines[i] = MultiplyingMachine{id: i, requests: mulChannel}
+		mulMachines[i] = &MultiplyingMachine{id: i, requests: mulChannel}
 	}
+
+	machines := &Machines{mulMachines:mulMachines, addMachines:addMachines}
+
+	for i:= 0; i< config.ServiceWorkersNo; i++{
+		serviceWorkers[i] = &ServiceWorker{id: i, isBusy:false, machines:machines}
+	}
+
+	complainChannel := make(chan *ComplainOp)
+	service := &Service{complains:complainChannel, workers:serviceWorkers}
+
+	go service.run()
+
 
 	for i := 0; i < config.WorkersNo; i++ {
 		r := rand.Int() % 2
@@ -55,8 +68,7 @@ func main() {
 		}
 		workers[i] = &Worker{
 			id: i,
-			addMachines: &addMachines,
-			mulMachines: &mulMachines,
+			machines:machines,
 			completed: 0,
 			isPatient: isPatient}
 	}
@@ -73,7 +85,7 @@ func main() {
 		go m.run()
 	}
 	for _, w := range workers {
-		go w.run(readTasks, writeProduct)
+		go w.run(readTasks, writeProduct, complainChannel)
 	}
 	for _, c := range clients {
 		go c.run(readStore)

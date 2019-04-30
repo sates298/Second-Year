@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-var PeacefulMode = true
+var PeacefulMode = false
 
 /*
 	function to communicate with user and to change modes of program

@@ -3,24 +3,29 @@ package config
 /*
 	constants to configure program
  */
-const WorkersNo int = 3
-const ClientsNo int = 2
-const AddMachineNo int = 1
-const MulMachineNo int = 2
+const WorkersNo int = 5
+const ClientsNo int = 6
+const AddMachineNo int = 4
+const MulMachineNo int = 3
+const ServiceWorkersNo int = 3
 
 const TasksMaxNo int = 5
 const ProductsMaxNo int = 15
 
 const ClientsProductsMaxNo int = 3
 
-const BossSpeed = 500 //ms
+const BossSpeed = 400 //ms
 const BossSensitive int = 80 //%
 
-const WorkerSpeed = 800 //ms
+const WorkerSpeed = 1800 //ms
 const WorkerSensitive int = 40 //%
 
-const ClientSpeed = 1000 //ms
+const ClientSpeed = 2000 //ms
 const ClientSensitive int = 40 //%
 
-const AddMachineSpeed = 50 //ms
-const MulMachineSpeed = 70 //ms
+const ServiceWorkerSpeed = 1200//ms
+
+const AddMachineSpeed = 200 //ms
+const AddMachineReliability int = 60 //%
+const MulMachineSpeed = 700 //ms
+const MulMachineReliability int = 65 // %

@@ -14,8 +14,7 @@ type Boss struct{}
 type Worker struct {
 	id, completed int
 	executed      Task
-	addMachines   *[config.AddMachineNo]AddingMachine
-	mulMachines   *[config.MulMachineNo]MultiplyingMachine
+	machines      *Machines
 	isPatient     bool
 }
 
@@ -31,46 +30,14 @@ type Client struct {
 	second communicator is responsible for setting result - product to store
 	parameters are structures of ReadTaskOp to get next task from list, and WriteStoreOp to set new product in there
  */
-func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp) {
+func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp, service chan *ComplainOp) {
 
 	read := &ReadTaskOp{resp: make(chan Task)}
 	tasks <- read
 
 	w.executed = <-read.resp
-	request := SendToMachineOp{current: &w.executed, resp: make(chan bool)}
-	done := false
-	switch w.executed.op {
-	case "*":
-		machine := w.mulMachines[rand.Intn(config.MulMachineNo)]
-		if !w.isPatient {
-			for !done {
-				select {
-				case machine.requests <- request:
-					done = <-request.resp
-				case <-time.After(500 * time.Millisecond):
-					machine = w.mulMachines[rand.Intn(config.MulMachineNo)]
-				}
-			}
-		} else {
-			machine.requests <- request
-			<-request.resp
-		}
-	default:
-		machine := w.addMachines[rand.Intn(config.AddMachineNo)]
-		if !w.isPatient {
-			for !done {
-				select {
-				case machine.requests <- request:
-					done = <-request.resp
-				case <-time.After(500 * time.Millisecond):
-					machine = w.addMachines[rand.Intn(config.AddMachineNo)]
-				}
-			}
-		} else {
-			machine.requests <- request
-			<-request.resp
-		}
-	}
+
+	w.execute(service)
 
 	write := &WriteStoreOp{
 		newResult: w.executed.result,
@@ -88,15 +55,87 @@ func (w *Worker) getAndExecute(tasks chan *ReadTaskOp, store chan *WriteStoreOp)
 }
 
 /*
+	method for executing w.executed task and if machine was broken worker send to service complain
+ */
+func (w *Worker) execute(service chan *ComplainOp) {
+	request := &SendToMachineOp{current: &w.executed, resp: make(chan bool)}
+	doneNotPatient := false
+	done := false
+	for !done {
+		switch w.executed.op {
+		case "*":
+			index := rand.Intn(config.MulMachineNo)
+			machine := w.machines.mulMachines[index]
+			if !w.isPatient {
+				for !doneNotPatient {
+					select {
+					case machine.requests <- request:
+						doneNotPatient = <-request.resp
+					case <-time.After(500 * time.Millisecond):
+						machine = w.machines.mulMachines[rand.Intn(config.MulMachineNo)]
+					}
+				}
+			} else {
+				machine.requests <- request
+				<-request.resp
+			}
+
+			if w.executed.result != 0 {
+				done = true
+			} else {
+				w.sendComplain(index, MULMACHINE, service)
+				if !PeacefulMode {
+					fmt.Println("Worker: ", w.id, " send request to service about mul machine", machine.id)
+				}
+			}
+
+		default:
+			index := rand.Intn(config.AddMachineNo)
+			machine := w.machines.addMachines[index]
+			if !w.isPatient {
+				for !doneNotPatient {
+					select {
+					case machine.requests <- request:
+						doneNotPatient = <-request.resp
+					case <-time.After(500 * time.Millisecond):
+						machine = w.machines.addMachines[rand.Intn(config.AddMachineNo)]
+					}
+				}
+			} else {
+				machine.requests <- request
+				<-request.resp
+			}
+
+			if w.executed.result != 0 {
+				done = true
+			} else {
+				w.sendComplain(index, ADDMACHINE, service)
+				if !PeacefulMode {
+					fmt.Println("Worker: ", w.id, " send request to service about add machine ", machine.id)
+				}
+			}
+		}
+	}
+}
+
+/*
+	method to complaining for broken machines
+ */
+func (w *Worker) sendComplain(machineIndex int, machineType int, service chan *ComplainOp) {
+	complain := &ComplainOp{machineType: machineType, machineIndex: machineIndex}
+	service <- complain
+}
+
+/*
 	method having infinite loop with sleep and randomly activator of getAndExecute() method
 	parameters are struct of ReadTaskOp and WriteStoreOp which are used with getAndExecute() method
  */
-func (w *Worker) run(tasks chan *ReadTaskOp, store chan *WriteStoreOp) {
+func (w *Worker) run(tasks chan *ReadTaskOp, store chan *WriteStoreOp, service chan *ComplainOp) {
 	for {
 		time.Sleep(time.Duration(config.WorkerSpeed * time.Millisecond))
 		number := rand.Int() % 100
 		if number < config.WorkerSensitive {
-			w.getAndExecute(tasks, store)
+			w.getAndExecute(tasks, store, service)
 		}
 	}
 }
@@ -122,8 +161,12 @@ func (b *Boss) createTask(tasks chan *WriteTaskOp) {
 	}
 
 	write := &WriteTaskOp{
-		newTask: Task{op: operator, first: rand.Int() % 100, second: rand.Int() % 100},
+		newTask: Task{op: operator, first: 1 + rand.Int()%100, second: 1 + rand.Int()%100},
 		resp:    make(chan bool)}
+
+	for write.newTask.first == write.newTask.second {
+		write.newTask.second = 1 + rand.Int()%100
+	}
 
 	tasks <- write
 
