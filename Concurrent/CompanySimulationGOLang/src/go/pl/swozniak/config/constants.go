@@ -3,11 +3,11 @@ package config
 /*
 	constants to configure program
  */
-const WorkersNo int = 4
+const WorkersNo int = 5
 const ClientsNo int = 6
 const AddMachineNo int = 4
 const MulMachineNo int = 3
-const ServiceWorkersNo int = 2
+const ServiceWorkersNo int = 3
 
 const TasksMaxNo int = 5
 const ProductsMaxNo int = 15

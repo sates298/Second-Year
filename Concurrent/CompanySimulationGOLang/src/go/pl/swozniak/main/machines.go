@@ -40,13 +40,14 @@ type Machines struct {
 	@isBroken - bool representing if machine is broken or not
 	@requests - channel to communicate with machine
 	@backdoor - channel to fix machine if isBroken
+	@collisionNo - number of current collision in machine
  */
 type MultiplyingMachine struct {
 	id          int
 	isBroken    bool
 	requests    chan *SendToMachineOp
 	backdoor    chan bool
-	collisionNo int //dodać komentarz
+	collisionNo int
 }
 
 /*
@@ -56,6 +57,7 @@ type MultiplyingMachine struct {
 	@isBroken - bool representing if machine is broken or not
 	@requests - channel to communicate with machine
 	@backdoor - channel to fix machine if isBroken
+	@collisionNo - number of current collision in machine
  */
 type AddingMachine struct {
 	id          int
@@ -74,7 +76,7 @@ type AddingMachine struct {
 	if machine is broken result of sent task is 0 and is resent,
 	otherwise machine sleep random time depended of AddMachineSpeed
 	next executes task with right operation
-	subsequently machine is became broken with probability equal AddMachineReliability
+	subsequently machine is became broken with probability equal AddMachineReliability and increases collisionNo
  */
 func (m *AddingMachine) run() {
 	for {
@@ -126,7 +128,7 @@ func (m *AddingMachine) run() {
 	if machine is broken result of sent task is 0 and is resent,
 	otherwise machine sleep random time depended of MulMachineSpeed
 	next executes task
-	subsequently machine is became broken with probability equal MulMachineReliability
+	subsequently machine is became broken with probability equal MulMachineReliability and increases collisionNo
  */
 func (m *MultiplyingMachine) run() {
 	for {
@@ -162,14 +164,4 @@ func (m *MultiplyingMachine) run() {
 
 		}
 	}
-}
-
-/*
-	guardian for channel (default to guard backdoor channel)
- */
-func guardChannel(cond bool, ch chan bool) chan bool {
-	if cond {
-		return ch
-	}
-	return nil
 }
