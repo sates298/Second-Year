@@ -160,7 +160,9 @@ func (s *Service) checkAvailability() *ServiceWorker {
 	@param complain - pointer to structure which contains stats of broken machine
 	@param resp - channel to send confirm to service if machine was repaired
 
-
+	first service worker sleeps by time equals ServiceWorkerSpeed
+	next from complain he gets stats of broken machine and later worker to correct machine sends fixing signal
+	at the end sends response to service about finish job and he becomes not busy
  */
 func (sw *ServiceWorker) fix(complain *ComplainOp, resp chan *ComplainOp) {
 	time.Sleep(config.ServiceWorkerSpeed * time.Millisecond)
