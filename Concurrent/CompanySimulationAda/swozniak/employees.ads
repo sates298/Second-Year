@@ -1,7 +1,7 @@
 with Servers; use Servers;
 with Machines; use Machines;
 with Constants; use Constants;
-with Menu; use Menu;
+with Ada.Numerics.Discrete_Random;
 
 package Employees is
    
@@ -42,5 +42,8 @@ package Employees is
    c_array: clients;
    w_Tasks: WorkersTasks;
    c_Tasks: ClientsTasks;
+   
+   subtype range100 is Integer range 0 .. 100;
+   package Rand_Int is new Ada.Numerics.Discrete_Random(range100);
    
 end Employees;

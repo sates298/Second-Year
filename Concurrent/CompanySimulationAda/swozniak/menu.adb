@@ -3,13 +3,17 @@ with Ada.Integer_Text_IO;
 with Servers;
 with Employees;
 with Constants;
+with Machines;
+with Service;
 
 package body Menu is
    use Ada.Text_IO;
    use Ada.Integer_Text_IO;
    use Servers;
    use Constants;
+   use Machines;
    use Employees;
+   use Service;
    
    task body Gui is
       choose: Integer;
@@ -29,6 +33,8 @@ package body Menu is
             Put_Line("1. Show list of tasks.");
             Put_Line("2. Show store.");
             Put_Line("3. Show workers.");
+            Put_Line("4. Show machines.");
+            Put_Line("5. Show service workers");
             Put_Line("others. Change mode on loud.");
             Get(choose);
             case choose is
@@ -69,6 +75,34 @@ package body Menu is
                            Integer'Image(w_array(I).completed) &
                            ", isPatient: " &
                            Boolean'Image(w_array(I).isPatient) & "}");
+                  end loop;
+                  Put_Line("]");
+               when 4 =>
+                  Put("Add Machines : [");
+                  for I in 1..AddMachinesNo loop
+                     Put("{ id:" & Integer'Image(I) &
+                           ", isBroken: " &
+                             Boolean'Image(AddMachinesArray(I).GetBroken) &
+                           ", collisions: " &
+                           Integer'Image(AddMachinesArray(I).GetCollisions) & "}");
+                  end loop;
+                  Put_Line("]");
+                           
+                  Put("Mul Machines : [");
+                  for I in 1..MulMachinesNo loop
+                     Put("{ id:" & Integer'Image(I) &
+                           ", isBroken: " &
+                             Boolean'Image(MulMachinesArray(I).GetBroken) &
+                           ", collisions: " &
+                           Integer'Image(MulMachinesArray(I).GetCollisions) & "}");
+                  end loop;
+                  Put_Line("]");
+               when 5 =>
+                  Put("Service workers :[");
+                  for I in 1..ServiceWorkersNo loop
+                     Put("{ id:" & Integer'Image(sw_array(I).id) &
+                           ", isBusy: " &
+                           Boolean'Image(sw_array(I).isBusy) & "}");
                   end loop;
                   Put_Line("]");
                when others =>

@@ -1,4 +1,5 @@
 with Constants; 
+with Ada.Numerics.Discrete_Random;
 
 package Servers is
    use Constants;
@@ -21,14 +22,18 @@ package Servers is
    task StoreServer is
       entry StoreReadOp(result : out Integer);
       entry StoreWriteOp(result: in Integer);
-      entry StoreGetAllOp(results: out StoreArray; checks: out StoreChecksArray);
+      entry StoreGetAllOp(results: out StoreArray;
+                          checks: out StoreChecksArray);
    end StoreServer;
      
    task JobsServer is
       entry JobsReadOp(nextJob: out Job_Access);
       entry JobsWriteOp(newJob: in Job_Access);
-      entry JobsGetAllOp(response: out JobsArray; checks: out JobsChecksArray);
+      entry JobsGetAllOp(response: out JobsArray;
+                         checks: out JobsChecksArray);
    end JobsServer;
         
+    subtype range100 is Integer range 0 .. 100;
+    package Rand_Int is new Ada.Numerics.Discrete_Random(range100);
      
 end Servers;

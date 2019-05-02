@@ -3,22 +3,19 @@ with Ada.Numerics.Discrete_Random;
 with Constants;
 with Machines;
 with Servers;
-with Menu;
+with Service;
 
 package body Employees is
    use Constants;
    use Machines;
    use Servers;
-   use Menu;
+   use Service;
 
    ----------
    -- Boss --
    ----------
 
    task body Boss is
-      subtype range100 is Integer range 0 .. 100;
-      package Rand_Int is new Ada.Numerics.Discrete_Random(range100);
-      use Rand_Int;
       gen : Rand_Int.Generator;
       firstInt: Integer;
       secondInt: Integer;
@@ -30,17 +27,21 @@ package body Employees is
       loop
          delay BossSpeed;
          Rand_Int.Reset(gen);
-         sensitive := Random(gen);
+         sensitive := Rand_Int.Random(gen);
 
          if sensitive < BossSensitive then
-            Rand_Int.Reset(gen);
-            firstInt := Random(gen);
+--              Rand_Int.Reset(gen);
+            firstInt := Rand_Int.Random(gen) + 1 ;
 
-            Rand_Int.Reset(gen);
-            secondInt := Random(gen);
+--              Rand_Int.Reset(gen);
+            secondInt := Rand_Int.Random(gen) + 1;
 
-            Rand_Int.Reset(gen);
-            op := Random(gen) mod 3;
+            while firstInt = secondInt loop
+               secondInt := Rand_Int.Random(gen) + 1;
+            end loop;
+
+--              Rand_Int.Reset(gen);
+            op := Rand_Int.Random(gen) mod 3;
             case op is
             when 0 =>
                oper := '+';
@@ -50,13 +51,18 @@ package body Employees is
                oper := '*';
             end case;
 
-            created := new Job'(first => firstInt, second => secondInt,result=>0, operation => oper);
+            created := new Job'(first => firstInt,
+                                second => secondInt,
+                                result=>0,
+                                operation => oper);
 
 
             Servers.JobsServer.JobsWriteOp(newJob => created);
             if not isPeacfull then
-            Ada.Text_IO.Put_Line("Task: {" & Integer'Image(firstInt) & ", "
-                                 & Integer'Image(secondInt) & ", " & oper & " }");
+               Ada.Text_IO.Put_Line("Task: {" &
+                                      Integer'Image(firstInt) &
+                                      ", " & Integer'Image(secondInt) &
+                                      ", " & oper & " }");
             end if;
 
          end if;
@@ -68,15 +74,14 @@ package body Employees is
    ---------------
 
    task body WorkerRun  is
-      subtype range100 is Integer range 0 .. 100;
-      package Rand_Int is new Ada.Numerics.Discrete_Random(range100);
-      use Rand_Int;
       gen : Rand_Int.Generator;
       sensitive: range100;
 
 
       r : Integer;
       delayedPatience : Duration := 0.3;
+      finishedJob : Boolean := False;
+      amount : Integer;
       done : Boolean;
       addMachine: AM_Access;
       mulMachine: MM_Access;
@@ -84,18 +89,28 @@ package body Employees is
        loop
          delay WorkerSpeed;
          Rand_Int.Reset(gen);
-         sensitive := Random(gen);
+         sensitive := Rand_Int.Random(gen);
 
          if sensitive < WorkerSensitive then
 
             Servers.JobsServer.JobsReadOp(nextJob => actual.executed);
-            done := False;
-            case actual.executed.operation is
+            finishedJob := False;
+            amount := 0;
+            while not finishedJob loop
+               Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "loop " & Integer'Image(amount));
+               amount := amount + 1;
+               done := False;
+               case actual.executed.operation is
                when '*' =>
-                  r := Random(gen) mod MulMachinesNo;
-                  mulMachine := actual.mulMachines(r + 1);
+
+                  r := Rand_Int.Random(gen) mod MulMachinesNo;
+                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowl mul machine ");
+                  mulMachine := actual.mulMachines(r);
+                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje mul machine ");
                   if actual.isPatient then
+                     Ada.Text_IO.Put_Line("cierpliwy chce compute mul" & Integer'Image(actual.id));
                      mulMachine.Compute(actual.executed);
+                     Ada.Text_IO.Put_Line("cierpliwy zrobil compute mul" & Integer'Image(actual.id));
                   else
                      while not done loop
                         select
@@ -103,36 +118,103 @@ package body Employees is
                            done := True;
                         else
                            delay delayedPatience;
-                           r := Random(gen) mod MulMachinesNo;
-                           mulMachine := actual.mulMachines(r + 1);
+
+                           r := Rand_Int.Random(gen) mod MulMachinesNo;
+                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal mul machine ");
+                           mulMachine := actual.mulMachines(r);
+                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losujel mul machine ");
                         end select;
                      end loop;
                   end if;
+
+                  if actual.executed.result = 0 then
+
+                       ServiceTask.
+                       Complains(complain => new Complain'(
+                                 machineType  => MULMACHINEIDENTIFIER,
+                                 machineIndex => r,
+                                 collision    => mulMachine.GetCollisions));
+
+                     if not isPeacfull  and amount < 5 then
+                        Ada.Text_IO.Put_Line("Worker(id:" &
+                                      Integer'Image(actual.id) &
+                                      ") is complainig on mul machine {" &
+                                      Integer'Image(r) & "} ");
+--                           amount := amount + 1;
+                     end if;
+                  else
+                      finishedJob := True;
+                  end if;
+
                when others =>
-                   r := Random(gen) mod AddMachinesNo;
-                   addMachine := actual.addMachines(r + 1);
-                   if actual.isPatient then
+
+                  r := Rand_Int.Random(gen) mod AddMachinesNo;
+                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal add machine "); -------------------------------------------------------------------------------------------------tutaj kurna
+                  addMachine := actual.addMachines(r);
+                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje add machine ");
+                  if actual.isPatient then
+                     Ada.Text_IO.Put_Line("cierpliwy chce compute add" & Integer'Image(actual.id));
                      addMachine.Compute(actual.executed);
+                     Ada.Text_IO.Put_Line("cierplisy zrobil compute add { " & Integer'Image(actual.id));
                    else
                      while not done loop
                         select
                            addMachine.Compute(actual.executed);
+                           Ada.Text_IO.Put_Line("niecierpliwy zrobil compute { " & Integer'Image(actual.id));
                            done := True;
                         else
                            delay delayedPatience;
-                           r := Random(gen) mod AddMachinesNo;
-                           addMachine := actual.addMachines(r + 1);
+                           Ada.Text_IO.Put_Line("niecierpliwy zrezygnowal { " & Integer'Image(actual.id));
+
+                           r := Rand_Int.Random(gen) mod AddMachinesNo;
+                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal add machine ");
+                           addMachine := actual.addMachines(r);
+                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje add machine ");
                         end select;
                      end loop;
-                   end if;
-            end case;
+                  end if;
+
+                  if actual.executed.result = 0 then
+
+                     ServiceTask.
+                       Complains(complain => new Complain'(
+                                 machineType  => ADDMACHINEIDENTIFIER,
+                                 machineIndex => r,
+                                 collision    => addMachine.GetCollisions));
+
+                     if not isPeacfull  and amount < 5 then
+                          Ada.Text_IO.Put_Line("Worker(id:" &
+                                        Integer'Image(actual.id) &
+                                        ") is complainig on add machine {" &
+                                        Integer'Image(r) & "} ");
+--                           amount := amount + 1;
+                     end if;
+                  else
+                      finishedJob := True;
+                  end if;
+
+               end case;
+
+
+
+
+            end loop;
+            Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "out " & Integer'Image(amount));
 
             Servers.StoreServer.StoreWriteOp(result => actual.executed.result);
             actual.completed := actual.completed + 1;
             if not isPeacfull then
-            Ada.Text_IO.Put_Line("Worker(id:" & Integer'Image(actual.id) & "): Task{" & Integer'Image(actual.executed.first) & ", "
-                                 & Integer'Image(actual.executed.second) & ", " & actual.executed.operation
-                                 & "},  Result{" & Integer'Image(actual.executed.result) & " }");
+               Ada.Text_IO.Put_Line("Worker(id:" &
+                                      Integer'Image(actual.id) &
+                                      "): Task{" &
+                                      Integer'Image(actual.executed.first) &
+                                      ", " &
+                                      Integer'Image(actual.executed.second) &
+                                      ", " &
+                                      actual.executed.operation &
+                                      "},  Result{" &
+                                      Integer'Image(actual.executed.result) &
+                                      " }");
             end if;
 
          end if;
@@ -145,9 +227,6 @@ package body Employees is
    ---------------
 
    task body ClientRun is
-      subtype range100 is Integer range 0 .. 100;
-      package Rand_Int is new Ada.Numerics.Discrete_Random(range100);
-      use Rand_Int;
       gen : Rand_Int.Generator;
       sensitive: range100;
       productsNo: Integer;
@@ -158,25 +237,28 @@ package body Employees is
       loop
          delay ClientSpeed;
          Rand_Int.Reset(gen);
-         sensitive := Random(gen);
+         sensitive := Rand_Int.Random(gen);
          iterator := 1;
 
          if sensitive < ClientSensitive then
 
             Rand_Int.Reset(gen);
-            productsNo := Random(gen) mod ClientsProductsMaxNo;
+            productsNo := Rand_Int.Random(gen) mod ClientsProductsMaxNo;
             while iterator < productsNo loop
                Rand_Int.Reset(gen);
-               sensitive := Random(gen);
+               sensitive := Rand_Int.Random(gen);
 
                if sensitive < 50 then
-                  Servers.StoreServer.StoreReadOp(result => actual.products(iterator));
+                  Servers.StoreServer.
+                    StoreReadOp(result => actual.products(iterator));
                   iterator := iterator + 1;
                end if;
             end loop;
 
             if iterator > 1 and not isPeacfull then
-               Ada.Text_IO.Put("Client(id:" & Integer'Image(id) & "): products: {");
+               Ada.Text_IO.Put("Client(id:" &
+                                 Integer'Image(id) &
+                                 "): products: {");
                for i in 1..iterator-1 loop
                   Ada.Text_IO.Put(Integer'Image(actual.products(i)) & " ");
                end loop;

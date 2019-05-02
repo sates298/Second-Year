@@ -65,6 +65,7 @@ type StoreServer struct {
 	products      [config.ProductsMaxNo]int
 	productsCheck [config.ProductsMaxNo]bool
 }
+
 /*
 	method to simulate store server
 
@@ -172,6 +173,7 @@ type TasksServer struct {
 	tasks      [config.TasksMaxNo]Task
 	tasksCheck [config.TasksMaxNo]bool
 }
+
 /*
 	method to simulate server of list of tasks
 

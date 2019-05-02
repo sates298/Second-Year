@@ -18,25 +18,25 @@ package body Servers is
             when checkProducts(readIterator) =>
                accept StoreReadOp (result : out Integer) do
                   result := products(readIterator);
-                  checkProducts(readIterator) := False;
-                  readIterator := readIterator + 1;
-                  if readIterator > ProductsMaxNo then
-                     readIterator := 1;
-                  end if;
-                  
                end StoreReadOp; 
+               checkProducts(readIterator) := False;
+               readIterator := readIterator + 1;
+               if readIterator > ProductsMaxNo then
+                  readIterator := 1;
+               end if;
          or
             when not checkProducts(writeIterator) =>
                accept StoreWriteOp (result : in Integer) do
                   products(writeIterator) := result;
-                  checkProducts(writeIterator) := True;
-                  writeIterator := writeIterator + 1;
-                  if writeIterator > ProductsMaxNo then
-                     writeIterator := 1;
-                  end if;
                end StoreWriteOp;
+               checkProducts(writeIterator) := True;
+               writeIterator := writeIterator + 1;
+               if writeIterator > ProductsMaxNo then
+                  writeIterator := 1;
+               end if;
          or
-            accept StoreGetAllOp (results : out StoreArray; checks: out StoreChecksArray) do
+            accept StoreGetAllOp (results : out StoreArray;
+                                  checks: out StoreChecksArray) do
                results := products;
                checks := checkProducts;
             end StoreGetAllOp;
@@ -50,7 +50,10 @@ package body Servers is
    ----------------  
    
    task body JobsServer is
-      jobs : JobsArray := (others => new Job'(first => 0, second =>0 ,result => 0, operation => '0'));
+      jobs : JobsArray := (others => new Job'(first => 0,
+                                              second =>0 ,
+                                              result => 0,
+                                              operation => '0'));
       checkJobs: JobsChecksArray := (others => False);
       writeIterator : Integer := 1;
       readIterator: Integer := 1;
@@ -78,7 +81,8 @@ package body Servers is
                   
                end JobsWriteOp;
          or
-               accept JobsGetAllOp (response : out JobsArray; checks: out JobsChecksArray) do
+            accept JobsGetAllOp (response : out JobsArray;
+                                 checks: out JobsChecksArray) do
                response := jobs;
                checks := checkJobs;
                end JobsGetAllOp;

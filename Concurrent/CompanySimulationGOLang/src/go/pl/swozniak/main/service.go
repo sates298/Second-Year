@@ -58,6 +58,7 @@ type Service struct {
 	mulMachinesFixStatus [config.MulMachineNo]bool
 	mulMachinesLog       [config.MulMachineNo]int
 }
+
 /*
 	method to simulate service work
 
