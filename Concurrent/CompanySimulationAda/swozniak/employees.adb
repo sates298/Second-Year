@@ -97,20 +97,14 @@ package body Employees is
             finishedJob := False;
             amount := 0;
             while not finishedJob loop
-               Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "loop " & Integer'Image(amount));
-               amount := amount + 1;
                done := False;
                case actual.executed.operation is
                when '*' =>
 
-                  r := Rand_Int.Random(gen) mod MulMachinesNo;
-                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowl mul machine ");
+                  r := (Rand_Int.Random(gen) mod MulMachinesNo) + 1;
                   mulMachine := actual.mulMachines(r);
-                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje mul machine ");
                   if actual.isPatient then
-                     Ada.Text_IO.Put_Line("cierpliwy chce compute mul" & Integer'Image(actual.id));
                      mulMachine.Compute(actual.executed);
-                     Ada.Text_IO.Put_Line("cierpliwy zrobil compute mul" & Integer'Image(actual.id));
                   else
                      while not done loop
                         select
@@ -119,10 +113,8 @@ package body Employees is
                         else
                            delay delayedPatience;
 
-                           r := Rand_Int.Random(gen) mod MulMachinesNo;
-                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal mul machine ");
+                           r := (Rand_Int.Random(gen) mod MulMachinesNo) + 1;
                            mulMachine := actual.mulMachines(r);
-                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losujel mul machine ");
                         end select;
                      end loop;
                   end if;
@@ -140,7 +132,7 @@ package body Employees is
                                       Integer'Image(actual.id) &
                                       ") is complainig on mul machine {" &
                                       Integer'Image(r) & "} ");
---                           amount := amount + 1;
+                         amount := amount + 1;
                      end if;
                   else
                       finishedJob := True;
@@ -148,28 +140,20 @@ package body Employees is
 
                when others =>
 
-                  r := Rand_Int.Random(gen) mod AddMachinesNo;
-                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal add machine "); -------------------------------------------------------------------------------------------------tutaj kurna
+                  r := (Rand_Int.Random(gen) mod AddMachinesNo) + 1;
                   addMachine := actual.addMachines(r);
-                  Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje add machine ");
                   if actual.isPatient then
-                     Ada.Text_IO.Put_Line("cierpliwy chce compute add" & Integer'Image(actual.id));
                      addMachine.Compute(actual.executed);
-                     Ada.Text_IO.Put_Line("cierplisy zrobil compute add { " & Integer'Image(actual.id));
                    else
                      while not done loop
                         select
                            addMachine.Compute(actual.executed);
-                           Ada.Text_IO.Put_Line("niecierpliwy zrobil compute { " & Integer'Image(actual.id));
                            done := True;
                         else
                            delay delayedPatience;
-                           Ada.Text_IO.Put_Line("niecierpliwy zrezygnowal { " & Integer'Image(actual.id));
 
-                           r := Rand_Int.Random(gen) mod AddMachinesNo;
-                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "wylosowal add machine ");
+                           r := (Rand_Int.Random(gen) mod AddMachinesNo) + 1;
                            addMachine := actual.addMachines(r);
-                           Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "losuje add machine ");
                         end select;
                      end loop;
                   end if;
@@ -183,11 +167,11 @@ package body Employees is
                                  collision    => addMachine.GetCollisions));
 
                      if not isPeacfull  and amount < 5 then
-                          Ada.Text_IO.Put_Line("Worker(id:" &
+                        Ada.Text_IO.Put_Line("Worker(id:" &
                                         Integer'Image(actual.id) &
                                         ") is complainig on add machine {" &
                                         Integer'Image(r) & "} ");
---                           amount := amount + 1;
+                        amount := amount + 1;
                      end if;
                   else
                       finishedJob := True;
@@ -199,7 +183,6 @@ package body Employees is
 
 
             end loop;
-            Ada.Text_IO.Put_Line(Integer'Image(actual.id) & "out " & Integer'Image(amount));
 
             Servers.StoreServer.StoreWriteOp(result => actual.executed.result);
             actual.completed := actual.completed + 1;

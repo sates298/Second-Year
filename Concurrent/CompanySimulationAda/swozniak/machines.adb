@@ -10,21 +10,15 @@ package body Machines is
       end SetId;
       
       entry Backdoor
-        when synchronize is
+        when True is
       begin
-         synchronize := False;
          isBroken := False;
          
-         Ada.Text_IO.Put_Line("AddMachine: {" &
-                                         Integer'Image(id) & 
-                                " } is fixed now");
-         synchronize := True;
       end Backdoor;
       
       entry Compute(job: in Job_Access)
-        when synchronize is
+        when True is
       begin
-         synchronize := False;
          delay AddMachineSpeed;
         
          if isBroken then
@@ -68,7 +62,6 @@ package body Machines is
             
          end if;
          
-         synchronize := True;
          
       end Compute;
       

@@ -24,8 +24,6 @@ package Machines is
 
       gen : Rand_Int_M.Generator;
       sensitive: range100Machines;
-
-      synchronize : Boolean := True;
       
       r : Integer;
    end AddingMachine;

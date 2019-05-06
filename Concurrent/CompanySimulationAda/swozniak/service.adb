@@ -95,14 +95,12 @@ package body Service is
             accept Complains (complain : in Cmp_Access) do
                current := complain;
             end Complains;
-            Ada.Text_IO.Put_Line("complain catched");
               case current.machineType is
                  when ADDMACHINEIDENTIFIER =>
                     if addLogs(current.machineIndex) < current.collision and
                       addIsWorking(current.machineIndex) then
                        addLogs(current.machineIndex) := current.collision;
                      addIsWorking(current.machineIndex) := False;
-                     Ada.Text_IO.Put_Line("complain catched and added add");
                   end if;
                   
                   when MULMACHINEIDENTIFIER =>
@@ -110,7 +108,6 @@ package body Service is
                       mulIsWorking(current.machineIndex) then
                        mulLogs(current.machineIndex) := current.collision;
                      mulIsWorking(current.machineIndex) := False;
-                     Ada.Text_IO.Put_Line("complain catched and added mul");
                   end if;  
                   
                   when others => 
