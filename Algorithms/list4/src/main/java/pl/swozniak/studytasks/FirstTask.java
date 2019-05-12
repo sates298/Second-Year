@@ -15,6 +15,7 @@ public class FirstTask {
     public static final String ASPELL_WORDLIST_PATH = "out/production/list4/aspell_wordlist.txt";
     public static final String KJB_PATH = "out/production/list4/KJB.txt";
     public static final String LOTR_PATH = "out/production/list4/lotr.txt";
+    public static final String BEST_BST_PATH = "out/production/list4/best_BST.txt";
 
     private Scanner sc;
 
