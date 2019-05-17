@@ -175,7 +175,7 @@ public class BST extends AbstractBinaryTree {
                 curr = curr.getLeft();
             } else {
                 curr = stack.pop();
-                System.out.println(curr.getValue() + " \"" + curr.getColor() + "\"" + curr.getLeft().getValue() + " " + curr.getRight().getValue());
+                System.out.println(curr.getValue()); // + " \"" + curr.getColor() + "\"" + curr.getLeft().getValue() + " " + curr.getRight().getValue());
                 curr = curr.getRight();
             }
         }

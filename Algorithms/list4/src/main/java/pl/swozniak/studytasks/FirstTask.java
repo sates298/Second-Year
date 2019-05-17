@@ -16,6 +16,7 @@ public class FirstTask {
     public static final String KJB_PATH = "out/production/list4/KJB.txt";
     public static final String LOTR_PATH = "out/production/list4/lotr.txt";
     public static final String BEST_BST_PATH = "out/production/list4/best_BST.txt";
+    public static final String BEST_SPLAY_PATH = "out/production/list4/best_SPLAY.txt";
 
     private Scanner sc;
 
@@ -95,6 +96,12 @@ public class FirstTask {
                                         break;
                                     case "aspell_wordlist.txt":
                                         tree.load(ASPELL_WORDLIST_PATH);
+                                        break;
+                                    case "best_BST.txt":
+                                        tree.load(BEST_BST_PATH);
+                                        break;
+                                    case "best_SPLAY.txt":
+                                        tree.load(BEST_SPLAY_PATH);
                                         break;
                                     default:
                                         tree.load(file);

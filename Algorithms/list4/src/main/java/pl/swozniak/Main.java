@@ -12,13 +12,18 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-//        CommandLineInterface cli = new CommandLineInterface();
-//        cli.run(args);
+
+ //       FirstTask ft = new FirstTask();
+//        ft.run(args);
+
+
+
+
         StringComparator<String> comparator = new StringComparator<>();
         BST bst = new BST(comparator);
         BST splay = new Splay(comparator);
         BST rbt = new RBT(comparator);
-        String path = FirstTask.SAMPLE_PATH;
+        String path = FirstTask.BEST_SPLAY_PATH;
         boolean isPermute = false;
         SecondTask taskBST = new SecondTask(bst, path);
         SecondTask taskSplay = new SecondTask(splay, path);
@@ -29,7 +34,7 @@ public class Main {
             taskRBT.setWords(tmp);
         }
         System.out.println("BST");
-        taskBST.run();
+        //taskBST.run();
         System.out.println("SPLAY");
         taskSplay.run();
         System.out.println("RBT");
