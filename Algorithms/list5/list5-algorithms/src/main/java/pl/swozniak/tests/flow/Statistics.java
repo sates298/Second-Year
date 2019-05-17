@@ -12,7 +12,8 @@ import java.util.List;
 
 public class Statistics {
     public static void main(String[] args) throws IllegalDimensionException, IOException {
-        int repeats = 1;
+        int repeats = 100;
+        long fullTime = System.currentTimeMillis();
         String fileName = "../list5-stats/flow" + repeats + ".json";
         File file = new File(fileName);
         ObjectMapper mapper = new ObjectMapper();
@@ -23,7 +24,7 @@ public class Statistics {
         long time;
         for(int k=1; k<=16; k++){
             for(int i=0; i<repeats; i++){
-                time = System.currentTimeMillis();
+                time = System.nanoTime();
                 cube = new HyperCube(k);
                 eka = new EdmondsKarpAlgorithm(0, cube.getNodes().length - 1, cube);
                 eka.compute(time);
@@ -38,5 +39,6 @@ public class Statistics {
         JsonAll jsonAll = new JsonAll();
         jsonAll.all = all;
         mapper.writeValue(file, jsonAll);
+        System.out.println("Full time = " + (System.currentTimeMillis() - fullTime));
     }
 }

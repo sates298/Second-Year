@@ -64,7 +64,7 @@ def draw_all_plots():
 
 
 if __name__ == '__main__':
-    main_r = 1
+    main_r = 100
     fileRx = '../../flow' + str(main_r) + '.json'
     data = json.load(open(fileRx))
     stats = [i for i in data['all']]

@@ -64,7 +64,7 @@ public class EdmondsKarpAlgorithm {
             maxFlow += pushedFlow;
         }
 
-        this.time = System.currentTimeMillis() - time;
+        this.time = System.nanoTime() - time;
 
     }
 

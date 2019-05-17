@@ -79,7 +79,7 @@ public class HyperCube {
     public static void main(String[] args) {
         if(args.length > 1 && "--size".equals(args[0])) {
             try {
-                long time = System.currentTimeMillis();
+                long time = System.nanoTime();
                 HyperCube cube = new HyperCube(Integer.parseInt(args[1]));
                 EdmondsKarpAlgorithm eka = new EdmondsKarpAlgorithm(0, cube.getNodes().length - 1, cube);
                 eka.compute(time);
