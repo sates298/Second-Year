@@ -32,8 +32,8 @@ public class EdmondsKarpAlgorithm {
                 int curr = queue.poll();
 
                 int[] capacities = graph.getNodes()[curr];
-                for (int i = 0; i < graph.getDimension(); i++) {
-                    if (capacities[i] == 0) continue;
+                for (int i = 0; i < capacities.length; i++) {
+                    //if (capacities[i] == 0) continue;
                     int next = graph.getNeighbour(curr, i);
 
                     if (parent[next] == null && next != source && capacities[i] > flow[curr][i]) {
@@ -62,8 +62,8 @@ public class EdmondsKarpAlgorithm {
                 flow[t][bit] -= pushedFlow;
             }
             maxFlow += pushedFlow;
+//            printPath(parent);
         }
-
         this.time = System.nanoTime() - time;
 
     }

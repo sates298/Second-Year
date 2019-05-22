@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Statistics {
     public static void main(String[] args) throws IllegalDimensionException, IOException {
-        int repeats = 100;
+        int repeats = 101;
         long fullTime = System.currentTimeMillis();
         String fileName = "../list5-stats/flow" + repeats + ".json";
         File file = new File(fileName);

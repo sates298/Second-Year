@@ -81,10 +81,11 @@ public class HyperCube {
             try {
                 long time = System.nanoTime();
                 HyperCube cube = new HyperCube(Integer.parseInt(args[1]));
+                System.out.println(System.nanoTime() - time);
                 EdmondsKarpAlgorithm eka = new EdmondsKarpAlgorithm(0, cube.getNodes().length - 1, cube);
                 eka.compute(time);
                 eka.printStats();
-                cube.printNodes();
+//                cube.printNodes();
             }catch(NumberFormatException | IllegalDimensionException e){
                 System.out.println("Wrong size!");
             }
