@@ -135,6 +135,10 @@ public class BipartiteGraph {
         System.out.println("Time = " + t);
     }
 
+    public int getMaxMatching() {
+        return maxMatching;
+    }
+
     private class Node {
         private int value;
         private VertexesSet set;
@@ -167,10 +171,26 @@ public class BipartiteGraph {
     }
 
     public static void main(String[] args) {
-        BipartiteGraph graph = new BipartiteGraph(3, 2);
-        graph.printEdges();
-        long time = System.nanoTime();
-        graph.HopcroftsKarp();
-        graph.printResults(time);
+        int k=0, i=0;
+        String fileName = "";
+        try {
+            for (int j = 0; j < args.length; j++) {
+                if ("--size".equals(args[j]) && k == 0) {
+                    k = Integer.parseInt(args[++j]);
+                } else if ("--degree".equals(args[j]) && i == 0) {
+                    i = Integer.parseInt(args[++j]);
+                } else if ("--glpk".equals(args[j]) && "".equals(fileName)) {
+                    fileName = args[++j];
+                }
+            }
+            long time = System.nanoTime();
+            BipartiteGraph graph = new BipartiteGraph(k, i);
+//        graph.printEdges();
+
+            graph.HopcroftsKarp();
+            graph.printResults(time);
+        }catch(Exception e){
+            System.err.println("something goes wrong");
+        }
     }
 }

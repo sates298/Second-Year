@@ -77,10 +77,19 @@ public class HyperCube {
     }
 
     public static void main(String[] args) {
-        if(args.length > 1 && "--size".equals(args[0])) {
+            String fileName = "";
+            int k = 0;
             try {
+                for (int j = 0; j < args.length; j++) {
+                    if("--size".equals(args[j]) && k == 0){
+                        k = Integer.parseInt(args[++j]);
+                    } else if ("--glpk".equals(args[j]) && "".equals(fileName)) {
+                        fileName = args[++j];
+                    }
+                }
+
                 long time = System.nanoTime();
-                HyperCube cube = new HyperCube(Integer.parseInt(args[1]));
+                HyperCube cube = new HyperCube(k);
                 System.out.println(System.nanoTime() - time);
                 EdmondsKarpAlgorithm eka = new EdmondsKarpAlgorithm(0, cube.getNodes().length - 1, cube);
                 eka.compute(time);
@@ -89,8 +98,6 @@ public class HyperCube {
             }catch(NumberFormatException | IllegalDimensionException e){
                 System.out.println("Wrong size!");
             }
-        }else{
-            System.out.println("Lack of parameters in program run");
-        }
+
     }
 }

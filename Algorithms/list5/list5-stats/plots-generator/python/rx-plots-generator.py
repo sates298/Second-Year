@@ -64,11 +64,11 @@ def draw_all_plots():
 
 
 if __name__ == '__main__':
-    main_r = 100
+    main_r = 2
     fileRx = '../../flow' + str(main_r) + '.json'
     data = json.load(open(fileRx))
     stats = [i for i in data['all']]
     ks = [i for i in range(1, 17)]
-    print(get_time(stats, main_r))
+    print(get_paths(stats, main_r))
     draw_all_plots()
 
