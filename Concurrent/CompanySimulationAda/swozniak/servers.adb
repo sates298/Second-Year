@@ -2,11 +2,11 @@ with Constants;
 
 package body Servers is
    use Constants;
-   
+
    -----------------
    -- StoreServer --
    -----------------
-   
+
    task body StoreServer is
       products : StoreArray := (others => 0);
       checkProducts: StoreChecksArray := (others => False);
@@ -18,7 +18,7 @@ package body Servers is
             when checkProducts(readIterator) =>
                accept StoreReadOp (result : out Integer) do
                   result := products(readIterator);
-               end StoreReadOp; 
+               end StoreReadOp;
                checkProducts(readIterator) := False;
                readIterator := readIterator + 1;
                if readIterator > ProductsMaxNo then
@@ -40,15 +40,15 @@ package body Servers is
                results := products;
                checks := checkProducts;
             end StoreGetAllOp;
-            
+
          end select;
       end loop;
-   end StoreServer;  
+   end StoreServer;
 
    ----------------
    -- JobsServer --
-   ----------------  
-   
+   ----------------
+
    task body JobsServer is
       jobs : JobsArray := (others => new Job'(first => 0,
                                               second =>0 ,
@@ -68,7 +68,7 @@ package body Servers is
                   if readIterator > JobsMaxNo then
                      readIterator := 1;
                   end if;
-               end JobsReadOp; 
+               end JobsReadOp;
          or
             when not checkJobs(writeIterator) =>
                accept JobsWriteOp (newJob : in Job_Access) do
@@ -78,7 +78,7 @@ package body Servers is
                   if writeIterator > JobsMaxNo then
                      writeIterator := 1;
                   end if;
-                  
+
                end JobsWriteOp;
          or
             accept JobsGetAllOp (response : out JobsArray;
@@ -86,12 +86,12 @@ package body Servers is
                response := jobs;
                checks := checkJobs;
                end JobsGetAllOp;
-         end select;  
+         end select;
       end loop;
-         
+
    end JobsServer;
-      
-      
-      
-      
+
+
+
+
 end Servers;
