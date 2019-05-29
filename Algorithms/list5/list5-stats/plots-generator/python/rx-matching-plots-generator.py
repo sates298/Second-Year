@@ -5,7 +5,7 @@ import math
 def get_avg_time_by_i(actual_i):
     finalList = []
     avg = 0
-    if(actual_i < 3):
+    if actual_i < 3:
         actual_k = 3
     else:
         actual_k = actual_i
