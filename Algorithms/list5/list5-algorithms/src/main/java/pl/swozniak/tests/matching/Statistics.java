@@ -19,7 +19,7 @@ public class Statistics {
         JsonMatching jsonMatching;
         BipartiteGraph graph;
         for(int k=3; k <= 10; k++){
-            for(int i=1; i<k; i++){
+            for(int i=1; i<=k; i++){
                 for(int r=0; r<repeats; r++){
                     graph = new BipartiteGraph(k, i);
                     time = System.nanoTime();

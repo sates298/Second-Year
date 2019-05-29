@@ -1,5 +1,6 @@
 import json
 import matplotlib.pyplot as plt
+import math
 
 
 def get_avg_values(data, r, what):
@@ -11,11 +12,11 @@ def get_avg_values(data, r, what):
             avg = avg + i[what]
         else:
             avg = avg/r
-            final_list.append({'k': actual_k, 'avg': avg})
+            final_list.append({'k': actual_k, 'avg': math.log2(avg)})
             actual_k = i['k']
             avg = i[what]
     avg = avg/r
-    final_list.append({'k': actual_k, 'avg': avg})
+    final_list.append({'k': actual_k, 'avg': math.log2(avg)})
     return final_list
 
 
@@ -31,12 +32,11 @@ def get_paths(data, r):
     return [i['avg'] for i in get_avg_values(data, r, 'paths')]
 
 
-def draw_time_plot(yrange):
+def draw_time_plot():
     plt.plot(ks, get_time(stats, main_r))
     plt.xlabel("dimension")
     plt.ylabel("Time")
     plt.title("plot of time")
-    plt.ylim(0, yrange)
     plt.show()
 
 
@@ -57,18 +57,17 @@ def draw_max_flow_plot():
 
 
 def draw_all_plots():
-    draw_time_plot(90000000000)
-    draw_time_plot(500000000)
+    draw_time_plot()
     draw_max_flow_plot()
     draw_paths_plot()
 
 
 if __name__ == '__main__':
-    main_r = 2
+    main_r = 101
     fileRx = '../../flow' + str(main_r) + '.json'
     data = json.load(open(fileRx))
     stats = [i for i in data['all']]
     ks = [i for i in range(1, 17)]
-    print(get_paths(stats, main_r))
+    print(get_time(stats, main_r))
     draw_all_plots()
 

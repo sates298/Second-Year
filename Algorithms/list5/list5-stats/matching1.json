@@ -5,308 +5,364 @@
       "i": 1,
       "reapeted": 0,
       "maxMatching": 6,
-      "time": 194370
+      "time": 82781
     },
     {
       "k": 3,
       "i": 2,
       "reapeted": 0,
       "maxMatching": 7,
-      "time": 66370
+      "time": 79864
+    },
+    {
+      "k": 3,
+      "i": 3,
+      "reapeted": 0,
+      "maxMatching": 8,
+      "time": 29174
     },
     {
       "k": 4,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 10,
-      "time": 100285
+      "maxMatching": 11,
+      "time": 59806
     },
     {
       "k": 4,
       "i": 2,
       "reapeted": 0,
       "maxMatching": 13,
-      "time": 72205
+      "time": 103567
     },
     {
       "k": 4,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 15,
-      "time": 167384
+      "maxMatching": 16,
+      "time": 111225
+    },
+    {
+      "k": 4,
+      "i": 4,
+      "reapeted": 0,
+      "maxMatching": 16,
+      "time": 56524
     },
     {
       "k": 5,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 22,
-      "time": 141857
+      "maxMatching": 19,
+      "time": 60536
     },
     {
       "k": 5,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 26,
-      "time": 211146
+      "maxMatching": 27,
+      "time": 80957
     },
     {
       "k": 5,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 29,
-      "time": 158997
+      "maxMatching": 32,
+      "time": 108672
     },
     {
       "k": 5,
       "i": 4,
       "reapeted": 0,
       "maxMatching": 32,
-      "time": 111225
+      "time": 171761
+    },
+    {
+      "k": 5,
+      "i": 5,
+      "reapeted": 0,
+      "maxMatching": 32,
+      "time": 168843
     },
     {
       "k": 6,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 43,
-      "time": 113048
+      "maxMatching": 38,
+      "time": 114142
     },
     {
       "k": 6,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 53,
-      "time": 258553
+      "maxMatching": 51,
+      "time": 184524
     },
     {
       "k": 6,
       "i": 3,
       "reapeted": 0,
       "maxMatching": 61,
-      "time": 327476
+      "time": 342427
     },
     {
       "k": 6,
       "i": 4,
       "reapeted": 0,
       "maxMatching": 63,
-      "time": 527316
+      "time": 353003
     },
     {
       "k": 6,
       "i": 5,
       "reapeted": 0,
+      "maxMatching": 63,
+      "time": 195099
+    },
+    {
+      "k": 6,
+      "i": 6,
+      "reapeted": 0,
       "maxMatching": 64,
-      "time": 198382
+      "time": 157538
     },
     {
       "k": 7,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 72,
-      "time": 147328
+      "maxMatching": 82,
+      "time": 195099
     },
     {
       "k": 7,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 107,
-      "time": 240684
+      "maxMatching": 106,
+      "time": 315077
     },
     {
       "k": 7,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 119,
-      "time": 445994
+      "maxMatching": 124,
+      "time": 357014
     },
     {
       "k": 7,
       "i": 4,
       "reapeted": 0,
-      "maxMatching": 127,
-      "time": 468239
+      "maxMatching": 126,
+      "time": 561231
     },
     {
       "k": 7,
       "i": 5,
       "reapeted": 0,
       "maxMatching": 127,
-      "time": 743931
+      "time": 604627
     },
     {
       "k": 7,
       "i": 6,
       "reapeted": 0,
-      "maxMatching": 127,
-      "time": 481368
+      "maxMatching": 128,
+      "time": 507624
+    },
+    {
+      "k": 7,
+      "i": 7,
+      "reapeted": 0,
+      "maxMatching": 128,
+      "time": 219897
     },
     {
       "k": 8,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 101,
+      "maxMatching": 90,
       "time": 201664
     },
     {
       "k": 8,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 179,
-      "time": 318723
+      "maxMatching": 181,
+      "time": 325288
     },
     {
       "k": 8,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 220,
-      "time": 408068
+      "maxMatching": 218,
+      "time": 847134
     },
     {
       "k": 8,
       "i": 4,
+      "reapeted": 0,
+      "maxMatching": 250,
+      "time": 819419
+    },
+    {
+      "k": 8,
+      "i": 5,
       "reapeted": 0,
       "maxMatching": 254,
-      "time": 1072136
+      "time": 1455771
     },
     {
       "k": 8,
-      "i": 5,
+      "i": 6,
       "reapeted": 0,
       "maxMatching": 255,
-      "time": 1415658
-    },
-    {
-      "k": 8,
-      "i": 6,
-      "reapeted": 0,
-      "maxMatching": 256,
-      "time": 779305
+      "time": 2016273
     },
     {
       "k": 8,
       "i": 7,
       "reapeted": 0,
+      "maxMatching": 255,
+      "time": 880684
+    },
+    {
+      "k": 8,
+      "i": 8,
+      "reapeted": 0,
       "maxMatching": 256,
-      "time": 749766
+      "time": 804832
     },
     {
       "k": 9,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 285,
-      "time": 1211076
+      "maxMatching": 282,
+      "time": 315441
     },
     {
       "k": 9,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 431,
-      "time": 1030199
+      "maxMatching": 419,
+      "time": 428854
     },
     {
       "k": 9,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 480,
-      "time": 851145
+      "maxMatching": 488,
+      "time": 753413
     },
     {
       "k": 9,
       "i": 4,
       "reapeted": 0,
-      "maxMatching": 497,
-      "time": 811760
+      "maxMatching": 502,
+      "time": 650575
     },
     {
       "k": 9,
       "i": 5,
       "reapeted": 0,
-      "maxMatching": 507,
-      "time": 1025823
+      "maxMatching": 510,
+      "time": 670997
     },
     {
       "k": 9,
       "i": 6,
       "reapeted": 0,
-      "maxMatching": 511,
-      "time": 1059738
+      "maxMatching": 510,
+      "time": 617755
     },
     {
       "k": 9,
       "i": 7,
       "reapeted": 0,
       "maxMatching": 512,
-      "time": 635259
+      "time": 464228
     },
     {
       "k": 9,
       "i": 8,
       "reapeted": 0,
       "maxMatching": 512,
-      "time": 477356
+      "time": 371966
+    },
+    {
+      "k": 9,
+      "i": 9,
+      "reapeted": 0,
+      "maxMatching": 512,
+      "time": 870108
     },
     {
       "k": 10,
       "i": 1,
       "reapeted": 0,
-      "maxMatching": 509,
-      "time": 330029
+      "maxMatching": 531,
+      "time": 296843
     },
     {
       "k": 10,
       "i": 2,
       "reapeted": 0,
-      "maxMatching": 810,
-      "time": 935385
+      "maxMatching": 817,
+      "time": 1203418
     },
     {
       "k": 10,
       "i": 3,
       "reapeted": 0,
-      "maxMatching": 944,
-      "time": 1408365
+      "maxMatching": 937,
+      "time": 1206700
     },
     {
       "k": 10,
       "i": 4,
       "reapeted": 0,
-      "maxMatching": 980,
-      "time": 1925470
+      "maxMatching": 989,
+      "time": 1276353
     },
     {
       "k": 10,
       "i": 5,
       "reapeted": 0,
-      "maxMatching": 1017,
-      "time": 2354324
+      "maxMatching": 1016,
+      "time": 1973606
     },
     {
       "k": 10,
       "i": 6,
       "reapeted": 0,
-      "maxMatching": 1017,
-      "time": 2820741
+      "maxMatching": 1022,
+      "time": 2270085
     },
     {
       "k": 10,
       "i": 7,
       "reapeted": 0,
-      "maxMatching": 1024,
-      "time": 1906507
+      "maxMatching": 1023,
+      "time": 2161778
     },
     {
       "k": 10,
       "i": 8,
       "reapeted": 0,
       "maxMatching": 1024,
-      "time": 2278108
+      "time": 811396
     },
     {
       "k": 10,
       "i": 9,
       "reapeted": 0,
       "maxMatching": 1023,
-      "time": 2833869
+      "time": 1256661
+    },
+    {
+      "k": 10,
+      "i": 10,
+      "reapeted": 0,
+      "maxMatching": 1024,
+      "time": 863909
     }
   ]
 }
