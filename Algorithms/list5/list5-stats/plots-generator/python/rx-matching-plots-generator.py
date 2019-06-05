@@ -33,11 +33,11 @@ def get_avg_matching_by_k(actual_k):
                 avg += data['maxMatching']
             else:
                 avg = avg/main_r
-                finalList.append(math.log2(avg))
+                finalList.append(avg)
                 avg = data['maxMatching']
                 actual_i = data['i']
     avg = avg/main_r
-    finalList.append(math.log2(avg))
+    finalList.append(avg)
     return finalList
 
 
